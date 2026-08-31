@@ -30,6 +30,10 @@ function authorized(request, env) {
   return Boolean(expected) && request.headers.get("authorization") === `Bearer ${expected}`;
 }
 
+function collectorAuthorized(request, env) {
+  return Boolean(env.PT_MESSAGE_COLLECTOR_TOKEN) && request.headers.get("authorization") === `Bearer ${env.PT_MESSAGE_COLLECTOR_TOKEN}`;
+}
+
 function exportPayload(catalog) {
   return { generated_at: new Date().toISOString(), messages: catalog.messages || [] };
 }
@@ -73,6 +77,10 @@ export default {
     const url = new URL(request.url);
     if (url.pathname === "/health") return json({ ok: true, service: "postoochat-message-center" });
     if (!url.pathname.startsWith("/api/")) return env.ASSETS.fetch(request);
+    if (url.pathname === "/api/export/collect/postoochat" && request.method === "GET") {
+      if (!collectorAuthorized(request, env)) return json({ error: "unauthorized" }, 401);
+      return json(exportPayload(await loadCatalog(env.DB)));
+    }
     if (!authorized(request, env)) return json({ error: "unauthorized" }, 401);
 
     if (url.pathname === "/api/catalog" && request.method === "GET") return json(normaliseCatalog(await loadCatalog(env.DB)));
@@ -140,6 +148,16 @@ export default {
       else if (body.action === "remove_category" && group && category) { catalog.taxonomy[group] = (catalog.taxonomy[group] || []).filter((item) => item !== category); for (const item of catalog.messages) if (item.group === group && item.category === category) item.category = ""; }
       else return json({ error: "invalid_taxonomy_action" }, 400);
       const saved = normaliseCatalog(catalog); await saveCatalog(env.DB, saved); return json({ ok: true, ...saved });
+    }
+    if (url.pathname === "/api/export-webhook" && request.method === "POST") {
+      if (!env.PT_MESSAGE_COLLECTOR_WEBHOOK || !env.PT_MESSAGE_COLLECTOR_TOKEN) return json({ error: "collector_configuration_missing" }, 409);
+      const payload = exportPayload(await loadCatalog(env.DB));
+      const response = await fetch(env.PT_MESSAGE_COLLECTOR_WEBHOOK, {
+        method: "POST",
+        headers: { "authorization": `Bearer ${env.PT_MESSAGE_COLLECTOR_TOKEN}`, "content-type": "application/json" },
+        body: JSON.stringify({ event: "message_export.ready", source: "message_center", collector: "postoochat", generated_at: payload.generated_at, rendered_count: payload.messages.length, collection_url: `${url.origin}/api/export/collect/postoochat` }),
+      });
+      return json({ ok: response.ok, exported_count: payload.messages.length, notified_count: response.ok ? 1 : 0, failed_count: response.ok ? 0 : 1 }, response.ok ? 200 : 502);
     }
     return json({ error: "not_found" }, 404);
   },
