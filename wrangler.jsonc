@@ -1,0 +1,15 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "postoochat-message-center",
+  "main": "src/index.js",
+  "compatibility_date": "2026-08-31",
+  "workers_dev": true,
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "postoochat-message-center",
+      "database_id": "425bbd84-190d-4165-a541-438383b0454f",
+      "migrations_dir": "migrations"
+    }
+  ]
+}
