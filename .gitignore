@@ -13,3 +13,4 @@ __pycache__/
 .history
 .wrangler/
 .dev.vars
+.d1-catalog-import.sql

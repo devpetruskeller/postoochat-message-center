@@ -4,6 +4,9 @@
   "main": "src/index.js",
   "compatibility_date": "2026-08-31",
   "workers_dev": true,
+  "assets": {
+    "directory": "./worker-assets"
+  },
   "d1_databases": [
     {
       "binding": "DB",
