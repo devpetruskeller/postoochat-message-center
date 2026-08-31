@@ -1,0 +1,13 @@
+collectors.json
+store/
+messages*.json
+public/
+.env
+.env.*
+.env copy*
+!.env.example
+__pycache__/
+*.py[cod]
+*.log
+.mescen/
+.history
