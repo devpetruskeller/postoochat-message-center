@@ -1,6 +1,8 @@
 collectors.json
 store/
+# The catalog is authored locally and deployed to production by the release workflow.
 messages*.json
+!messages.json
 public/
 .env
 .env.*

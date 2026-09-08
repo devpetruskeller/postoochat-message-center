@@ -29,6 +29,29 @@ The practical source of truth for authoring is:
 messages.json
 ```
 
+`messages.json` is committed to Git and is the catalog deployed to production.
+`messages.export.json` remains a local generated artifact.
+
+## Production release flow
+
+The production Message Center is updated by the GitHub Actions workflow in
+`.github/workflows/deploy.yml` whenever a commit is pushed to `main` (or when
+the workflow is run manually). It builds the Worker assets, applies D1
+migrations, imports the committed `messages.json` into the production D1
+catalog, and deploys the Worker.
+
+Before the first run, add these repository or `production` environment secrets
+in GitHub:
+
+- `CLOUDFLARE_API_TOKEN` — a Cloudflare token permitted to deploy Workers and
+  modify this D1 database. Grant Account-level **Workers Scripts — Edit** and
+  **D1 — Edit** permissions, scoped to the Postoochat Cloudflare account.
+- `CLOUDFLARE_ACCOUNT_ID` — the Cloudflare account ID for the deployment.
+
+This makes the committed catalog—not ad-hoc production edits—the durable source
+of truth. Pull the live catalog back locally before making an emergency change,
+then commit it as soon as possible.
+
 When you save in the studio, it updates:
 - `messages.json`
 - `messages.export.json`

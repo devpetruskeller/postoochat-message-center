@@ -1,0 +1,6422 @@
+{
+  "taxonomy": {
+    "postoo_chat": [
+      "",
+      "archive",
+      "templates"
+    ],
+    "postoochat_chatcenter": [
+      "",
+      "General",
+      "admin",
+      "user",
+      "worker"
+    ],
+    "postoochat_faceluv": [
+      ""
+    ],
+    "postoochat_market": [
+      ""
+    ],
+    "postoochat_ride": [
+      ""
+    ],
+    "postoochat_suite": [
+      "",
+      "General",
+      "templates"
+    ],
+    "test_group": [
+      ""
+    ]
+  },
+  "messages": [
+    {
+      "name": "START_MENU",
+      "id": 202605270100,
+      "description": "Public start menu for Telegram and WhatsApp entry points.",
+      "variables": {
+        "company_name": {
+          "type": "text",
+          "required": false,
+          "format": [
+            "uppercase",
+            "bold"
+          ],
+          "default": "PosTooChat In-Chat-App"
+        },
+        "explorer_name": {
+          "type": "text",
+          "required": false,
+          "format": [
+            "capitalize",
+            "bold"
+          ],
+          "default": "Friend"
+        },
+        "explorer_lname": {
+          "type": "text",
+          "required": false,
+          "format": [
+            "capitalize",
+            "bold"
+          ],
+          "default": "Keller"
+        }
+      },
+      "default": {
+        "title": "🚀 {{company_name}}",
+        "blocks": [
+          {
+            "id": "intro",
+            "type": "text",
+            "required": true,
+            "parts": [
+              {
+                "text": "Hello ",
+                "format": []
+              },
+              {
+                "text": "{{explorer_name}}",
+                "format": [
+                  "capitalize",
+                  "bold"
+                ]
+              },
+              {
+                "text": ". Whether you're here to dive into the action or just exploring the possibilities, choose your own adventure from the options below:",
+                "format": []
+              }
+            ],
+            "format": []
+          },
+          {
+            "id": "chat_center",
+            "type": "text",
+            "required": true,
+            "parts": [
+              {
+                "text": "💬Chat Center",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": ": Jump straight into the conversation."
+              }
+            ]
+          },
+          {
+            "id": "book_trip",
+            "type": "text",
+            "required": true,
+            "parts": [
+              {
+                "text": "🚗 Book a Trip",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": ": Map out your next journey."
+              }
+            ]
+          },
+          {
+            "id": "more_bookings",
+            "type": "text",
+            "required": true,
+            "parts": [
+              {
+                "text": "📅 More Bookings",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": ": Book a pickup, trusted services, or appointments with ease."
+              }
+            ]
+          },
+          {
+            "id": "register_now",
+            "type": "text",
+            "required": true,
+            "parts": [
+              {
+                "text": "🛡️ Register NOW",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": ": Unlock new earning opportunities as a driver, lift provider, or caregiver."
+              }
+            ]
+          },
+          {
+            "id": "start_demo",
+            "type": "text",
+            "required": true,
+            "parts": [
+              {
+                "text": "🎮 Start DEMO",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": ": Take a guided test drive of the Chat Center."
+              }
+            ]
+          },
+          {
+            "id": "pro_tip",
+            "type": "text",
+            "required": true,
+            "parts": [
+              {
+                "text": "💡 Pro Tip",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": ": A README with video links is on the way for this flow."
+              }
+            ]
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Chat Center\n2. Book a Trip\n3. More Bookings\n4. Register NOW\n5. Start DEMO",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "chat_center",
+            "label": "Chat Center",
+            "triggers": [
+              "1",
+              "chat_center",
+              "chat center"
+            ],
+            "nextMessageId": null,
+            "live": true
+          },
+          {
+            "key": "book_trip",
+            "label": "Book a Trip",
+            "triggers": [
+              "2",
+              "book_trip",
+              "book a trip"
+            ],
+            "nextMessageId": null,
+            "live": true
+          },
+          {
+            "key": "more_bookings",
+            "label": "More Bookings",
+            "triggers": [
+              "3",
+              "more_bookings",
+              "more bookings"
+            ],
+            "nextMessageId": null,
+            "live": true
+          },
+          {
+            "key": "register_now",
+            "label": "Register NOW",
+            "triggers": [
+              "4",
+              "register_now",
+              "register now"
+            ],
+            "nextMessageId": 202605270200,
+            "live": false
+          },
+          {
+            "key": "start_demo",
+            "label": "Start DEMO",
+            "triggers": [
+              "5",
+              "start_demo",
+              "start demo"
+            ],
+            "nextMessageId": 202605281231,
+            "live": false
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true,
+          "blocks": [
+            {
+              "id": "intro",
+              "type": "text",
+              "required": true,
+              "parts": [
+                {
+                  "text": "Hello ",
+                  "format": []
+                },
+                {
+                  "text": "{{explorer_name}}",
+                  "format": [
+                    "capitalize",
+                    "bold"
+                  ]
+                },
+                {
+                  "text": ". Whether you're here to dive into the action or just exploring the possibilities, choose your own adventure from the options below:",
+                  "format": []
+                }
+              ],
+              "format": []
+            },
+            {
+              "id": "chat_center",
+              "type": "text",
+              "required": true,
+              "parts": [
+                {
+                  "text": "💬Chat Center",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": ": Jump straight into the conversation."
+                }
+              ]
+            },
+            {
+              "id": "book_trip",
+              "type": "text",
+              "required": true,
+              "parts": [
+                {
+                  "text": "🚗 Book a Trip",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": ": Map out your next journey."
+                }
+              ]
+            },
+            {
+              "id": "more_bookings",
+              "type": "text",
+              "required": true,
+              "parts": [
+                {
+                  "text": "📅 More Bookings",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": ": Book a pickup, trusted services, or appointments with ease."
+                }
+              ]
+            },
+            {
+              "id": "register_now",
+              "type": "text",
+              "required": false,
+              "parts": [
+                {
+                  "text": "🛡️ Register NOW",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": ": Unlock new earning opportunities as a driver, lift provider, or caregiver."
+                }
+              ]
+            },
+            {
+              "id": "start_demo",
+              "type": "text",
+              "required": false,
+              "parts": [
+                {
+                  "text": "🎮 Start DEMO",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": ": Take a guided test drive of the Chat Center."
+                }
+              ]
+            },
+            {
+              "id": "pro_tip",
+              "type": "text",
+              "required": true,
+              "parts": [
+                {
+                  "text": "💡 Pro Tip",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": ": A README with video links is on the way for this flow."
+                }
+              ]
+            },
+            {
+              "id": "numbered_menu",
+              "type": "text",
+              "text": "Reply with any number from numbered-menu.\n\n1. Chat Center\n2. Book a Trip\n3. More Bookings\n4. Register NOW\n5. Start DEMO",
+              "required": true
+            }
+          ]
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": "TWILIO_WHATSAPP_INTRO_CONTENT_SID"
+          },
+          "blocks": [
+            {
+              "id": "intro",
+              "type": "text",
+              "required": true,
+              "parts": [
+                {
+                  "text": "Hello "
+                },
+                {
+                  "text": "{{explorer_name}}",
+                  "format": [
+                    "capitalize",
+                    "bold"
+                  ]
+                },
+                {
+                  "text": ". Whether you're here to dive into the action or just exploring the possibilities, we've got a path for you. Choose your own adventure from the options below:"
+                }
+              ]
+            },
+            {
+              "id": "chat_center",
+              "type": "text",
+              "required": true,
+              "parts": [
+                {
+                  "text": "💬Chat Center",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": ": Jump straight into the conversation."
+                }
+              ]
+            },
+            {
+              "id": "book_trip",
+              "type": "text",
+              "required": true,
+              "parts": [
+                {
+                  "text": "🚗 Book a Trip",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": ": Map out your next journey."
+                }
+              ]
+            },
+            {
+              "id": "more_bookings",
+              "type": "text",
+              "required": true,
+              "parts": [
+                {
+                  "text": "📅 More Bookings",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": ": Book a pickup, trusted services, or appointments with ease."
+                }
+              ]
+            },
+            {
+              "id": "register_now",
+              "type": "text",
+              "required": true,
+              "parts": [
+                {
+                  "text": "🛡️ Register NOW",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": ": Unlock new earning opportunities as a driver, lift provider, or caregiver."
+                }
+              ]
+            },
+            {
+              "id": "start_demo",
+              "type": "text",
+              "required": true,
+              "parts": [
+                {
+                  "text": "🎮 Start DEMO",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": ": Take a guided test drive of the Chat Center."
+                }
+              ]
+            },
+            {
+              "id": "pro_tip",
+              "type": "text",
+              "required": true,
+              "parts": [
+                {
+                  "text": "💡 Pro Tip",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": ": A README with video links is on the way for this flow."
+                }
+              ]
+            },
+            {
+              "id": "numbered_menu",
+              "type": "text",
+              "text": "Reply with any number from numbered-menu.\n\n1. Chat Center\n2. Book a Trip\n3. More Bookings\n4. Register NOW\n5. Start DEMO",
+              "required": true
+            }
+          ]
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_ENTRY"
+    },
+    {
+      "name": "ONBOARDING_ACCOUNT_EXIST",
+      "id": 202605270200,
+      "description": "Checks whether the user already has an account.",
+      "variables": {
+        "creation_date": {
+          "type": "text",
+          "required": false,
+          "default": "some time ago"
+        },
+        "owner_name": {
+          "type": "text",
+          "required": false,
+          "default": "the owner"
+        },
+        "company_website": {
+          "type": "text",
+          "required": false,
+          "default": ""
+        }
+      },
+      "default": {
+        "title": "👋 Looks like you're already with us!",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "An account matching your information already exists. It was created, {{creation_date}} by {{owner_name}} for {{company_website}}.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "text": "New paragraph.",
+            "required": true,
+            "parts": [
+              {
+                "text": "If this wasn't you, please email support@postoochat.com for a swift resolution.",
+                "format": [
+                  "bold",
+                  "italic"
+                ]
+              }
+            ],
+            "format": []
+          },
+          {
+            "id": "paragraph_3",
+            "type": "text",
+            "parts": [
+              {
+                "text": "If this is you, ",
+                "format": []
+              },
+              {
+                "text": "open your authenticator app ",
+                "format": [
+                  "code"
+                ]
+              },
+              {
+                "text": "and tap Authenticate Now.\n",
+                "format": []
+              },
+              {
+                "text": "Please wait for our next request to enter your 2FA code.",
+                "format": [
+                  "italic",
+                  "bold"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "To proceed, please reply with 1.  Authenticate Now",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "previous_message",
+            "label": "Authenticate Now",
+            "triggers": [
+              "1",
+              "previous_message",
+              "authenticate now"
+            ],
+            "nextMessageId": 202605270300,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_ACCOUNT_FOUND"
+    },
+    {
+      "name": "NEW_ONBOARDING_ACCOUNT",
+      "id": 202605270300,
+      "description": "Collects new account details; Media Studio references attached here follow the message.",
+      "variables": {},
+      "default": {
+        "title": "🚀 Onboarding",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": " Let's get your account set up. Please reply with your mobile number and company website separated by a space. ",
+              "format": [
+                "bold",
+                "italic"
+              ]
+            },
+            {
+              "text": "See the example below. An example screenshot is available.",
+              "format": [
+                "italic"
+              ]
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": "+27821234567 www.company.com",
+                "format": [
+                  "bold",
+                  "code"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with 1 for an example screenshot!",
+            "required": true
+          }
+        ],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_ACCOUNT_NOT_FOUND"
+    },
+    {
+      "name": "I_CONSENT",
+      "id": 202605271152,
+      "description": "Consent on using personal details available from the channel.",
+      "variables": {
+        "mobile_number": {
+          "type": "text",
+          "required": true,
+          "default": "+27813214765"
+        },
+        "registration_number": {
+          "type": "text",
+          "required": true,
+          "default": "6805305134088"
+        }
+      },
+      "default": {
+        "title": "PosTooChat Onboarding Consent",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Mobile: {{mobile_number}}\nWebsite: {{company_website}}",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": "By requesting your onboarding key, you consent to PosTooChat using your mobile number, display name, and company website to create your secure onboarding session.",
+                "format": [
+                  "italic"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "paragraph_3",
+            "type": "text",
+            "parts": [
+              {
+                "text": "Continue to ",
+                "format": []
+              },
+              {
+                "text": "Request 2FA Setup Key ",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": "to set up Two-Factor Authentication (2FA) using an authenticator app for enhanced security.",
+                "format": []
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Request Setup Key",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "request_setup_key",
+            "label": "Request 2FA Setup Key",
+            "triggers": [
+              "1",
+              "request_setup_key",
+              "request 2fa setup key"
+            ],
+            "nextMessageId": 202605281231,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_PRIVACY_CONSENT"
+    },
+    {
+      "name": "START_HERE",
+      "id": 202605281231,
+      "description": "Introduces PosTooChat; Media Studio references attached here follow the message.",
+      "variables": {},
+      "default": {
+        "title": "🚀 PosToo Suite",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Try any ",
+              "format": []
+            },
+            {
+              "text": "Mini-App ",
+              "format": [
+                "bold",
+                "italic"
+              ]
+            },
+            {
+              "text": "right within Telegram.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": "💬PosTooChat ",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": "is a Chat Center that enables management to follow and record secure, private chats between sales agents and customers, or teachers and students, or brokers and policy holders,  to provide immediate support, facilitation, and quality control without ever leaving the chat. ",
+                "format": []
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "paragraph_3",
+            "type": "text",
+            "parts": [
+              {
+                "text": "🚗 PosTooGo ",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": " let users book rides or register as drivers to earn money. ",
+                "format": []
+              },
+              {
+                "text": "Launching Date: 1 September 2026",
+                "format": [
+                  "italic"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "paragraph_4",
+            "type": "text",
+            "parts": [
+              {
+                "text": "PosTooPark ",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": "lets users instantly book a parking space or register to provide parking to earn money. ",
+                "format": []
+              },
+              {
+                "text": "Launching Date: 1 September 2026",
+                "format": [
+                  "italic"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "paragraph_5",
+            "type": "text",
+            "parts": [
+              {
+                "text": "PosTooLuv ",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": "helps people find and connect ",
+                "format": []
+              },
+              {
+                "text": "anonymously ",
+                "format": [
+                  "bold",
+                  "italic",
+                  "underline"
+                ]
+              },
+              {
+                "text": "with romantic partners via text, and voice calls. ",
+                "format": []
+              },
+              {
+                "text": "Launching Date: 15 June 2026",
+                "format": [
+                  "italic"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "paragraph_6",
+            "type": "text",
+            "parts": [
+              {
+                "text": "PosTooMoney ",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": "lets users instantly send quotes, invoices, or purchase orders. ",
+                "format": []
+              },
+              {
+                "text": "Launching Date: 1 July 2026",
+                "format": [
+                  "italic"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "paragraph_7",
+            "type": "text",
+            "parts": [
+              {
+                "text": "PosTooBook ",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": "lets users instantly book appointments. ",
+                "format": []
+              },
+              {
+                "text": "Launching Date: 1 August 2026",
+                "format": [
+                  "italic"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "postoochat",
+            "label": "PosTooChat",
+            "triggers": [
+              "1",
+              "postoochat"
+            ],
+            "nextMessageId": 202605281246,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_APP_ROUTER"
+    },
+    {
+      "name": "ONBOARDING",
+      "id": 202605281246,
+      "description": "Collects onboarding details; Media Studio references attached here follow the message.",
+      "variables": {},
+      "default": {
+        "title": "🚀 Onboarding",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": " Let's get your account set up. Please reply with your mobile number and company registration number separated by a space. If you do not have a company number, please add your government ID number.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": "SPACES IN THE MOBILE - , ID - AND COMPANY REGISTRATION NUMBERS ARE NOT ALLOWED!",
+                "format": [
+                  "bold"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "paragraph_3",
+            "type": "text",
+            "parts": [
+              {
+                "text": "+27821234567 2024/123456/07 OR +27821234567 4005305896088",
+                "format": []
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "paragraph_4",
+            "type": "text",
+            "parts": [
+              {
+                "text": "See the example below. An example screenshot is available.",
+                "format": [
+                  "bold"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with 1 for an example screenshot!",
+            "required": true
+          }
+        ],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_ONBOARDING_PROFILE"
+    },
+    {
+      "name": "ONBOARDED",
+      "id": 202605281248,
+      "description": "Describe what this message is for.",
+      "variables": {
+        "creation_date": {
+          "type": "text",
+          "required": false,
+          "default": "some time ago"
+        },
+        "owner_name": {
+          "type": "text",
+          "required": false,
+          "default": "the owner"
+        },
+        "company_website": {
+          "type": "text",
+          "required": false,
+          "default": ""
+        }
+      },
+      "default": {
+        "title": "👋 Looks like you're already with us!",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "An account matching your information already exists. It was created, {{creation_date}} by {{owner_name}} for {{company_website}}.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "text": "New paragraph.",
+            "required": true,
+            "parts": [
+              {
+                "text": "If this wasn't you, please email support@postoochat.com for a swift resolution.",
+                "format": [
+                  "bold",
+                  "italic"
+                ]
+              }
+            ],
+            "format": []
+          },
+          {
+            "id": "paragraph_3",
+            "type": "text",
+            "parts": [
+              {
+                "text": "If this is you, ",
+                "format": []
+              },
+              {
+                "text": "open your authenticator app ",
+                "format": [
+                  "code"
+                ]
+              },
+              {
+                "text": "and tap Authenticate Now.\n",
+                "format": []
+              },
+              {
+                "text": "Please wait for our next request to enter your 2FA code.",
+                "format": [
+                  "italic",
+                  "bold"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "To proceed, please reply with 1.  Authenticate Now",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "previous_message",
+            "label": "Authenticate Now",
+            "triggers": [
+              "1",
+              "previous_message",
+              "authenticate now"
+            ],
+            "nextMessageId": 202605281249,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "CONSENT_REQUEST_2FA",
+      "id": 202605281249,
+      "description": "Consent on using personal details available from the channel, and request 2FA key.",
+      "variables": {
+        "mobile_number": {
+          "type": "text",
+          "required": true,
+          "default": "+27813214765"
+        },
+        "company_website": {
+          "type": "text",
+          "required": true,
+          "default": "www.petruskeller.co.za"
+        }
+      },
+      "default": {
+        "title": "PosToo Onboarding Consent",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Mobile Number: {{mobile_number}}\nGovernment ID / Registration Number: {{registration_number}}",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": "By requesting your onboarding key, you consent to PosToo using your mobile number, registration number, and channel details to create your secure onboarding session.",
+                "format": [
+                  "italic"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "paragraph_3",
+            "type": "text",
+            "parts": [
+              {
+                "text": "Continue to ",
+                "format": []
+              },
+              {
+                "text": "Request 2FA Setup Key ",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": "to set up Two-Factor Authentication (2FA) using an authenticator app for enhanced security.",
+                "format": []
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Request 2FA Setup Key",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "request_setup_key",
+            "label": "Request 2FA Setup Key",
+            "triggers": [
+              "1",
+              "request_setup_key",
+              "request 2fa setup key"
+            ],
+            "nextMessageId": 202605291023,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_2FA_SETUP"
+    },
+    {
+      "name": "ONBOARD_2FA",
+      "id": 202605291023,
+      "description": "Set up the authenticator app verification and reply with the 6-digit code.",
+      "variables": {
+        "setup_key": {
+          "type": "text",
+          "required": false,
+          "default": "6RFD6OUD2Q2ZRHK6Z7ZF7ZJP67XOIYMO"
+        }
+      },
+      "default": {
+        "title": "Authenticator Setup",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Set up the authenticator app verification before continuing.\nUse manual entry first if you are on the same phone as Telegram.",
+              "format": [
+                "italic"
+              ]
+            },
+            {
+              "text": "\n\n",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": "Setup Key: ",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": "{{setup_key}}",
+                "format": []
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "paragraph_3",
+            "type": "text",
+            "parts": [
+              {
+                "text": "After adding the setup key to your authenticator app, reply with the 6-digit code.",
+                "format": [
+                  "bold"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "watch_auth_setup",
+            "label": "Watch Authenticator Setup Video",
+            "triggers": [
+              "1",
+              "watch_auth_setup",
+              "watch authenticator setup video"
+            ],
+            "nextMessageId": 202605281249,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_2FA_VERIFY"
+    },
+    {
+      "name": "SIGN_IN",
+      "id": 202606020511,
+      "description": "Describe what this message is for.",
+      "variables": {},
+      "default": {
+        "title": "Welcome Back!",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "To continue, please sign in using your authenticator mobile app. Open the app, have your 6‑digit code ready, tap ",
+              "format": []
+            },
+            {
+              "text": "Authenticate Now ",
+              "format": [
+                "bold"
+              ]
+            },
+            {
+              "text": "and hold on for the next request to enter your 2FA code.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "authenticate_now",
+            "label": "Authenticate NOW",
+            "triggers": [
+              "1",
+              "authenticate_now",
+              "authenticate now"
+            ],
+            "nextMessageId": 202606020534,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_SIGN_IN"
+    },
+    {
+      "name": "CHECK_IN",
+      "id": 202606020534,
+      "description": "Describe what this message is for.",
+      "variables": {},
+      "default": {
+        "title": "Check‑IN time!",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Please reply with your mobile authenticator's ",
+              "format": []
+            },
+            {
+              "text": "6‑digit code ",
+              "format": [
+                "bold",
+                "italic"
+              ]
+            },
+            {
+              "text": "to check in. ",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true,
+          "blocks": [
+            {
+              "id": "numbered_menu",
+              "type": "text",
+              "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+              "required": false
+            }
+          ]
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          },
+          "blocks": [
+            {
+              "id": "numbered_menu",
+              "type": "text",
+              "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+              "required": false
+            }
+          ]
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_SESSION_RESUME"
+    },
+    {
+      "name": "CHECKED_IN",
+      "id": 202606020535,
+      "description": "Describe what this message is for.",
+      "variables": {},
+      "default": {
+        "title": "Checked-IN",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "🔐 Your authentication was successful",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": "You are now securely checked in!",
+                "format": []
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "invite_admin",
+            "label": "Invite Admin",
+            "triggers": [
+              "1",
+              "invite_admin",
+              "invite admin"
+            ],
+            "nextMessageId": 202606041250,
+            "live": true
+          },
+          {
+            "key": "invite_worker",
+            "label": "Invite Worker",
+            "triggers": [
+              "2",
+              "invite_worker",
+              "invite worker"
+            ],
+            "nextMessageId": 202606041251,
+            "live": true
+          },
+          {
+            "key": "get_user_qr",
+            "label": "Get Website QR Code",
+            "triggers": [
+              "3",
+              "get_user_qr",
+              "get website qr code"
+            ],
+            "nextMessageId": null,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "CHECK_IN_FAILED",
+      "id": 202606020536,
+      "description": "Describe what this message is for.",
+      "variables": {},
+      "default": {
+        "title": "Check‑IN FAILED",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Please try again and reply with your mobile authenticator's ",
+              "format": []
+            },
+            {
+              "text": "6‑digit code ",
+              "format": [
+                "bold"
+              ]
+            },
+            {
+              "text": "to check in. ",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": "If it fails again, please watch the video on how to set up and use your mobile Authenticator. ",
+                "format": [
+                  "italic",
+                  "bold"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "paragraph_3",
+            "type": "text",
+            "parts": [
+              {
+                "text": "Send an email to support@postoochat.com for a swift resolution.",
+                "format": [
+                  "bold"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Watch 2FA Video\n2. Send Email NOW!",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "watch_2fa_video",
+            "label": "Watch 2FA Video",
+            "triggers": [
+              "1",
+              "watch_2fa_video",
+              "watch 2fa video"
+            ],
+            "nextMessageId": 202605291023,
+            "live": true
+          },
+          {
+            "key": "send_email",
+            "label": "Send Email NOW!",
+            "triggers": [
+              "2",
+              "send_email",
+              "send email now!"
+            ],
+            "nextMessageId": null,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true,
+          "blocks": [
+            {
+              "id": "numbered_menu",
+              "type": "text",
+              "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+              "required": false
+            }
+          ]
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_ACCESS_DENIED"
+    },
+    {
+      "name": "INVITING_ADMIN",
+      "id": 202606041250,
+      "description": "Describe what this message is for.",
+      "variables": {
+        "admin_link": {
+          "type": "text",
+          "required": false,
+          "default": "https://t.me/postoo_bot?text=Hello%20Admin"
+        }
+      },
+      "links": [
+        {
+          "variable": "admin_link",
+          "live": true,
+          "required": true,
+          "mode": "follow_up",
+          "key": "admin_link_follow_up"
+        }
+      ],
+      "default": {
+        "title": "Invite Admin",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Copy the admin link and send it to the person that will manage workers.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true,
+          "blocks": [
+            {
+              "id": "numbered_menu",
+              "type": "text",
+              "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+              "required": false
+            }
+          ]
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "INVITING_WORKER",
+      "id": 202606041251,
+      "description": "Describe what this message is for.",
+      "variables": {
+        "worker_link": {
+          "type": "text",
+          "required": false,
+          "default": "https://t.me/postoo_bot?text=Hello%20Worker"
+        }
+      },
+      "links": [
+        {
+          "variable": "worker_link",
+          "live": true,
+          "required": true,
+          "mode": "follow_up",
+          "key": "worker_link_follow_up"
+        }
+      ],
+      "default": {
+        "title": "Invite Worker",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Copy the worker link and send it to the person that will help you with customers.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true,
+          "blocks": [
+            {
+              "id": "numbered_menu",
+              "type": "text",
+              "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+              "required": false
+            }
+          ]
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "CHECKED_IN_ADMIN",
+      "id": 202606041252,
+      "description": "Describe what this message is for.",
+      "variables": {},
+      "default": {
+        "title": "Admin Checked-IN",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "🔐 You are now checked in and can invite workers and generate the website QR entry for users.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_3",
+            "type": "text",
+            "parts": [
+              {
+                "text": "You can check out any time to stop receiving workers messages.",
+                "format": [
+                  "bold"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "invite_worker",
+            "label": "Invite a Worker",
+            "triggers": [
+              "1",
+              "invite_worker",
+              "invite a worker"
+            ],
+            "nextMessageId": 202606041251,
+            "live": true
+          },
+          {
+            "key": "get_user_qr",
+            "label": "Get Website QR Code",
+            "triggers": [
+              "2",
+              "get_user_qr",
+              "get website qr code"
+            ],
+            "nextMessageId": null,
+            "live": true
+          },
+          {
+            "key": "admin_check_out",
+            "label": "Admin Check-OUT NOW!",
+            "triggers": [
+              "3",
+              "admin_check_out",
+              "admin check-out now!"
+            ],
+            "nextMessageId": 202606041266,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "CHECKED_IN_WORKER",
+      "id": 202606041254,
+      "description": "Describe what this message is for.",
+      "variables": {},
+      "default": {
+        "title": "Worker Checked-IN",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "🔐 You are now checked in to accept or ignore user chats.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_3",
+            "type": "text",
+            "parts": [
+              {
+                "text": "You can check out any time to stop receiving users' support request messages.",
+                "format": [
+                  "bold"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "worker_check_out",
+            "label": "Check Out NOW!",
+            "triggers": [
+              "1",
+              "worker_check_out",
+              "check out now!"
+            ],
+            "nextMessageId": 202606041269,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "CHECKED_IN_USER",
+      "id": 202606041255,
+      "description": "Describe what this message is for.",
+      "variables": {},
+      "default": {
+        "title": "User Checked-IN",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "🔐 You are now checked in. Send your inquiry here and the first available worker will join the chat and respond promptly.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": "Tap ",
+                "format": []
+              },
+              {
+                "text": "Close Chat NOW! ",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": "to close the chat when done.",
+                "format": []
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "paragraph_3",
+            "type": "text",
+            "parts": [
+              {
+                "text": "⚠️ Please note: If there is no activity in this chat for 2 minutes, you will be automatically logged out.",
+                "format": []
+              },
+              {
+                "text": " block text.",
+                "format": []
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "user_close_chat",
+            "label": "Close Chat",
+            "triggers": [
+              "1",
+              "user_close_chat",
+              "close chat"
+            ],
+            "nextMessageId": 202606071274,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "INVITE_INVALID",
+      "id": 202606041256,
+      "description": "Describe what this message is for.",
+      "variables": {
+        "invite_invalid_error": {
+          "type": "text",
+          "required": false,
+          "default": "invite invalid error"
+        }
+      },
+      "default": {
+        "title": "Invite Invalid",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Invite invalid!",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": "{{invite_invalid_error}}",
+                "format": []
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true,
+          "blocks": [
+            {
+              "id": "paragraph_2",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "{{invite_invalid_error}}",
+                  "format": [
+                    "bold"
+                  ]
+                }
+              ],
+              "format": [],
+              "required": true
+            },
+            {
+              "id": "numbered_menu",
+              "type": "text",
+              "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+              "required": false
+            }
+          ]
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "INVITE_EXPIRED",
+      "id": 202606041257,
+      "description": "Describe what this message is for.",
+      "variables": {
+        "invite_expired_error": {
+          "type": "text",
+          "required": false,
+          "default": "Invite expired default value"
+        }
+      },
+      "default": {
+        "title": "Invite Expired",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Invite expired.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": "{{invite_expired_error}}",
+                "format": []
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true,
+          "blocks": [
+            {
+              "id": "paragraph_2",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "{{invite_expired_error}}",
+                  "format": []
+                }
+              ],
+              "format": [],
+              "required": true
+            },
+            {
+              "id": "numbered_menu",
+              "type": "text",
+              "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+              "required": false
+            }
+          ]
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "INVITE_ALREADY_USED",
+      "id": 202606041258,
+      "description": "Describe what this message is for.",
+      "variables": {
+        "invite_already_used_error": {
+          "type": "text",
+          "required": false,
+          "default": "Invite already use default value"
+        }
+      },
+      "default": {
+        "title": "Invite Already Used",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Invite already used.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": "{{invite_already_used_error}}",
+                "format": []
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true,
+          "blocks": [
+            {
+              "id": "paragraph_2",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "{{invite_already_used_error}}",
+                  "format": []
+                }
+              ],
+              "format": [],
+              "required": true
+            },
+            {
+              "id": "numbered_menu",
+              "type": "text",
+              "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+              "required": false
+            }
+          ]
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "INVITE_REVOKED",
+      "id": 202606041259,
+      "description": "Describe what this message is for.",
+      "variables": {
+        "invite_revoked_error": {
+          "type": "text",
+          "required": false,
+          "default": "Invite revoked default value"
+        }
+      },
+      "default": {
+        "title": "Invite Revoked",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Invite revoked.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": "{{invite_revoked_error}}",
+                "format": []
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true,
+          "blocks": [
+            {
+              "id": "paragraph_2",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "{{invite_revoked_error}}",
+                  "format": []
+                }
+              ],
+              "format": [],
+              "required": true
+            },
+            {
+              "id": "numbered_menu",
+              "type": "text",
+              "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+              "required": false
+            }
+          ]
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "INVITE_WRONG_WORKSPACE",
+      "id": 202606041260,
+      "description": "Describe what this message is for.",
+      "variables": {
+        "invite_wrong_workspace": {
+          "type": "text",
+          "required": false,
+          "default": "invite wrong workspace default"
+        }
+      },
+      "default": {
+        "title": "Invite Wrong Workspace",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Invite wrong workspace.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": "{{invite_wrong_workspace}}",
+                "format": [
+                  "bold"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true,
+          "blocks": [
+            {
+              "id": "paragraph_2",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "{{invite_wrong_workspace}}",
+                  "format": [
+                    "bold"
+                  ]
+                }
+              ],
+              "format": [],
+              "required": true
+            },
+            {
+              "id": "numbered_menu",
+              "type": "text",
+              "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+              "required": false
+            }
+          ]
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "QR_INVALID",
+      "id": 202606041261,
+      "description": "Describe what this message is for.",
+      "variables": {
+        "qrcode_invalid_error": {
+          "type": "text",
+          "required": false,
+          "default": "qr code invalid"
+        }
+      },
+      "default": {
+        "title": "QR Code Invalid",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "QR code invalid.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": "{{qrcode_invalid_error}}",
+                "format": []
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true,
+          "blocks": [
+            {
+              "id": "paragraph_2",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "{{qrcode_invalid_error}}",
+                  "format": []
+                }
+              ],
+              "format": [],
+              "required": true
+            },
+            {
+              "id": "numbered_menu",
+              "type": "text",
+              "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+              "required": false
+            }
+          ]
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "QR_EXPIRED",
+      "id": 202606041262,
+      "description": "Describe what this message is for.",
+      "variables": {
+        "qrcode_expired": {
+          "type": "text",
+          "required": false,
+          "default": "qrcode expired default"
+        }
+      },
+      "default": {
+        "title": "QR Code Expired",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "QR code expired.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": "{{qrcode_expired}}",
+                "format": []
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true,
+          "blocks": [
+            {
+              "id": "paragraph_2",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "{{qrcode_expired}}",
+                  "format": []
+                }
+              ],
+              "format": [],
+              "required": true
+            },
+            {
+              "id": "numbered_menu",
+              "type": "text",
+              "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+              "required": false
+            }
+          ]
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "QR_ALREADY_USED",
+      "id": 202606041263,
+      "description": "Describe what this message is for.",
+      "variables": {
+        "qrcode_already_used": {
+          "type": "text",
+          "required": false,
+          "default": ""
+        }
+      },
+      "default": {
+        "title": "QR Code Already Used",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "You have scanned this QR Code, and you are still checked IN.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true,
+          "blocks": [
+            {
+              "id": "paragraph_2",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "{{qrcode_already_used}}",
+                  "format": [
+                    "bold"
+                  ]
+                }
+              ],
+              "format": [],
+              "required": true
+            },
+            {
+              "id": "numbered_menu",
+              "type": "text",
+              "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+              "required": false
+            }
+          ]
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "QR_WRONG_WORKSPACE",
+      "id": 202606041264,
+      "description": "Describe what this message is for.",
+      "variables": {
+        "qrcode_wrong_workspace": {
+          "type": "text",
+          "required": false,
+          "default": "qrcode wrong workspace default"
+        }
+      },
+      "default": {
+        "title": "QR Code Wrong Workspace",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "QR code wrong workspace.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": "{{qrcode_wrong_workspace}}",
+                "format": [
+                  "bold"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "previous_message",
+            "label": "Previous Message",
+            "triggers": [
+              "1",
+              "previous_message",
+              "previous message"
+            ],
+            "nextMessageId": 202606041263,
+            "live": true
+          },
+          {
+            "key": "next_message",
+            "label": "Next Message",
+            "triggers": [
+              "2",
+              "next_message",
+              "next message"
+            ],
+            "nextMessageId": 202606071270,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "DIRECT_MESSAGE_SESSION_INVALID",
+      "id": 202606071270,
+      "description": "Shown when a direct-message action is attempted with an invalid or inactive session.",
+      "variables": {
+        "session_invalid_error": {
+          "type": "text",
+          "required": false,
+          "default": "Your session is invalid or no longer active."
+        }
+      },
+      "default": {
+        "title": "Session Invalid",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "This direct-message action could not continue because your session is no longer valid.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": "{{session_invalid_error}}",
+                "format": []
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true,
+          "blocks": [
+            {
+              "id": "paragraph_2",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "{{session_invalid_error}}",
+                  "format": [
+                    "bold"
+                  ]
+                }
+              ],
+              "format": [],
+              "required": true
+            },
+            {
+              "id": "numbered_menu",
+              "type": "text",
+              "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+              "required": false
+            }
+          ]
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "DIRECT_MESSAGE_ROUTE_NOT_ALLOWED",
+      "id": 202606071271,
+      "description": "Shown when a direct-message route is not allowed in the current governed phase.",
+      "variables": {
+        "route_not_allowed_error": {
+          "type": "text",
+          "required": false,
+          "default": "That direct-message route is not allowed in this phase."
+        }
+      },
+      "default": {
+        "title": "Route Not Allowed",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "This direct-message route is not allowed right now.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": "{{route_not_allowed_error}}",
+                "format": []
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true,
+          "blocks": [
+            {
+              "id": "paragraph_2",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "{{route_not_allowed_error}}",
+                  "format": [
+                    "bold"
+                  ]
+                }
+              ],
+              "format": [],
+              "required": true
+            },
+            {
+              "id": "numbered_menu",
+              "type": "text",
+              "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+              "required": false
+            }
+          ]
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "DIRECT_MESSAGE_RECIPIENT_NOT_FOUND",
+      "id": 202606071272,
+      "description": "Shown when the intended direct-message recipient cannot be resolved inside the current workspace.",
+      "variables": {
+        "recipient_not_found_error": {
+          "type": "text",
+          "required": false,
+          "default": "The intended recipient could not be found in this workspace."
+        }
+      },
+      "default": {
+        "title": "Recipient Not Found",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "The direct message could not be delivered because the intended recipient was not found.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": "{{recipient_not_found_error}}",
+                "format": []
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true,
+          "blocks": [
+            {
+              "id": "paragraph_2",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "{{recipient_not_found_error}}",
+                  "format": [
+                    "bold"
+                  ]
+                }
+              ],
+              "format": [],
+              "required": true
+            },
+            {
+              "id": "numbered_menu",
+              "type": "text",
+              "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+              "required": false
+            }
+          ]
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "DIRECT_MESSAGE_WORKSPACE_MISMATCH",
+      "id": 202606071273,
+      "description": "Shown when a direct-message attempt crosses workspace boundaries.",
+      "variables": {
+        "workspace_mismatch_error": {
+          "type": "text",
+          "required": false,
+          "default": "The sender and recipient are not in the same workspace."
+        }
+      },
+      "default": {
+        "title": "Workspace Mismatch",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "This direct message was blocked because the sender and recipient are not in the same workspace.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": "{{workspace_mismatch_error}}",
+                "format": []
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true,
+          "blocks": [
+            {
+              "id": "paragraph_2",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "{{workspace_mismatch_error}}",
+                  "format": [
+                    "bold"
+                  ]
+                }
+              ],
+              "format": [],
+              "required": true
+            },
+            {
+              "id": "numbered_menu",
+              "type": "text",
+              "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+              "required": false
+            }
+          ]
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "INVITING_USER",
+      "id": 202606041265,
+      "description": "Describe what this message is for.",
+      "variables": {
+        "qrcode_link": {
+          "type": "text",
+          "required": false,
+          "default": "<img    src=\"https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Ft.me%2Ftelegram%3Ftext%3DStart%2520here%21\"    alt=\"Telegram Start QR Code\"    style=\"width: 50px; height: 50px; image-rendering: pixelated;\" />"
+        }
+      },
+      "links": [
+        {
+          "variable": "qrcode_link",
+          "live": true,
+          "required": true,
+          "mode": "follow_up",
+          "key": "qrcode_link_follow_up"
+        }
+      ],
+      "default": {
+        "title": "Website QR Code",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Copy this QR code link or embed target into your website or public channel so customers can enter your support flow.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "CHECKED_OUT_ADMIN_REPEAT",
+      "id": 202606041266,
+      "description": "Describe what this message is for.",
+      "variables": {},
+      "default": {
+        "title": "Checked-OUT Admin",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "You are now checked-OUT.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "admin_check_in",
+            "label": "Admin Check-IN",
+            "triggers": [
+              "1",
+              "admin_check_in",
+              "admin check-in"
+            ],
+            "nextMessageId": 202606041267,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "CHECK_IN_ADMIN_REPEAT",
+      "id": 202606041267,
+      "description": "Describe what this message is for.",
+      "variables": {},
+      "default": {
+        "title": "Admin Check-IN",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Tap ",
+              "format": []
+            },
+            {
+              "text": "Check-IN ",
+              "format": [
+                "bold"
+              ]
+            },
+            {
+              "text": "to start receiving agent and customer messages.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "admin_check_in_repeat",
+            "label": "Admin Check-IN",
+            "triggers": [
+              "1",
+              "admin_check_in_repeat",
+              "admin check-in"
+            ],
+            "nextMessageId": 202606041266,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "CHECK_IN_WORKER_REPEAT",
+      "id": 202606041268,
+      "description": "Describe what this message is for.",
+      "variables": {},
+      "default": {
+        "title": "Worker Check-IN",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Tap ",
+              "format": []
+            },
+            {
+              "text": "Check-IN ",
+              "format": [
+                "bold"
+              ]
+            },
+            {
+              "text": "to start receiving customer messages.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "worker_check_in_repeat",
+            "label": "Worker Check-IN",
+            "triggers": [
+              "1",
+              "worker_check_in_repeat",
+              "worker check-in"
+            ],
+            "nextMessageId": 202606041267,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "CHECKED_OUT_WORKER_REPEAT",
+      "id": 202606041269,
+      "description": "Describe what this message is for.",
+      "variables": {},
+      "default": {
+        "title": "Checked-OUT Worker",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "You are now checked-OUT.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "worker_check_in",
+            "label": "Worker Check-IN",
+            "triggers": [
+              "1",
+              "worker_check_in",
+              "worker check-in"
+            ],
+            "nextMessageId": 202606041267,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "CHECKED_OUT_USER_AUTO",
+      "id": 202606071274,
+      "description": "Describe what this message is for.",
+      "variables": {},
+      "default": {
+        "title": "User Checked OUT",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "⚠️ Please note: There was no activity in this chat for 2 minutes; you were automatically logged out.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": "Scan the QR Code to check in and chat with the first available worker.",
+                "format": [
+                  "bold"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true,
+          "blocks": [
+            {
+              "id": "paragraph_2",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "Scan the QR Code to check in and chat with the first available worker.",
+                  "format": [
+                    "bold"
+                  ]
+                }
+              ],
+              "format": [],
+              "required": true
+            },
+            {
+              "id": "numbered_menu",
+              "type": "text",
+              "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+              "required": false
+            }
+          ]
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "NEW_MESSAGE",
+      "id": 202606071275,
+      "description": "Describe what this message is for.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "New Message",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Write",
+              "format": [
+                "bold",
+                "italic"
+              ]
+            },
+            {
+              "text": " your new message body here."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "previous_message",
+            "label": "Previous Message",
+            "triggers": [
+              "1",
+              "previous_message",
+              "previous message"
+            ],
+            "nextMessageId": 202606071274,
+            "live": true
+          },
+          {
+            "key": "next_message",
+            "label": "Next Message",
+            "triggers": [
+              "2",
+              "next_message",
+              "next message"
+            ],
+            "nextMessageId": 202606071276,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "ONBOARD_CHECKED_IN",
+      "id": 202606071276,
+      "description": "Set company working hours.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "Onboard Checked-IN",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Your authentication was successful.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": "Before you can manage the workspace, please set your working hours. \n",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": "These hours are used to control availability, staffing, and customer expectations.",
+                "format": []
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "set_working_hours",
+            "label": "Set Working Hours",
+            "triggers": [
+              "1",
+              "set_working_hours",
+              "set working hours"
+            ],
+            "nextMessageId": 202606071277,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "SET_WORKING_HOURS",
+      "id": 202606071277,
+      "description": "Set working days and working hours.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "Set Working Hours",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Reply with your daily opening and closing times.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": "Use the following day format:\nMon, Tue, Wed, Thu, Fri, Sat, Sun\n",
+                "format": []
+              },
+              {
+                "text": " with the 24-hour time format:\n08:00-17:00 \n",
+                "format": []
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "paragraph_3",
+            "type": "text",
+            "parts": [
+              {
+                "text": "Examples:\nMon-Fri 08:00-17:00\nSat 09:00-13:00\nSun closed",
+                "format": []
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true,
+          "blocks": [
+            {
+              "id": "paragraph_2",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "Use the following day format:\nMon, Tue, Wed, Thu, Fri, Sat, Sun\n",
+                  "format": []
+                },
+                {
+                  "text": " with the 24-hour time format:\n08:00-17:00 \n",
+                  "format": []
+                }
+              ],
+              "format": [],
+              "required": true
+            },
+            {
+              "id": "paragraph_3",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "Examples:\nMon-Fri 08:00-17:00\nSat 09:00-13:00\nSun closed",
+                  "format": []
+                }
+              ],
+              "format": [],
+              "required": true
+            },
+            {
+              "id": "numbered_menu",
+              "type": "text",
+              "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+              "required": false
+            }
+          ]
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "SET_WORKING_HOURS_ERROR",
+      "id": 202606071278,
+      "description": "Describe what this message is for.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "Set Working Hours Error",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Please try again. Please follow the example exactly!",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": "Mon-Fri (No spaces)",
+                "format": [
+                  "bold"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "paragraph_3",
+            "type": "text",
+            "parts": [
+              {
+                "text": "08:00-17:00 (No spaces)",
+                "format": [
+                  "bold"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "paragraph_4",
+            "type": "text",
+            "parts": [
+              {
+                "text": "Mon-Thu 08:00-17:00 \n",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": "(Only a single space between the days and times.)",
+                "format": [
+                  "italic"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "paragraph_6",
+            "type": "text",
+            "parts": [
+              {
+                "text": "Fri 08:00-15:00 ",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": "(Only a single space between the day and the time.)",
+                "format": [
+                  "italic"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "paragraph_7",
+            "type": "text",
+            "parts": [
+              {
+                "text": "Sunday closed",
+                "format": [
+                  "bold"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true,
+          "blocks": [
+            {
+              "id": "paragraph_2",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "Mon-Fri (No spaces)",
+                  "format": [
+                    "bold"
+                  ]
+                }
+              ],
+              "format": [],
+              "required": true
+            },
+            {
+              "id": "paragraph_3",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "08:00-17:00 (No spaces)",
+                  "format": [
+                    "bold"
+                  ]
+                }
+              ],
+              "format": [],
+              "required": true
+            },
+            {
+              "id": "paragraph_4",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "Mon-Thu 08:00-17:00 \n",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": "(Only a single space between the days and times.)",
+                  "format": [
+                    "italic"
+                  ]
+                }
+              ],
+              "format": [],
+              "required": true
+            },
+            {
+              "id": "paragraph_6",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "Fri 08:00-15:00 ",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": "(Only a single space between the day and the time.)",
+                  "format": [
+                    "italic"
+                  ]
+                }
+              ],
+              "format": [],
+              "required": true
+            },
+            {
+              "id": "paragraph_7",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "Sunday closed",
+                  "format": [
+                    "bold"
+                  ]
+                }
+              ],
+              "format": [],
+              "required": true
+            },
+            {
+              "id": "numbered_menu",
+              "type": "text",
+              "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+              "required": false
+            }
+          ]
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "group": "postoochat_suite",
+      "category": ""
+    },
+    {
+      "name": "NEW_MESSAGE_2",
+      "id": 202606071279,
+      "group": "postoochat_suite",
+      "category": "",
+      "description": "Describe what this message is for.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "New Message",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Write",
+              "format": [
+                "bold",
+                "italic"
+              ]
+            },
+            {
+              "text": " your new message body here."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\\n\\n1. Previous Message\\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "previous_message",
+            "label": "Previous Message",
+            "triggers": [
+              "1",
+              "previous_message",
+              "previous message"
+            ],
+            "nextMessageId": 202606071278,
+            "live": true
+          },
+          {
+            "key": "next_message",
+            "label": "Next Message",
+            "triggers": [
+              "2",
+              "next_message",
+              "next message"
+            ],
+            "nextMessageId": 202606071280,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "NEW_MESSAGE_3",
+      "id": 202606071280,
+      "group": "postoochat_suite",
+      "category": "templates",
+      "description": "Describe what this message is for.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "New Message",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Write",
+              "format": [
+                "bold",
+                "italic"
+              ]
+            },
+            {
+              "text": " your new message body here."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\\n\\n1. Previous Message\\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "previous_message",
+            "label": "Previous Message",
+            "triggers": [
+              "1",
+              "previous_message",
+              "previous message"
+            ],
+            "nextMessageId": 202606071279,
+            "live": true
+          },
+          {
+            "key": "next_message",
+            "label": "Next Message",
+            "triggers": [
+              "2",
+              "next_message",
+              "next message"
+            ],
+            "nextMessageId": 202606071281,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "NEW_MESSAGE_4",
+      "id": 202606071281,
+      "group": "postoo_chat",
+      "category": "archive",
+      "description": "Describe what this message is for.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "New Message",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Write",
+              "format": [
+                "bold",
+                "italic"
+              ]
+            },
+            {
+              "text": " your new message body here."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\\n\\n1. Previous Message\\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "previous_message",
+            "label": "Previous Message",
+            "triggers": [
+              "1",
+              "previous_message",
+              "previous message"
+            ],
+            "nextMessageId": 202606071280,
+            "live": true
+          },
+          {
+            "key": "next_message",
+            "label": "Next Message",
+            "triggers": [
+              "2",
+              "next_message",
+              "next message"
+            ],
+            "nextMessageId": 202606071282,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "NEW_MESSAGE_5",
+      "id": 202606071282,
+      "group": "postoochat_ride",
+      "category": "",
+      "description": "Describe what this message is for.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "New Message",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Write",
+              "format": [
+                "bold",
+                "italic"
+              ]
+            },
+            {
+              "text": " your new message body here."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\\n\\n1. Previous Message\\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "previous_message",
+            "label": "Previous Message",
+            "triggers": [
+              "1",
+              "previous_message",
+              "previous message"
+            ],
+            "nextMessageId": 202606071281,
+            "live": true
+          },
+          {
+            "key": "next_message",
+            "label": "Next Message",
+            "triggers": [
+              "2",
+              "next_message",
+              "next message"
+            ],
+            "nextMessageId": 202606071283,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "NEW_MESSAGE_6",
+      "id": 202606071283,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "Describe what this message is for.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "New Message",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Write",
+              "format": [
+                "bold",
+                "italic"
+              ]
+            },
+            {
+              "text": " your new message body here."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\\n\\n1. Previous Message\\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "previous_message",
+            "label": "Previous Message",
+            "triggers": [
+              "1",
+              "previous_message",
+              "previous message"
+            ],
+            "nextMessageId": 202606071282,
+            "live": true
+          },
+          {
+            "key": "next_message",
+            "label": "Next Message",
+            "triggers": [
+              "2",
+              "next_message",
+              "next message"
+            ],
+            "nextMessageId": 202606071284,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "NEW_MESSAGE_7",
+      "id": 202606071284,
+      "group": "postoochat_faceluv",
+      "category": "",
+      "description": "Describe what this message is for.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "New Message",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Write",
+              "format": [
+                "bold",
+                "italic"
+              ]
+            },
+            {
+              "text": " your new message body here."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\\n\\n1. Previous Message\\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "previous_message",
+            "label": "Previous Message",
+            "triggers": [
+              "1",
+              "previous_message",
+              "previous message"
+            ],
+            "nextMessageId": 202606071283,
+            "live": true
+          },
+          {
+            "key": "next_message",
+            "label": "Next Message",
+            "triggers": [
+              "2",
+              "next_message",
+              "next message"
+            ],
+            "nextMessageId": 202606071285,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "NEW_MESSAGE_8",
+      "id": 202606071285,
+      "group": "postoo_chat",
+      "category": "archive",
+      "description": "Describe what this message is for.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "New Message",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Write",
+              "format": [
+                "bold",
+                "italic"
+              ]
+            },
+            {
+              "text": " your new message body here."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\\n\\n1. Previous Message\\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "previous_message",
+            "label": "Previous Message",
+            "triggers": [
+              "1",
+              "previous_message",
+              "previous message"
+            ],
+            "nextMessageId": 202606071284,
+            "live": true
+          },
+          {
+            "key": "next_message",
+            "label": "Next Message",
+            "triggers": [
+              "2",
+              "next_message",
+              "next message"
+            ],
+            "nextMessageId": 202606071286,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "NEW_MESSAGE_9",
+      "id": 202606071286,
+      "group": "postoo_chat",
+      "category": "archive",
+      "description": "Describe what this message is for.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "New Message",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Write",
+              "format": [
+                "bold",
+                "italic"
+              ]
+            },
+            {
+              "text": " your new message body here."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\\n\\n1. Previous Message\\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "previous_message",
+            "label": "Previous Message",
+            "triggers": [
+              "1",
+              "previous_message",
+              "previous message"
+            ],
+            "nextMessageId": 202606071285,
+            "live": true
+          },
+          {
+            "key": "next_message",
+            "label": "Next Message",
+            "triggers": [
+              "2",
+              "next_message",
+              "next message"
+            ],
+            "nextMessageId": 202606071288,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "NEW_MESSAGE_11",
+      "id": 202606071288,
+      "group": "postoo_chat",
+      "category": "archive",
+      "description": "Describe what this message is for.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "New Message",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Write",
+              "format": [
+                "bold",
+                "italic"
+              ]
+            },
+            {
+              "text": " your new message body here."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "numbered_menu",
+            "type": "text",
+            "text": "Reply with any number from numbered-menu.\\n\\n1. Previous Message\\n2. Next Message",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "previous_message",
+            "label": "Previous Message",
+            "triggers": [
+              "1",
+              "previous_message",
+              "previous message"
+            ],
+            "nextMessageId": 202606071286,
+            "live": true
+          },
+          {
+            "key": "next_message",
+            "label": "Next Message",
+            "triggers": [
+              "2",
+              "next_message",
+              "next message"
+            ],
+            "nextMessageId": null,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_VERIFICATION_LOCAL",
+      "id": 202608150001,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce seller onboarding communication.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "For this local test, reply with verification code 123456."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_VERIFICATION_SENT",
+      "id": 202608150002,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce seller onboarding communication.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "I sent a 6-digit verification code to this WhatsApp number. Reply with that code to continue."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_VERIFICATION_FAILED",
+      "id": 202608150003,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce seller onboarding communication.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "I could not send the verification code. Please try LIST again shortly."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_WELCOME_LOCAL",
+      "id": 202608150004,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce seller onboarding communication.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Welcome to MesCommerce Marketplace.\n\nFor this local test, reply with verification code 123456."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_WELCOME_VERIFICATION_SENT",
+      "id": 202608150005,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce seller onboarding communication.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Welcome to MesCommerce Marketplace.\n\nI sent a 6-digit verification code to this WhatsApp number. Reply with that code to continue."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_VERIFICATION_INVALID",
+      "id": 202608150006,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce seller onboarding communication.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "That verification code is not valid. Please try again, or reply RESTART for a new code."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_CHOOSE_CATEGORY",
+      "id": 202608150007,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce seller onboarding communication.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Choose a category:\n1. Houses for sale\n2. Cars for sale\n3. Water suppliers"
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_VERIFIED_CHOOSE_CATEGORY",
+      "id": 202608150008,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce seller onboarding communication.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Number verified.\n\nChoose a category:\n1. Houses for sale\n2. Cars for sale\n3. Water suppliers"
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_CATEGORY_INVALID",
+      "id": 202608150009,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce seller onboarding communication.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Please reply with 1, 2 or 3.\n1. Houses for sale\n2. Cars for sale\n3. Water suppliers"
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_CHECKOUT_READY",
+      "id": 202608150010,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce seller onboarding communication.",
+      "variables": {
+        "category": {
+          "type": "text",
+          "required": true,
+          "default": ""
+        },
+        "listing_fee": {
+          "type": "text",
+          "required": true,
+          "default": ""
+        },
+        "checkout_url": {
+          "type": "text",
+          "required": true,
+          "default": ""
+        }
+      },
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Great—{{category}}.\n\nYour listing fee is R {{listing_fee}}. Pay securely with Yoco:\n{{checkout_url}}\n\nAfter payment, return here and reply PAID."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_CHECKOUT_FAILED",
+      "id": 202608150011,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce seller onboarding communication.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "I could not create the Yoco checkout just now. Please try again in a moment."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_PAYMENT_PENDING",
+      "id": 202608150012,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce seller onboarding communication.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Your payment is not confirmed yet. Complete the Yoco checkout, then reply PAID. Reply RESTART to begin again."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_PAYMENT_CONFIRMED",
+      "id": 202608150013,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce seller onboarding communication.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Payment confirmed. What is your selling price in rand?\nExample: 12500"
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_PRICE_INVALID",
+      "id": 202608150014,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce seller onboarding communication.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Please send only the selling price in rand. Example: 12500"
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_LOCATION_REQUEST",
+      "id": 202608150015,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce seller onboarding communication.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Now send the product or service location using WhatsApp's attachment button → Location → Send your current location."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_LOCATION_INVALID",
+      "id": 202608150016,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce seller onboarding communication.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Please send a WhatsApp location pin—not a typed address."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_RESTART_REQUIRED",
+      "id": 202608150017,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce seller onboarding communication.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Something went wrong. Reply RESTART to try again."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_LISTING_LIVE",
+      "id": 202608150018,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce seller onboarding communication.",
+      "variables": {
+        "category": {
+          "type": "text",
+          "required": true,
+          "default": ""
+        },
+        "price": {
+          "type": "text",
+          "required": true,
+          "default": ""
+        }
+      },
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Your {{category}} listing is live at R {{price}}. Buyers who activate marketplace access can contact you directly using the channel you approved.\n\nReply LIST whenever you want to add another price."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_ALREADY_LIVE",
+      "id": 202608150019,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce seller onboarding communication.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Your last listing is already live. Reply LIST to add another one."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_CONDITION_PROMPT",
+      "id": 202608150020,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce seller onboarding communication.",
+      "variables": {
+        "new_label": {
+          "type": "text",
+          "required": true,
+          "default": ""
+        },
+        "used_label": {
+          "type": "text",
+          "required": true,
+          "default": ""
+        }
+      },
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Payment confirmed.\n\nIs this product {{new_label}} or {{used_label}}?\n\n1. {{new_label}}\n2. {{used_label}}"
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_CONDITION_INVALID",
+      "id": 202608150021,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce seller onboarding communication.",
+      "variables": {
+        "new_label": {
+          "type": "text",
+          "required": true,
+          "default": ""
+        },
+        "used_label": {
+          "type": "text",
+          "required": true,
+          "default": ""
+        }
+      },
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Please reply with 1 or 2.\n\n1. {{new_label}}\n2. {{used_label}}"
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_PRICE_REQUEST",
+      "id": 202608150022,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce seller onboarding communication.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "What is your selling price in rand?\nExample: 12500"
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_ADMIN_REPLY",
+      "id": 202608150023,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce seller onboarding communication.",
+      "variables": {
+        "message": {
+          "type": "text",
+          "required": true,
+          "default": ""
+        }
+      },
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "{{message}}"
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_SELLER_CONTACT_CONSENT_REQUIRED",
+      "id": 202608150032,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce seller direct-contact consent communication.",
+      "variables": {
+        "consent_version": {
+          "type": "text",
+          "required": true,
+          "default": ""
+        }
+      },
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "To publish this listing, choose whether buyers who complete the MesCommerce inquiry introduction may contact you directly using this WhatsApp number.\n\nReply AGREE to publish with direct contact or DECLINE to stop without publishing.\nConsent version: {{consent_version}}"
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_SELLER_CONTACT_CONSENT_DECLINED",
+      "id": 202608150033,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce seller direct-contact consent outcome communication.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Your listing was not published because direct buyer contact was not approved. Reply LIST whenever you want to begin again."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_MARKETING_CONSENT_REQUIRED",
+      "id": 202608150034,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce optional marketing consent communication.",
+      "variables": {
+        "consent_version": {
+          "type": "text",
+          "required": true,
+          "default": ""
+        }
+      },
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Would you like to receive optional MesCommerce news, offers and competition updates on this channel? This is not required to list or inquire.\n\nReply MARKETING YES to opt in or MARKETING NO to decline.\nMarketing consent version: {{consent_version}}"
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_MARKETING_CONSENT_RECORDED",
+      "id": 202608150035,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce optional marketing consent outcome communication.",
+      "variables": {
+        "preference": {
+          "type": "text",
+          "required": true,
+          "default": ""
+        }
+      },
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Your marketing preference is now {{preference}}. You can change it at any time by replying MARKETING YES or MARKETING NO."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_SHARE_DISCLOSURE",
+      "id": 202608150036,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce tracked-share and competition disclosure.",
+      "variables": {
+        "category": {
+          "type": "text",
+          "required": true,
+          "default": ""
+        },
+        "terms_url": {
+          "type": "text",
+          "required": true,
+          "default": ""
+        }
+      },
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "MesCommerce can create a unique tracked link for this {{category}} listing. Competition credit is awarded when a new visitor opens your link—not merely when the share sheet opens.\n\nReply SHARE to create the link or CANCEL to stop.\nCompetition terms: {{terms_url}}"
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_SHARE_READY",
+      "id": 202608150037,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce tracked-share outcome communication.",
+      "variables": {
+        "share_url": {
+          "type": "text",
+          "required": true,
+          "default": ""
+        },
+        "entry_count": {
+          "type": "text",
+          "required": true,
+          "default": ""
+        }
+      },
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Your tracked MesCommerce share link is ready:\n{{share_url}}\n\nVerified competition entries: {{entry_count}}"
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_MARKETPLACE_ACCESS_CONSENT",
+      "id": 202608150024,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce first-time marketplace access consent.",
+      "variables": {
+        "consent_version": {
+          "type": "text",
+          "required": true,
+          "default": ""
+        },
+        "terms_url": {
+          "type": "text",
+          "required": true,
+          "default": ""
+        }
+      },
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Welcome to MesCommerce. Before you contact marketplace sellers directly, please confirm that MesCommerce and PosTooChat may process your channel identity and remember that you accepted the marketplace access terms.\n\nThis consent enables direct contact with any listing in any category. It does not subscribe you to marketing.\n\nTo continue, type AGREE in the message box and tap Send. To cancel, type DECLINE and tap Send.\nConsent version: {{consent_version}}\nTerms: {{terms_url}}"
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_MARKETPLACE_ACCESS_READY",
+      "id": 202608150025,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce marketplace access confirmation and return link.",
+      "variables": {
+        "marketplace_url": {
+          "type": "text",
+          "required": true,
+          "default": ""
+        }
+      },
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "You're all set. We hope you find what you're looking for.\n\nReturn to MesCommerce using the secure link below. You can now contact any listing in any category directly using its available WhatsApp or Telegram button:\n{{marketplace_url}}"
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_MARKETPLACE_ACCESS_DECLINED",
+      "id": 202608150026,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce marketplace access consent outcome.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Marketplace contact access was not activated. No seller contact details were unlocked.\n\nYou can browse MesCommerce and activate access later by tapping a WhatsApp or Telegram contact button again."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_REFERRAL_INVALID",
+      "id": 202608150038,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce invalid, expired or self-referral outcome communication.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "This referral link is no longer available or cannot be used from this number. Ask the person who invited you to share a new link."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_TAGS_REQUEST",
+      "id": 202608150039,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce listing tag request communication.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Add searchable tags for this listing, separated by commas.\nExample: Bellville, Brackenfell\n\nUse up to 8 tags. Reply SKIP if you do not want to add tags."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "MESCOMMERCE_TAGS_INVALID",
+      "id": 202608150040,
+      "group": "postoochat_market",
+      "category": "",
+      "description": "MesCommerce invalid listing tags communication.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Please send up to 8 tags separated by commas. Each tag may contain up to 30 characters.\nExample: Bellville, Brackenfell\n\nReply SKIP if you do not want to add tags."
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    },
+    {
+      "name": "START",
+      "id": 202608150041,
+      "group": "postoochat_chatcenter",
+      "category": "General",
+      "description": "Starts a ChatCenter conversation in WhatsApp or Telegram.",
+      "variables": {},
+      "links": [],
+      "default": {
+        "title": "Welcome to ChatCenter",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Welcome to ChatCenter. Reply to begin.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": []
+    }
+  ]
+}
