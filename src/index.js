@@ -35,7 +35,7 @@ function collectorAuthorized(request, env) {
 }
 
 async function exportPayload(request, env) {
-  const response = await env.ASSETS.fetch(new Request(new URL("/catalog-export.json", request.url)));
+  const response = await fetch(new Request(new URL("/catalog-export.json", request.url)));
   if (!response.ok) throw new Error("catalog_export_not_available");
   return response.json();
 }
