@@ -19,6 +19,7 @@ jobs:
           node-version: 22
       - name: Build Worker assets and catalog import
         run: |
+          python -c "from app import load_catalog, save_catalog; save_catalog(load_catalog())"
           node scripts/extract-editor-ui.mjs
           node scripts/prepare-d1-catalog-import.mjs
       - name: Apply D1 migrations
