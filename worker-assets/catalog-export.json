@@ -1,0 +1,4405 @@
+{
+  "source": "message_studio",
+  "sent_at": "2026-09-08T06:11:56.248423Z",
+  "messages": [
+    {
+      "id": 202605270100,
+      "name": "START_MENU",
+      "suite_key": "SUITE_ENTRY",
+      "group": "postoochat_suite",
+      "category": "General",
+      "channel": "telegram",
+      "variables": {
+        "title": "\ud83d\ude80 {{company_name}}",
+        "company_name": "{{company_name}}",
+        "explorer_name": "{{explorer_name}}",
+        "explorer_lname": "{{explorer_lname}}"
+      },
+      "rendered_result": "Hello *{{explorer_name}}*. Whether you're here to dive into the action or just exploring the possibilities, choose your own adventure from the options below:\n\n*\ud83d\udcacChat Center*: Jump straight into the conversation.\n\n*\ud83d\ude97 Book a Trip*: Map out your next journey.\n\n*\ud83d\udcc5 More Bookings*: Book a pickup, trusted services, or appointments with ease.\n\n*\ud83d\udca1 Pro Tip*: A README with video links is on the way for this flow.",
+      "description": "Public start menu for Telegram and WhatsApp entry points.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.241424Z",
+      "title": "\ud83d\ude80 {{company_name}}",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [
+        {
+          "key": "chat_center",
+          "label": "Chat Center",
+          "triggers": [
+            "1",
+            "chat_center",
+            "chat center"
+          ],
+          "nextMessageId": null,
+          "live": true
+        },
+        {
+          "key": "book_trip",
+          "label": "Book a Trip",
+          "triggers": [
+            "2",
+            "book_trip",
+            "book a trip"
+          ],
+          "nextMessageId": null,
+          "live": true
+        },
+        {
+          "key": "more_bookings",
+          "label": "More Bookings",
+          "triggers": [
+            "3",
+            "more_bookings",
+            "more bookings"
+          ],
+          "nextMessageId": null,
+          "live": true
+        },
+        {
+          "key": "register_now",
+          "label": "Register NOW",
+          "triggers": [
+            "4",
+            "register_now",
+            "register now"
+          ],
+          "nextMessageId": 202605270200,
+          "live": false
+        },
+        {
+          "key": "start_demo",
+          "label": "Start DEMO",
+          "triggers": [
+            "5",
+            "start_demo",
+            "start demo"
+          ],
+          "nextMessageId": 202605281231,
+          "live": false
+        }
+      ],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202605270100,
+      "name": "START_MENU",
+      "suite_key": "SUITE_ENTRY",
+      "group": "postoochat_suite",
+      "category": "General",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "\ud83d\ude80 {{company_name}}",
+        "company_name": "{{company_name}}",
+        "explorer_name": "{{explorer_name}}",
+        "explorer_lname": "{{explorer_lname}}"
+      },
+      "rendered_result": "Hello *{{explorer_name}}*. Whether you're here to dive into the action or just exploring the possibilities, we've got a path for you. Choose your own adventure from the options below:\n\n*\ud83d\udcacChat Center*: Jump straight into the conversation.\n\n*\ud83d\ude97 Book a Trip*: Map out your next journey.\n\n*\ud83d\udcc5 More Bookings*: Book a pickup, trusted services, or appointments with ease.\n\n*\ud83d\udee1\ufe0f Register NOW*: Unlock new earning opportunities as a driver, lift provider, or caregiver.\n\n*\ud83c\udfae Start DEMO*: Take a guided test drive of the Chat Center.\n\n*\ud83d\udca1 Pro Tip*: A README with video links is on the way for this flow.\n\nReply with any number from numbered-menu.\n\n1. Chat Center\n2. Book a Trip\n3. More Bookings\n4. Register NOW\n5. Start DEMO",
+      "description": "Public start menu for Telegram and WhatsApp entry points.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.241606Z",
+      "title": "\ud83d\ude80 {{company_name}}",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": "TWILIO_WHATSAPP_INTRO_CONTENT_SID"
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202605270200,
+      "name": "ONBOARDING_ACCOUNT_EXIST",
+      "suite_key": "SUITE_ACCOUNT_FOUND",
+      "group": "postoochat_suite",
+      "category": "General",
+      "channel": "telegram",
+      "variables": {
+        "title": "\ud83d\udc4b Looks like you're already with us!",
+        "creation_date": "{{creation_date}}",
+        "owner_name": "{{owner_name}}",
+        "company_website": "{{company_website}}"
+      },
+      "rendered_result": "An account matching your information already exists. It was created, {{creation_date}} by {{owner_name}} for {{company_website}}.\n\n_*If this wasn't you, please email support@postoochat.com for a swift resolution.*_\n\nIf this is you, `open your authenticator app `and tap Authenticate Now.\n_*Please wait for our next request to enter your 2FA code.*_",
+      "description": "Checks whether the user already has an account.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.241698Z",
+      "title": "\ud83d\udc4b Looks like you're already with us!",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [
+        {
+          "key": "previous_message",
+          "label": "Authenticate Now",
+          "triggers": [
+            "1",
+            "previous_message",
+            "authenticate now"
+          ],
+          "nextMessageId": 202605270300,
+          "live": true
+        }
+      ],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202605270200,
+      "name": "ONBOARDING_ACCOUNT_EXIST",
+      "suite_key": "SUITE_ACCOUNT_FOUND",
+      "group": "postoochat_suite",
+      "category": "General",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "\ud83d\udc4b Looks like you're already with us!",
+        "creation_date": "{{creation_date}}",
+        "owner_name": "{{owner_name}}",
+        "company_website": "{{company_website}}"
+      },
+      "rendered_result": "An account matching your information already exists. It was created, {{creation_date}} by {{owner_name}} for {{company_website}}.\n\n_*If this wasn't you, please email support@postoochat.com for a swift resolution.*_\n\nIf this is you, `open your authenticator app `and tap Authenticate Now.\n_*Please wait for our next request to enter your 2FA code.*_\n\nTo proceed, please reply with 1.  Authenticate Now",
+      "description": "Checks whether the user already has an account.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.241783Z",
+      "title": "\ud83d\udc4b Looks like you're already with us!",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202605270300,
+      "name": "NEW_ONBOARDING_ACCOUNT",
+      "suite_key": "SUITE_ACCOUNT_NOT_FOUND",
+      "group": "postoochat_suite",
+      "category": "General",
+      "channel": "telegram",
+      "variables": {
+        "title": "\ud83d\ude80 Onboarding"
+      },
+      "rendered_result": "_* Let's get your account set up. Please reply with your mobile number and company website separated by a space. *__See the example below. An example screenshot is available._\n\n`*+27821234567 www.company.com*`\n\nReply with 1 for an example screenshot!",
+      "description": "Collects new account details; Media Studio references attached here follow the message.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.241834Z",
+      "title": "\ud83d\ude80 Onboarding",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202605270300,
+      "name": "NEW_ONBOARDING_ACCOUNT",
+      "suite_key": "SUITE_ACCOUNT_NOT_FOUND",
+      "group": "postoochat_suite",
+      "category": "General",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "\ud83d\ude80 Onboarding"
+      },
+      "rendered_result": "_* Let's get your account set up. Please reply with your mobile number and company website separated by a space. *__See the example below. An example screenshot is available._\n\n`*+27821234567 www.company.com*`\n\nReply with 1 for an example screenshot!",
+      "description": "Collects new account details; Media Studio references attached here follow the message.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.241883Z",
+      "title": "\ud83d\ude80 Onboarding",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202605271152,
+      "name": "I_CONSENT",
+      "suite_key": "SUITE_PRIVACY_CONSENT",
+      "group": "postoochat_suite",
+      "category": "General",
+      "channel": "telegram",
+      "variables": {
+        "title": "PosTooChat Onboarding Consent",
+        "mobile_number": "{{mobile_number}}",
+        "registration_number": "{{registration_number}}"
+      },
+      "rendered_result": "Mobile: {{mobile_number}}\nWebsite: \n\n_By requesting your onboarding key, you consent to PosTooChat using your mobile number, display name, and company website to create your secure onboarding session._\n\nContinue to *Request 2FA Setup Key *to set up Two-Factor Authentication (2FA) using an authenticator app for enhanced security.",
+      "description": "Consent on using personal details available from the channel.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.241941Z",
+      "title": "PosTooChat Onboarding Consent",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [
+        {
+          "key": "request_setup_key",
+          "label": "Request 2FA Setup Key",
+          "triggers": [
+            "1",
+            "request_setup_key",
+            "request 2fa setup key"
+          ],
+          "nextMessageId": 202605281231,
+          "live": true
+        }
+      ],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202605271152,
+      "name": "I_CONSENT",
+      "suite_key": "SUITE_PRIVACY_CONSENT",
+      "group": "postoochat_suite",
+      "category": "General",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "PosTooChat Onboarding Consent",
+        "mobile_number": "{{mobile_number}}",
+        "registration_number": "{{registration_number}}"
+      },
+      "rendered_result": "Mobile: {{mobile_number}}\nWebsite: \n\n_By requesting your onboarding key, you consent to PosTooChat using your mobile number, display name, and company website to create your secure onboarding session._\n\nContinue to *Request 2FA Setup Key *to set up Two-Factor Authentication (2FA) using an authenticator app for enhanced security.\n\nReply with any number from numbered-menu.\n\n1. Request Setup Key",
+      "description": "Consent on using personal details available from the channel.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.242003Z",
+      "title": "PosTooChat Onboarding Consent",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202605281231,
+      "name": "START_HERE",
+      "suite_key": "SUITE_APP_ROUTER",
+      "group": "postoochat_suite",
+      "category": "General",
+      "channel": "telegram",
+      "variables": {
+        "title": "\ud83d\ude80 PosToo Suite"
+      },
+      "rendered_result": "Try any _*Mini-App *_right within Telegram.\n\n*\ud83d\udcacPosTooChat *is a Chat Center that enables management to follow and record secure, private chats between sales agents and customers, or teachers and students, or brokers and policy holders,  to provide immediate support, facilitation, and quality control without ever leaving the chat. \n\n*\ud83d\ude97 PosTooGo * let users book rides or register as drivers to earn money. _Launching Date: 1 September 2026_\n\n*PosTooPark *lets users instantly book a parking space or register to provide parking to earn money. _Launching Date: 1 September 2026_\n\n*PosTooLuv *helps people find and connect _*anonymously *_with romantic partners via text, and voice calls. _Launching Date: 15 June 2026_\n\n*PosTooMoney *lets users instantly send quotes, invoices, or purchase orders. _Launching Date: 1 July 2026_\n\n*PosTooBook *lets users instantly book appointments. _Launching Date: 1 August 2026_",
+      "description": "Introduces PosTooChat; Media Studio references attached here follow the message.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.242114Z",
+      "title": "\ud83d\ude80 PosToo Suite",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [
+        {
+          "key": "postoochat",
+          "label": "PosTooChat",
+          "triggers": [
+            "1",
+            "postoochat"
+          ],
+          "nextMessageId": 202605281246,
+          "live": true
+        }
+      ],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202605281231,
+      "name": "START_HERE",
+      "suite_key": "SUITE_APP_ROUTER",
+      "group": "postoochat_suite",
+      "category": "General",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "\ud83d\ude80 PosToo Suite"
+      },
+      "rendered_result": "Try any _*Mini-App *_right within Telegram.\n\n*\ud83d\udcacPosTooChat *is a Chat Center that enables management to follow and record secure, private chats between sales agents and customers, or teachers and students, or brokers and policy holders,  to provide immediate support, facilitation, and quality control without ever leaving the chat. \n\n*\ud83d\ude97 PosTooGo * let users book rides or register as drivers to earn money. _Launching Date: 1 September 2026_\n\n*PosTooPark *lets users instantly book a parking space or register to provide parking to earn money. _Launching Date: 1 September 2026_\n\n*PosTooLuv *helps people find and connect __*anonymously *__with romantic partners via text, and voice calls. _Launching Date: 15 June 2026_\n\n*PosTooMoney *lets users instantly send quotes, invoices, or purchase orders. _Launching Date: 1 July 2026_\n\n*PosTooBook *lets users instantly book appointments. _Launching Date: 1 August 2026_\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Introduces PosTooChat; Media Studio references attached here follow the message.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.242225Z",
+      "title": "\ud83d\ude80 PosToo Suite",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202605281246,
+      "name": "ONBOARDING",
+      "suite_key": "SUITE_ONBOARDING_PROFILE",
+      "group": "postoochat_suite",
+      "category": "General",
+      "channel": "telegram",
+      "variables": {
+        "title": "\ud83d\ude80 Onboarding"
+      },
+      "rendered_result": " Let's get your account set up. Please reply with your mobile number and company registration number separated by a space. If you do not have a company number, please add your government ID number.\n\n*SPACES IN THE MOBILE - , ID - AND COMPANY REGISTRATION NUMBERS ARE NOT ALLOWED!*\n\n+27821234567 2024/123456/07 OR +27821234567 4005305896088\n\n*See the example below. An example screenshot is available.*\n\nReply with 1 for an example screenshot!",
+      "description": "Collects onboarding details; Media Studio references attached here follow the message.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.242279Z",
+      "title": "\ud83d\ude80 Onboarding",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202605281246,
+      "name": "ONBOARDING",
+      "suite_key": "SUITE_ONBOARDING_PROFILE",
+      "group": "postoochat_suite",
+      "category": "General",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "\ud83d\ude80 Onboarding"
+      },
+      "rendered_result": " Let's get your account set up. Please reply with your mobile number and company registration number separated by a space. If you do not have a company number, please add your government ID number.\n\n*SPACES IN THE MOBILE - , ID - AND COMPANY REGISTRATION NUMBERS ARE NOT ALLOWED!*\n\n+27821234567 2024/123456/07 OR +27821234567 4005305896088\n\n*See the example below. An example screenshot is available.*\n\nReply with 1 for an example screenshot!",
+      "description": "Collects onboarding details; Media Studio references attached here follow the message.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.242328Z",
+      "title": "\ud83d\ude80 Onboarding",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202605281248,
+      "name": "ONBOARDED",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "\ud83d\udc4b Looks like you're already with us!",
+        "creation_date": "{{creation_date}}",
+        "owner_name": "{{owner_name}}",
+        "company_website": "{{company_website}}"
+      },
+      "rendered_result": "An account matching your information already exists. It was created, {{creation_date}} by {{owner_name}} for {{company_website}}.\n\n_*If this wasn't you, please email support@postoochat.com for a swift resolution.*_\n\nIf this is you, `open your authenticator app `and tap Authenticate Now.\n_*Please wait for our next request to enter your 2FA code.*_",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.242392Z",
+      "title": "\ud83d\udc4b Looks like you're already with us!",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [
+        {
+          "key": "previous_message",
+          "label": "Authenticate Now",
+          "triggers": [
+            "1",
+            "previous_message",
+            "authenticate now"
+          ],
+          "nextMessageId": 202605281249,
+          "live": true
+        }
+      ],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202605281248,
+      "name": "ONBOARDED",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "\ud83d\udc4b Looks like you're already with us!",
+        "creation_date": "{{creation_date}}",
+        "owner_name": "{{owner_name}}",
+        "company_website": "{{company_website}}"
+      },
+      "rendered_result": "An account matching your information already exists. It was created, {{creation_date}} by {{owner_name}} for {{company_website}}.\n\n_*If this wasn't you, please email support@postoochat.com for a swift resolution.*_\n\nIf this is you, `open your authenticator app `and tap Authenticate Now.\n_*Please wait for our next request to enter your 2FA code.*_\n\nTo proceed, please reply with 1.  Authenticate Now",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.242463Z",
+      "title": "\ud83d\udc4b Looks like you're already with us!",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202605281249,
+      "name": "CONSENT_REQUEST_2FA",
+      "suite_key": "SUITE_2FA_SETUP",
+      "group": "postoochat_suite",
+      "category": "General",
+      "channel": "telegram",
+      "variables": {
+        "title": "PosToo Onboarding Consent",
+        "mobile_number": "{{mobile_number}}",
+        "company_website": "{{company_website}}"
+      },
+      "rendered_result": "Mobile Number: {{mobile_number}}\nGovernment ID / Registration Number: \n\n_By requesting your onboarding key, you consent to PosToo using your mobile number, registration number, and channel details to create your secure onboarding session._\n\nContinue to *Request 2FA Setup Key *to set up Two-Factor Authentication (2FA) using an authenticator app for enhanced security.",
+      "description": "Consent on using personal details available from the channel, and request 2FA key.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.242523Z",
+      "title": "PosToo Onboarding Consent",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [
+        {
+          "key": "request_setup_key",
+          "label": "Request 2FA Setup Key",
+          "triggers": [
+            "1",
+            "request_setup_key",
+            "request 2fa setup key"
+          ],
+          "nextMessageId": 202605291023,
+          "live": true
+        }
+      ],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202605281249,
+      "name": "CONSENT_REQUEST_2FA",
+      "suite_key": "SUITE_2FA_SETUP",
+      "group": "postoochat_suite",
+      "category": "General",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "PosToo Onboarding Consent",
+        "mobile_number": "{{mobile_number}}",
+        "company_website": "{{company_website}}"
+      },
+      "rendered_result": "Mobile Number: {{mobile_number}}\nGovernment ID / Registration Number: \n\n_By requesting your onboarding key, you consent to PosToo using your mobile number, registration number, and channel details to create your secure onboarding session._\n\nContinue to *Request 2FA Setup Key *to set up Two-Factor Authentication (2FA) using an authenticator app for enhanced security.\n\nReply with any number from numbered-menu.\n\n1. Request 2FA Setup Key",
+      "description": "Consent on using personal details available from the channel, and request 2FA key.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.242584Z",
+      "title": "PosToo Onboarding Consent",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202605291023,
+      "name": "ONBOARD_2FA",
+      "suite_key": "SUITE_2FA_VERIFY",
+      "group": "postoochat_suite",
+      "category": "General",
+      "channel": "telegram",
+      "variables": {
+        "title": "Authenticator Setup",
+        "setup_key": "{{setup_key}}"
+      },
+      "rendered_result": "_Set up the authenticator app verification before continuing.\nUse manual entry first if you are on the same phone as Telegram._\n\n\n\n*Setup Key: *{{setup_key}}\n\n*After adding the setup key to your authenticator app, reply with the 6-digit code.*",
+      "description": "Set up the authenticator app verification and reply with the 6-digit code.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.242639Z",
+      "title": "Authenticator Setup",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [
+        {
+          "key": "watch_auth_setup",
+          "label": "Watch Authenticator Setup Video",
+          "triggers": [
+            "1",
+            "watch_auth_setup",
+            "watch authenticator setup video"
+          ],
+          "nextMessageId": 202605281249,
+          "live": true
+        }
+      ],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202605291023,
+      "name": "ONBOARD_2FA",
+      "suite_key": "SUITE_2FA_VERIFY",
+      "group": "postoochat_suite",
+      "category": "General",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "Authenticator Setup",
+        "setup_key": "{{setup_key}}"
+      },
+      "rendered_result": "_Set up the authenticator app verification before continuing.\nUse manual entry first if you are on the same phone as Telegram._\n\n\n\n*Setup Key: *{{setup_key}}\n\n*After adding the setup key to your authenticator app, reply with the 6-digit code.*\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Set up the authenticator app verification and reply with the 6-digit code.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.242697Z",
+      "title": "Authenticator Setup",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606020511,
+      "name": "SIGN_IN",
+      "suite_key": "SUITE_SIGN_IN",
+      "group": "postoochat_suite",
+      "category": "General",
+      "channel": "telegram",
+      "variables": {
+        "title": "Welcome Back!"
+      },
+      "rendered_result": "To continue, please sign in using your authenticator mobile app. Open the app, have your 6\u2011digit code ready, tap *Authenticate Now *and hold on for the next request to enter your 2FA code.",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.242737Z",
+      "title": "Welcome Back!",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [
+        {
+          "key": "authenticate_now",
+          "label": "Authenticate NOW",
+          "triggers": [
+            "1",
+            "authenticate_now",
+            "authenticate now"
+          ],
+          "nextMessageId": 202606020534,
+          "live": true
+        }
+      ],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606020511,
+      "name": "SIGN_IN",
+      "suite_key": "SUITE_SIGN_IN",
+      "group": "postoochat_suite",
+      "category": "General",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "Welcome Back!"
+      },
+      "rendered_result": "To continue, please sign in using your authenticator mobile app. Open the app, have your 6\u2011digit code ready, tap *Authenticate Now *and hold on for the next request to enter your 2FA code.\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.242781Z",
+      "title": "Welcome Back!",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606020534,
+      "name": "CHECK_IN",
+      "suite_key": "SUITE_SESSION_RESUME",
+      "group": "postoochat_suite",
+      "category": "General",
+      "channel": "telegram",
+      "variables": {
+        "title": "Check\u2011IN time!"
+      },
+      "rendered_result": "Please reply with your mobile authenticator's _*6\u2011digit code *_to check in. ",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.242821Z",
+      "title": "Check\u2011IN time!",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606020534,
+      "name": "CHECK_IN",
+      "suite_key": "SUITE_SESSION_RESUME",
+      "group": "postoochat_suite",
+      "category": "General",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "Check\u2011IN time!"
+      },
+      "rendered_result": "Please reply with your mobile authenticator's _*6\u2011digit code *_to check in. ",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.242861Z",
+      "title": "Check\u2011IN time!",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606020535,
+      "name": "CHECKED_IN",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "Checked-IN"
+      },
+      "rendered_result": "\ud83d\udd10 Your authentication was successful\n\nYou are now securely checked in!",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.242901Z",
+      "title": "Checked-IN",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [
+        {
+          "key": "invite_admin",
+          "label": "Invite Admin",
+          "triggers": [
+            "1",
+            "invite_admin",
+            "invite admin"
+          ],
+          "nextMessageId": 202606041250,
+          "live": true
+        },
+        {
+          "key": "invite_worker",
+          "label": "Invite Worker",
+          "triggers": [
+            "2",
+            "invite_worker",
+            "invite worker"
+          ],
+          "nextMessageId": 202606041251,
+          "live": true
+        },
+        {
+          "key": "get_user_qr",
+          "label": "Get Website QR Code",
+          "triggers": [
+            "3",
+            "get_user_qr",
+            "get website qr code"
+          ],
+          "nextMessageId": null,
+          "live": true
+        }
+      ],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606020535,
+      "name": "CHECKED_IN",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "Checked-IN"
+      },
+      "rendered_result": "\ud83d\udd10 Your authentication was successful\n\nYou are now securely checked in!\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.242953Z",
+      "title": "Checked-IN",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606020536,
+      "name": "CHECK_IN_FAILED",
+      "suite_key": "SUITE_ACCESS_DENIED",
+      "group": "postoochat_suite",
+      "category": "General",
+      "channel": "telegram",
+      "variables": {
+        "title": "Check\u2011IN FAILED"
+      },
+      "rendered_result": "Please try again and reply with your mobile authenticator's *6\u2011digit code *to check in. ",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.242994Z",
+      "title": "Check\u2011IN FAILED",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [
+        {
+          "key": "watch_2fa_video",
+          "label": "Watch 2FA Video",
+          "triggers": [
+            "1",
+            "watch_2fa_video",
+            "watch 2fa video"
+          ],
+          "nextMessageId": 202605291023,
+          "live": true
+        },
+        {
+          "key": "send_email",
+          "label": "Send Email NOW!",
+          "triggers": [
+            "2",
+            "send_email",
+            "send email now!"
+          ],
+          "nextMessageId": null,
+          "live": true
+        }
+      ],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606020536,
+      "name": "CHECK_IN_FAILED",
+      "suite_key": "SUITE_ACCESS_DENIED",
+      "group": "postoochat_suite",
+      "category": "General",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "Check\u2011IN FAILED"
+      },
+      "rendered_result": "Please try again and reply with your mobile authenticator's *6\u2011digit code *to check in. \n\n_*If it fails again, please watch the video on how to set up and use your mobile Authenticator. *_\n\n*Send an email to support@postoochat.com for a swift resolution.*\n\nReply with any number from numbered-menu.\n\n1. Watch 2FA Video\n2. Send Email NOW!",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.243055Z",
+      "title": "Check\u2011IN FAILED",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606041250,
+      "name": "INVITING_ADMIN",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "Invite Admin",
+        "admin_link": "{{admin_link}}"
+      },
+      "rendered_result": "Copy the admin link and send it to the person that will manage workers.",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [
+        {
+          "variable": "admin_link",
+          "live": true,
+          "required": true,
+          "mode": "follow_up",
+          "key": "admin_link_follow_up"
+        }
+      ],
+      "updated_at": "2026-09-08T06:11:56.243094Z",
+      "title": "Invite Admin",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606041250,
+      "name": "INVITING_ADMIN",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "Invite Admin",
+        "admin_link": "{{admin_link}}"
+      },
+      "rendered_result": "Copy the admin link and send it to the person that will manage workers.\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [
+        {
+          "variable": "admin_link",
+          "live": true,
+          "required": true,
+          "mode": "follow_up",
+          "key": "admin_link_follow_up"
+        }
+      ],
+      "updated_at": "2026-09-08T06:11:56.243134Z",
+      "title": "Invite Admin",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606041251,
+      "name": "INVITING_WORKER",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "Invite Worker",
+        "worker_link": "{{worker_link}}"
+      },
+      "rendered_result": "Copy the worker link and send it to the person that will help you with customers.",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [
+        {
+          "variable": "worker_link",
+          "live": true,
+          "required": true,
+          "mode": "follow_up",
+          "key": "worker_link_follow_up"
+        }
+      ],
+      "updated_at": "2026-09-08T06:11:56.243166Z",
+      "title": "Invite Worker",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606041251,
+      "name": "INVITING_WORKER",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "Invite Worker",
+        "worker_link": "{{worker_link}}"
+      },
+      "rendered_result": "Copy the worker link and send it to the person that will help you with customers.\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [
+        {
+          "variable": "worker_link",
+          "live": true,
+          "required": true,
+          "mode": "follow_up",
+          "key": "worker_link_follow_up"
+        }
+      ],
+      "updated_at": "2026-09-08T06:11:56.243213Z",
+      "title": "Invite Worker",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606041252,
+      "name": "CHECKED_IN_ADMIN",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "Admin Checked-IN"
+      },
+      "rendered_result": "\ud83d\udd10 You are now checked in and can invite workers and generate the website QR entry for users.\n\n*You can check out any time to stop receiving workers messages.*",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.243253Z",
+      "title": "Admin Checked-IN",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [
+        {
+          "key": "invite_worker",
+          "label": "Invite a Worker",
+          "triggers": [
+            "1",
+            "invite_worker",
+            "invite a worker"
+          ],
+          "nextMessageId": 202606041251,
+          "live": true
+        },
+        {
+          "key": "get_user_qr",
+          "label": "Get Website QR Code",
+          "triggers": [
+            "2",
+            "get_user_qr",
+            "get website qr code"
+          ],
+          "nextMessageId": null,
+          "live": true
+        },
+        {
+          "key": "admin_check_out",
+          "label": "Admin Check-OUT NOW!",
+          "triggers": [
+            "3",
+            "admin_check_out",
+            "admin check-out now!"
+          ],
+          "nextMessageId": 202606041266,
+          "live": true
+        }
+      ],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606041252,
+      "name": "CHECKED_IN_ADMIN",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "Admin Checked-IN"
+      },
+      "rendered_result": "\ud83d\udd10 You are now checked in and can invite workers and generate the website QR entry for users.\n\n*You can check out any time to stop receiving workers messages.*\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.243303Z",
+      "title": "Admin Checked-IN",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606041254,
+      "name": "CHECKED_IN_WORKER",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "Worker Checked-IN"
+      },
+      "rendered_result": "\ud83d\udd10 You are now checked in to accept or ignore user chats.\n\n*You can check out any time to stop receiving users' support request messages.*",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.243342Z",
+      "title": "Worker Checked-IN",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [
+        {
+          "key": "worker_check_out",
+          "label": "Check Out NOW!",
+          "triggers": [
+            "1",
+            "worker_check_out",
+            "check out now!"
+          ],
+          "nextMessageId": 202606041269,
+          "live": true
+        }
+      ],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606041254,
+      "name": "CHECKED_IN_WORKER",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "Worker Checked-IN"
+      },
+      "rendered_result": "\ud83d\udd10 You are now checked in to accept or ignore user chats.\n\n*You can check out any time to stop receiving users' support request messages.*\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.243385Z",
+      "title": "Worker Checked-IN",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606041255,
+      "name": "CHECKED_IN_USER",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "User Checked-IN"
+      },
+      "rendered_result": "\ud83d\udd10 You are now checked in. Send your inquiry here and the first available worker will join the chat and respond promptly.\n\nTap *Close Chat NOW! *to close the chat when done.\n\n\u26a0\ufe0f Please note: If there is no activity in this chat for 2 minutes, you will be automatically logged out. block text.",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.243437Z",
+      "title": "User Checked-IN",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [
+        {
+          "key": "user_close_chat",
+          "label": "Close Chat",
+          "triggers": [
+            "1",
+            "user_close_chat",
+            "close chat"
+          ],
+          "nextMessageId": 202606071274,
+          "live": true
+        }
+      ],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606041255,
+      "name": "CHECKED_IN_USER",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "User Checked-IN"
+      },
+      "rendered_result": "\ud83d\udd10 You are now checked in. Send your inquiry here and the first available worker will join the chat and respond promptly.\n\nTap *Close Chat NOW! *to close the chat when done.\n\n\u26a0\ufe0f Please note: If there is no activity in this chat for 2 minutes, you will be automatically logged out. block text.\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.243495Z",
+      "title": "User Checked-IN",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606041256,
+      "name": "INVITE_INVALID",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "Invite Invalid",
+        "invite_invalid_error": "{{invite_invalid_error}}"
+      },
+      "rendered_result": "Invite invalid!\n\n*{{invite_invalid_error}}*",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.243541Z",
+      "title": "Invite Invalid",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606041256,
+      "name": "INVITE_INVALID",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "Invite Invalid",
+        "invite_invalid_error": "{{invite_invalid_error}}"
+      },
+      "rendered_result": "Invite invalid!\n\n{{invite_invalid_error}}\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.243587Z",
+      "title": "Invite Invalid",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606041257,
+      "name": "INVITE_EXPIRED",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "Invite Expired",
+        "invite_expired_error": "{{invite_expired_error}}"
+      },
+      "rendered_result": "Invite expired.\n\n{{invite_expired_error}}",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.243628Z",
+      "title": "Invite Expired",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606041257,
+      "name": "INVITE_EXPIRED",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "Invite Expired",
+        "invite_expired_error": "{{invite_expired_error}}"
+      },
+      "rendered_result": "Invite expired.\n\n{{invite_expired_error}}\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.243670Z",
+      "title": "Invite Expired",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606041258,
+      "name": "INVITE_ALREADY_USED",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "Invite Already Used",
+        "invite_already_used_error": "{{invite_already_used_error}}"
+      },
+      "rendered_result": "Invite already used.\n\n{{invite_already_used_error}}",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.243712Z",
+      "title": "Invite Already Used",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606041258,
+      "name": "INVITE_ALREADY_USED",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "Invite Already Used",
+        "invite_already_used_error": "{{invite_already_used_error}}"
+      },
+      "rendered_result": "Invite already used.\n\n{{invite_already_used_error}}\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.243755Z",
+      "title": "Invite Already Used",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606041259,
+      "name": "INVITE_REVOKED",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "Invite Revoked",
+        "invite_revoked_error": "{{invite_revoked_error}}"
+      },
+      "rendered_result": "Invite revoked.\n\n{{invite_revoked_error}}",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.243795Z",
+      "title": "Invite Revoked",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606041259,
+      "name": "INVITE_REVOKED",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "Invite Revoked",
+        "invite_revoked_error": "{{invite_revoked_error}}"
+      },
+      "rendered_result": "Invite revoked.\n\n{{invite_revoked_error}}\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.243838Z",
+      "title": "Invite Revoked",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606041260,
+      "name": "INVITE_WRONG_WORKSPACE",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "Invite Wrong Workspace",
+        "invite_wrong_workspace": "{{invite_wrong_workspace}}"
+      },
+      "rendered_result": "Invite wrong workspace.\n\n*{{invite_wrong_workspace}}*",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.243881Z",
+      "title": "Invite Wrong Workspace",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606041260,
+      "name": "INVITE_WRONG_WORKSPACE",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "Invite Wrong Workspace",
+        "invite_wrong_workspace": "{{invite_wrong_workspace}}"
+      },
+      "rendered_result": "Invite wrong workspace.\n\n*{{invite_wrong_workspace}}*\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.243925Z",
+      "title": "Invite Wrong Workspace",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606041261,
+      "name": "QR_INVALID",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "QR Code Invalid",
+        "qrcode_invalid_error": "{{qrcode_invalid_error}}"
+      },
+      "rendered_result": "QR code invalid.\n\n{{qrcode_invalid_error}}",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.243964Z",
+      "title": "QR Code Invalid",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606041261,
+      "name": "QR_INVALID",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "QR Code Invalid",
+        "qrcode_invalid_error": "{{qrcode_invalid_error}}"
+      },
+      "rendered_result": "QR code invalid.\n\n{{qrcode_invalid_error}}\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.244008Z",
+      "title": "QR Code Invalid",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606041262,
+      "name": "QR_EXPIRED",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "QR Code Expired",
+        "qrcode_expired": "{{qrcode_expired}}"
+      },
+      "rendered_result": "QR code expired.\n\n{{qrcode_expired}}",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.244049Z",
+      "title": "QR Code Expired",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606041262,
+      "name": "QR_EXPIRED",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "QR Code Expired",
+        "qrcode_expired": "{{qrcode_expired}}"
+      },
+      "rendered_result": "QR code expired.\n\n{{qrcode_expired}}\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.244092Z",
+      "title": "QR Code Expired",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606041263,
+      "name": "QR_ALREADY_USED",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "QR Code Already Used",
+        "qrcode_already_used": "{{qrcode_already_used}}"
+      },
+      "rendered_result": "You have scanned this QR Code, and you are still checked IN.\n\n*{{qrcode_already_used}}*",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.244133Z",
+      "title": "QR Code Already Used",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606041263,
+      "name": "QR_ALREADY_USED",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "QR Code Already Used",
+        "qrcode_already_used": "{{qrcode_already_used}}"
+      },
+      "rendered_result": "You have scanned this QR Code, and you are still checked IN.\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.244168Z",
+      "title": "QR Code Already Used",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606041264,
+      "name": "QR_WRONG_WORKSPACE",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "QR Code Wrong Workspace",
+        "qrcode_wrong_workspace": "{{qrcode_wrong_workspace}}"
+      },
+      "rendered_result": "QR code wrong workspace.\n\n*{{qrcode_wrong_workspace}}*",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.244208Z",
+      "title": "QR Code Wrong Workspace",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [
+        {
+          "key": "previous_message",
+          "label": "Previous Message",
+          "triggers": [
+            "1",
+            "previous_message",
+            "previous message"
+          ],
+          "nextMessageId": 202606041263,
+          "live": true
+        },
+        {
+          "key": "next_message",
+          "label": "Next Message",
+          "triggers": [
+            "2",
+            "next_message",
+            "next message"
+          ],
+          "nextMessageId": 202606071270,
+          "live": true
+        }
+      ],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606041264,
+      "name": "QR_WRONG_WORKSPACE",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "QR Code Wrong Workspace",
+        "qrcode_wrong_workspace": "{{qrcode_wrong_workspace}}"
+      },
+      "rendered_result": "QR code wrong workspace.\n\n*{{qrcode_wrong_workspace}}*\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.244261Z",
+      "title": "QR Code Wrong Workspace",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606071270,
+      "name": "DIRECT_MESSAGE_SESSION_INVALID",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "Session Invalid",
+        "session_invalid_error": "{{session_invalid_error}}"
+      },
+      "rendered_result": "This direct-message action could not continue because your session is no longer valid.\n\n*{{session_invalid_error}}*",
+      "description": "Shown when a direct-message action is attempted with an invalid or inactive session.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.244306Z",
+      "title": "Session Invalid",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606071270,
+      "name": "DIRECT_MESSAGE_SESSION_INVALID",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "Session Invalid",
+        "session_invalid_error": "{{session_invalid_error}}"
+      },
+      "rendered_result": "This direct-message action could not continue because your session is no longer valid.\n\n{{session_invalid_error}}\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Shown when a direct-message action is attempted with an invalid or inactive session.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.244351Z",
+      "title": "Session Invalid",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606071271,
+      "name": "DIRECT_MESSAGE_ROUTE_NOT_ALLOWED",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "Route Not Allowed",
+        "route_not_allowed_error": "{{route_not_allowed_error}}"
+      },
+      "rendered_result": "This direct-message route is not allowed right now.\n\n*{{route_not_allowed_error}}*",
+      "description": "Shown when a direct-message route is not allowed in the current governed phase.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.244393Z",
+      "title": "Route Not Allowed",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606071271,
+      "name": "DIRECT_MESSAGE_ROUTE_NOT_ALLOWED",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "Route Not Allowed",
+        "route_not_allowed_error": "{{route_not_allowed_error}}"
+      },
+      "rendered_result": "This direct-message route is not allowed right now.\n\n{{route_not_allowed_error}}\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Shown when a direct-message route is not allowed in the current governed phase.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.244437Z",
+      "title": "Route Not Allowed",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606071272,
+      "name": "DIRECT_MESSAGE_RECIPIENT_NOT_FOUND",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "Recipient Not Found",
+        "recipient_not_found_error": "{{recipient_not_found_error}}"
+      },
+      "rendered_result": "The direct message could not be delivered because the intended recipient was not found.\n\n*{{recipient_not_found_error}}*",
+      "description": "Shown when the intended direct-message recipient cannot be resolved inside the current workspace.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.244478Z",
+      "title": "Recipient Not Found",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606071272,
+      "name": "DIRECT_MESSAGE_RECIPIENT_NOT_FOUND",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "Recipient Not Found",
+        "recipient_not_found_error": "{{recipient_not_found_error}}"
+      },
+      "rendered_result": "The direct message could not be delivered because the intended recipient was not found.\n\n{{recipient_not_found_error}}\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Shown when the intended direct-message recipient cannot be resolved inside the current workspace.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.244520Z",
+      "title": "Recipient Not Found",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606071273,
+      "name": "DIRECT_MESSAGE_WORKSPACE_MISMATCH",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "Workspace Mismatch",
+        "workspace_mismatch_error": "{{workspace_mismatch_error}}"
+      },
+      "rendered_result": "This direct message was blocked because the sender and recipient are not in the same workspace.\n\n*{{workspace_mismatch_error}}*",
+      "description": "Shown when a direct-message attempt crosses workspace boundaries.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.244562Z",
+      "title": "Workspace Mismatch",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606071273,
+      "name": "DIRECT_MESSAGE_WORKSPACE_MISMATCH",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "Workspace Mismatch",
+        "workspace_mismatch_error": "{{workspace_mismatch_error}}"
+      },
+      "rendered_result": "This direct message was blocked because the sender and recipient are not in the same workspace.\n\n{{workspace_mismatch_error}}\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Shown when a direct-message attempt crosses workspace boundaries.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.244607Z",
+      "title": "Workspace Mismatch",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606041265,
+      "name": "INVITING_USER",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "Website QR Code",
+        "qrcode_link": "{{qrcode_link}}"
+      },
+      "rendered_result": "Copy this QR code link or embed target into your website or public channel so customers can enter your support flow.\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [
+        {
+          "variable": "qrcode_link",
+          "live": true,
+          "required": true,
+          "mode": "follow_up",
+          "key": "qrcode_link_follow_up"
+        }
+      ],
+      "updated_at": "2026-09-08T06:11:56.244641Z",
+      "title": "Website QR Code",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606041265,
+      "name": "INVITING_USER",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "Website QR Code",
+        "qrcode_link": "{{qrcode_link}}"
+      },
+      "rendered_result": "Copy this QR code link or embed target into your website or public channel so customers can enter your support flow.\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [
+        {
+          "variable": "qrcode_link",
+          "live": true,
+          "required": true,
+          "mode": "follow_up",
+          "key": "qrcode_link_follow_up"
+        }
+      ],
+      "updated_at": "2026-09-08T06:11:56.244673Z",
+      "title": "Website QR Code",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606041266,
+      "name": "CHECKED_OUT_ADMIN_REPEAT",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "Checked-OUT Admin"
+      },
+      "rendered_result": "You are now checked-OUT.",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.244704Z",
+      "title": "Checked-OUT Admin",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [
+        {
+          "key": "admin_check_in",
+          "label": "Admin Check-IN",
+          "triggers": [
+            "1",
+            "admin_check_in",
+            "admin check-in"
+          ],
+          "nextMessageId": 202606041267,
+          "live": true
+        }
+      ],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606041266,
+      "name": "CHECKED_OUT_ADMIN_REPEAT",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "Checked-OUT Admin"
+      },
+      "rendered_result": "You are now checked-OUT.\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.244744Z",
+      "title": "Checked-OUT Admin",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606041267,
+      "name": "CHECK_IN_ADMIN_REPEAT",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "Admin Check-IN"
+      },
+      "rendered_result": "Tap *Check-IN *to start receiving agent and customer messages.",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.244781Z",
+      "title": "Admin Check-IN",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [
+        {
+          "key": "admin_check_in_repeat",
+          "label": "Admin Check-IN",
+          "triggers": [
+            "1",
+            "admin_check_in_repeat",
+            "admin check-in"
+          ],
+          "nextMessageId": 202606041266,
+          "live": true
+        }
+      ],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606041267,
+      "name": "CHECK_IN_ADMIN_REPEAT",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "Admin Check-IN"
+      },
+      "rendered_result": "Tap *Check-IN *to start receiving agent and customer messages.\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.244825Z",
+      "title": "Admin Check-IN",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606041268,
+      "name": "CHECK_IN_WORKER_REPEAT",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "Worker Check-IN"
+      },
+      "rendered_result": "Tap *Check-IN *to start receiving customer messages.",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.244863Z",
+      "title": "Worker Check-IN",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [
+        {
+          "key": "worker_check_in_repeat",
+          "label": "Worker Check-IN",
+          "triggers": [
+            "1",
+            "worker_check_in_repeat",
+            "worker check-in"
+          ],
+          "nextMessageId": 202606041267,
+          "live": true
+        }
+      ],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606041268,
+      "name": "CHECK_IN_WORKER_REPEAT",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "Worker Check-IN"
+      },
+      "rendered_result": "Tap *Check-IN *to start receiving customer messages.\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.244903Z",
+      "title": "Worker Check-IN",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606041269,
+      "name": "CHECKED_OUT_WORKER_REPEAT",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "Checked-OUT Worker"
+      },
+      "rendered_result": "You are now checked-OUT.",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.244933Z",
+      "title": "Checked-OUT Worker",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [
+        {
+          "key": "worker_check_in",
+          "label": "Worker Check-IN",
+          "triggers": [
+            "1",
+            "worker_check_in",
+            "worker check-in"
+          ],
+          "nextMessageId": 202606041267,
+          "live": true
+        }
+      ],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606041269,
+      "name": "CHECKED_OUT_WORKER_REPEAT",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "Checked-OUT Worker"
+      },
+      "rendered_result": "You are now checked-OUT.\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.244967Z",
+      "title": "Checked-OUT Worker",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606071274,
+      "name": "CHECKED_OUT_USER_AUTO",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "User Checked OUT"
+      },
+      "rendered_result": "\u26a0\ufe0f Please note: There was no activity in this chat for 2 minutes; you were automatically logged out.\n\n*Scan the QR Code to check in and chat with the first available worker.*",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.245006Z",
+      "title": "User Checked OUT",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606071274,
+      "name": "CHECKED_OUT_USER_AUTO",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "User Checked OUT"
+      },
+      "rendered_result": "\u26a0\ufe0f Please note: There was no activity in this chat for 2 minutes; you were automatically logged out.\n\n*Scan the QR Code to check in and chat with the first available worker.*\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.245047Z",
+      "title": "User Checked OUT",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606071275,
+      "name": "NEW_MESSAGE",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "New Message"
+      },
+      "rendered_result": "_*Write*_ your new message body here.",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.245081Z",
+      "title": "New Message",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [
+        {
+          "key": "previous_message",
+          "label": "Previous Message",
+          "triggers": [
+            "1",
+            "previous_message",
+            "previous message"
+          ],
+          "nextMessageId": 202606071274,
+          "live": true
+        },
+        {
+          "key": "next_message",
+          "label": "Next Message",
+          "triggers": [
+            "2",
+            "next_message",
+            "next message"
+          ],
+          "nextMessageId": 202606071276,
+          "live": true
+        }
+      ],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606071275,
+      "name": "NEW_MESSAGE",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "New Message"
+      },
+      "rendered_result": "_*Write*_ your new message body here.\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.245128Z",
+      "title": "New Message",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606071276,
+      "name": "ONBOARD_CHECKED_IN",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "Onboard Checked-IN"
+      },
+      "rendered_result": "Your authentication was successful.\n\n*Before you can manage the workspace, please set your working hours. \n*These hours are used to control availability, staffing, and customer expectations.",
+      "description": "Set company working hours.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.245168Z",
+      "title": "Onboard Checked-IN",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [
+        {
+          "key": "set_working_hours",
+          "label": "Set Working Hours",
+          "triggers": [
+            "1",
+            "set_working_hours",
+            "set working hours"
+          ],
+          "nextMessageId": 202606071277,
+          "live": true
+        }
+      ],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606071276,
+      "name": "ONBOARD_CHECKED_IN",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "Onboard Checked-IN"
+      },
+      "rendered_result": "Your authentication was successful.\n\n*Before you can manage the workspace, please set your working hours. \n*These hours are used to control availability, staffing, and customer expectations.\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Set company working hours.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.245224Z",
+      "title": "Onboard Checked-IN",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606071277,
+      "name": "SET_WORKING_HOURS",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "Set Working Hours"
+      },
+      "rendered_result": "Reply with your daily opening and closing times.\n\nUse the following day format:\nMon, Tue, Wed, Thu, Fri, Sat, Sun\n with the 24-hour time format:\n08:00-17:00 \n\n\nExamples:\nMon-Fri 08:00-17:00\nSat 09:00-13:00\nSun closed",
+      "description": "Set working days and working hours.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.245271Z",
+      "title": "Set Working Hours",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606071277,
+      "name": "SET_WORKING_HOURS",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "Set Working Hours"
+      },
+      "rendered_result": "Reply with your daily opening and closing times.\n\nUse the following day format:\nMon, Tue, Wed, Thu, Fri, Sat, Sun\n with the 24-hour time format:\n08:00-17:00 \n\n\nExamples:\nMon-Fri 08:00-17:00\nSat 09:00-13:00\nSun closed\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Set working days and working hours.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.245318Z",
+      "title": "Set Working Hours",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606071278,
+      "name": "SET_WORKING_HOURS_ERROR",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "Set Working Hours Error"
+      },
+      "rendered_result": "Please try again. Please follow the example exactly!\n\n*Mon-Fri (No spaces)*\n\n*08:00-17:00 (No spaces)*\n\n*Mon-Thu 08:00-17:00 \n*_(Only a single space between the days and times.)_\n\n*Fri 08:00-15:00 *_(Only a single space between the day and the time.)_\n\n*Sunday closed*",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.245385Z",
+      "title": "Set Working Hours Error",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606071278,
+      "name": "SET_WORKING_HOURS_ERROR",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "Set Working Hours Error"
+      },
+      "rendered_result": "Please try again. Please follow the example exactly!\n\n*Mon-Fri (No spaces)*\n\n*08:00-17:00 (No spaces)*\n\n*Mon-Thu 08:00-17:00 \n*_(Only a single space between the days and times.)_\n\n*Fri 08:00-15:00 *_(Only a single space between the day and the time.)_\n\n*Sunday closed*\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.245456Z",
+      "title": "Set Working Hours Error",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606071279,
+      "name": "NEW_MESSAGE_2",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "New Message"
+      },
+      "rendered_result": "_*Write*_ your new message body here.",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.245493Z",
+      "title": "New Message",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [
+        {
+          "key": "previous_message",
+          "label": "Previous Message",
+          "triggers": [
+            "1",
+            "previous_message",
+            "previous message"
+          ],
+          "nextMessageId": 202606071278,
+          "live": true
+        },
+        {
+          "key": "next_message",
+          "label": "Next Message",
+          "triggers": [
+            "2",
+            "next_message",
+            "next message"
+          ],
+          "nextMessageId": 202606071280,
+          "live": true
+        }
+      ],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606071279,
+      "name": "NEW_MESSAGE_2",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "New Message"
+      },
+      "rendered_result": "_*Write*_ your new message body here.\n\nReply with any number from numbered-menu.\\n\\n1. Previous Message\\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.245538Z",
+      "title": "New Message",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606071280,
+      "name": "NEW_MESSAGE_3",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "templates",
+      "channel": "telegram",
+      "variables": {
+        "title": "New Message"
+      },
+      "rendered_result": "_*Write*_ your new message body here.",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.245573Z",
+      "title": "New Message",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [
+        {
+          "key": "previous_message",
+          "label": "Previous Message",
+          "triggers": [
+            "1",
+            "previous_message",
+            "previous message"
+          ],
+          "nextMessageId": 202606071279,
+          "live": true
+        },
+        {
+          "key": "next_message",
+          "label": "Next Message",
+          "triggers": [
+            "2",
+            "next_message",
+            "next message"
+          ],
+          "nextMessageId": 202606071281,
+          "live": true
+        }
+      ],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606071280,
+      "name": "NEW_MESSAGE_3",
+      "suite_key": "",
+      "group": "postoochat_suite",
+      "category": "templates",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "New Message"
+      },
+      "rendered_result": "_*Write*_ your new message body here.\n\nReply with any number from numbered-menu.\\n\\n1. Previous Message\\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.245616Z",
+      "title": "New Message",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606071281,
+      "name": "NEW_MESSAGE_4",
+      "suite_key": "",
+      "group": "postoo_chat",
+      "category": "archive",
+      "channel": "telegram",
+      "variables": {
+        "title": "New Message"
+      },
+      "rendered_result": "_*Write*_ your new message body here.",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.245649Z",
+      "title": "New Message",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [
+        {
+          "key": "previous_message",
+          "label": "Previous Message",
+          "triggers": [
+            "1",
+            "previous_message",
+            "previous message"
+          ],
+          "nextMessageId": 202606071280,
+          "live": true
+        },
+        {
+          "key": "next_message",
+          "label": "Next Message",
+          "triggers": [
+            "2",
+            "next_message",
+            "next message"
+          ],
+          "nextMessageId": 202606071282,
+          "live": true
+        }
+      ],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606071281,
+      "name": "NEW_MESSAGE_4",
+      "suite_key": "",
+      "group": "postoo_chat",
+      "category": "archive",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "New Message"
+      },
+      "rendered_result": "_*Write*_ your new message body here.\n\nReply with any number from numbered-menu.\\n\\n1. Previous Message\\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.245691Z",
+      "title": "New Message",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606071282,
+      "name": "NEW_MESSAGE_5",
+      "suite_key": "",
+      "group": "postoochat_ride",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "New Message"
+      },
+      "rendered_result": "_*Write*_ your new message body here.",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.245726Z",
+      "title": "New Message",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [
+        {
+          "key": "previous_message",
+          "label": "Previous Message",
+          "triggers": [
+            "1",
+            "previous_message",
+            "previous message"
+          ],
+          "nextMessageId": 202606071281,
+          "live": true
+        },
+        {
+          "key": "next_message",
+          "label": "Next Message",
+          "triggers": [
+            "2",
+            "next_message",
+            "next message"
+          ],
+          "nextMessageId": 202606071283,
+          "live": true
+        }
+      ],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606071282,
+      "name": "NEW_MESSAGE_5",
+      "suite_key": "",
+      "group": "postoochat_ride",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "New Message"
+      },
+      "rendered_result": "_*Write*_ your new message body here.\n\nReply with any number from numbered-menu.\\n\\n1. Previous Message\\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.245772Z",
+      "title": "New Message",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606071283,
+      "name": "NEW_MESSAGE_6",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "New Message"
+      },
+      "rendered_result": "_*Write*_ your new message body here.",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.245805Z",
+      "title": "New Message",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [
+        {
+          "key": "previous_message",
+          "label": "Previous Message",
+          "triggers": [
+            "1",
+            "previous_message",
+            "previous message"
+          ],
+          "nextMessageId": 202606071282,
+          "live": true
+        },
+        {
+          "key": "next_message",
+          "label": "Next Message",
+          "triggers": [
+            "2",
+            "next_message",
+            "next message"
+          ],
+          "nextMessageId": 202606071284,
+          "live": true
+        }
+      ],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606071283,
+      "name": "NEW_MESSAGE_6",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "New Message"
+      },
+      "rendered_result": "_*Write*_ your new message body here.\n\nReply with any number from numbered-menu.\\n\\n1. Previous Message\\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.245848Z",
+      "title": "New Message",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606071284,
+      "name": "NEW_MESSAGE_7",
+      "suite_key": "",
+      "group": "postoochat_faceluv",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "title": "New Message"
+      },
+      "rendered_result": "_*Write*_ your new message body here.",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.245879Z",
+      "title": "New Message",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [
+        {
+          "key": "previous_message",
+          "label": "Previous Message",
+          "triggers": [
+            "1",
+            "previous_message",
+            "previous message"
+          ],
+          "nextMessageId": 202606071283,
+          "live": true
+        },
+        {
+          "key": "next_message",
+          "label": "Next Message",
+          "triggers": [
+            "2",
+            "next_message",
+            "next message"
+          ],
+          "nextMessageId": 202606071285,
+          "live": true
+        }
+      ],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606071284,
+      "name": "NEW_MESSAGE_7",
+      "suite_key": "",
+      "group": "postoochat_faceluv",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "New Message"
+      },
+      "rendered_result": "_*Write*_ your new message body here.\n\nReply with any number from numbered-menu.\\n\\n1. Previous Message\\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.245923Z",
+      "title": "New Message",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606071285,
+      "name": "NEW_MESSAGE_8",
+      "suite_key": "",
+      "group": "postoo_chat",
+      "category": "archive",
+      "channel": "telegram",
+      "variables": {
+        "title": "New Message"
+      },
+      "rendered_result": "_*Write*_ your new message body here.",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.245959Z",
+      "title": "New Message",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [
+        {
+          "key": "previous_message",
+          "label": "Previous Message",
+          "triggers": [
+            "1",
+            "previous_message",
+            "previous message"
+          ],
+          "nextMessageId": 202606071284,
+          "live": true
+        },
+        {
+          "key": "next_message",
+          "label": "Next Message",
+          "triggers": [
+            "2",
+            "next_message",
+            "next message"
+          ],
+          "nextMessageId": 202606071286,
+          "live": true
+        }
+      ],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606071285,
+      "name": "NEW_MESSAGE_8",
+      "suite_key": "",
+      "group": "postoo_chat",
+      "category": "archive",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "New Message"
+      },
+      "rendered_result": "_*Write*_ your new message body here.\n\nReply with any number from numbered-menu.\\n\\n1. Previous Message\\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246002Z",
+      "title": "New Message",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606071286,
+      "name": "NEW_MESSAGE_9",
+      "suite_key": "",
+      "group": "postoo_chat",
+      "category": "archive",
+      "channel": "telegram",
+      "variables": {
+        "title": "New Message"
+      },
+      "rendered_result": "_*Write*_ your new message body here.",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246037Z",
+      "title": "New Message",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [
+        {
+          "key": "previous_message",
+          "label": "Previous Message",
+          "triggers": [
+            "1",
+            "previous_message",
+            "previous message"
+          ],
+          "nextMessageId": 202606071285,
+          "live": true
+        },
+        {
+          "key": "next_message",
+          "label": "Next Message",
+          "triggers": [
+            "2",
+            "next_message",
+            "next message"
+          ],
+          "nextMessageId": 202606071288,
+          "live": true
+        }
+      ],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606071286,
+      "name": "NEW_MESSAGE_9",
+      "suite_key": "",
+      "group": "postoo_chat",
+      "category": "archive",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "New Message"
+      },
+      "rendered_result": "_*Write*_ your new message body here.\n\nReply with any number from numbered-menu.\\n\\n1. Previous Message\\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246080Z",
+      "title": "New Message",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202606071288,
+      "name": "NEW_MESSAGE_11",
+      "suite_key": "",
+      "group": "postoo_chat",
+      "category": "archive",
+      "channel": "telegram",
+      "variables": {
+        "title": "New Message"
+      },
+      "rendered_result": "_*Write*_ your new message body here.",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246115Z",
+      "title": "New Message",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [
+        {
+          "key": "previous_message",
+          "label": "Previous Message",
+          "triggers": [
+            "1",
+            "previous_message",
+            "previous message"
+          ],
+          "nextMessageId": 202606071286,
+          "live": true
+        },
+        {
+          "key": "next_message",
+          "label": "Next Message",
+          "triggers": [
+            "2",
+            "next_message",
+            "next message"
+          ],
+          "nextMessageId": null,
+          "live": true
+        }
+      ],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202606071288,
+      "name": "NEW_MESSAGE_11",
+      "suite_key": "",
+      "group": "postoo_chat",
+      "category": "archive",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "New Message"
+      },
+      "rendered_result": "_*Write*_ your new message body here.\n\nReply with any number from numbered-menu.\\n\\n1. Previous Message\\n2. Next Message",
+      "description": "Describe what this message is for.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246157Z",
+      "title": "New Message",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150001,
+      "name": "MESCOMMERCE_VERIFICATION_LOCAL",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {},
+      "rendered_result": "For this local test, reply with verification code 123456.",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246188Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150001,
+      "name": "MESCOMMERCE_VERIFICATION_LOCAL",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {},
+      "rendered_result": "For this local test, reply with verification code 123456.",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246218Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150002,
+      "name": "MESCOMMERCE_VERIFICATION_SENT",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {},
+      "rendered_result": "I sent a 6-digit verification code to this WhatsApp number. Reply with that code to continue.",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246248Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150002,
+      "name": "MESCOMMERCE_VERIFICATION_SENT",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {},
+      "rendered_result": "I sent a 6-digit verification code to this WhatsApp number. Reply with that code to continue.",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246275Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150003,
+      "name": "MESCOMMERCE_VERIFICATION_FAILED",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {},
+      "rendered_result": "I could not send the verification code. Please try LIST again shortly.",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246302Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150003,
+      "name": "MESCOMMERCE_VERIFICATION_FAILED",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {},
+      "rendered_result": "I could not send the verification code. Please try LIST again shortly.",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246327Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150004,
+      "name": "MESCOMMERCE_WELCOME_LOCAL",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {},
+      "rendered_result": "Welcome to MesCommerce Marketplace.\n\nFor this local test, reply with verification code 123456.",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246353Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150004,
+      "name": "MESCOMMERCE_WELCOME_LOCAL",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {},
+      "rendered_result": "Welcome to MesCommerce Marketplace.\n\nFor this local test, reply with verification code 123456.",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246378Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150005,
+      "name": "MESCOMMERCE_WELCOME_VERIFICATION_SENT",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {},
+      "rendered_result": "Welcome to MesCommerce Marketplace.\n\nI sent a 6-digit verification code to this WhatsApp number. Reply with that code to continue.",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246403Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150005,
+      "name": "MESCOMMERCE_WELCOME_VERIFICATION_SENT",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {},
+      "rendered_result": "Welcome to MesCommerce Marketplace.\n\nI sent a 6-digit verification code to this WhatsApp number. Reply with that code to continue.",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246427Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150006,
+      "name": "MESCOMMERCE_VERIFICATION_INVALID",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {},
+      "rendered_result": "That verification code is not valid. Please try again, or reply RESTART for a new code.",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246453Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150006,
+      "name": "MESCOMMERCE_VERIFICATION_INVALID",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {},
+      "rendered_result": "That verification code is not valid. Please try again, or reply RESTART for a new code.",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246478Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150007,
+      "name": "MESCOMMERCE_CHOOSE_CATEGORY",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {},
+      "rendered_result": "Choose a category:\n1. Houses for sale\n2. Cars for sale\n3. Water suppliers",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246502Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150007,
+      "name": "MESCOMMERCE_CHOOSE_CATEGORY",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {},
+      "rendered_result": "Choose a category:\n1. Houses for sale\n2. Cars for sale\n3. Water suppliers",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246526Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150008,
+      "name": "MESCOMMERCE_VERIFIED_CHOOSE_CATEGORY",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {},
+      "rendered_result": "Number verified.\n\nChoose a category:\n1. Houses for sale\n2. Cars for sale\n3. Water suppliers",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246551Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150008,
+      "name": "MESCOMMERCE_VERIFIED_CHOOSE_CATEGORY",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {},
+      "rendered_result": "Number verified.\n\nChoose a category:\n1. Houses for sale\n2. Cars for sale\n3. Water suppliers",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246576Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150009,
+      "name": "MESCOMMERCE_CATEGORY_INVALID",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {},
+      "rendered_result": "Please reply with 1, 2 or 3.\n1. Houses for sale\n2. Cars for sale\n3. Water suppliers",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246600Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150009,
+      "name": "MESCOMMERCE_CATEGORY_INVALID",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {},
+      "rendered_result": "Please reply with 1, 2 or 3.\n1. Houses for sale\n2. Cars for sale\n3. Water suppliers",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246624Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150010,
+      "name": "MESCOMMERCE_CHECKOUT_READY",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "category": "{{category}}",
+        "listing_fee": "{{listing_fee}}",
+        "checkout_url": "{{checkout_url}}"
+      },
+      "rendered_result": "Great\u2014{{category}}.\n\nYour listing fee is R {{listing_fee}}. Pay securely with Yoco:\n{{checkout_url}}\n\nAfter payment, return here and reply PAID.",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246673Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150010,
+      "name": "MESCOMMERCE_CHECKOUT_READY",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "category": "{{category}}",
+        "listing_fee": "{{listing_fee}}",
+        "checkout_url": "{{checkout_url}}"
+      },
+      "rendered_result": "Great\u2014{{category}}.\n\nYour listing fee is R {{listing_fee}}. Pay securely with Yoco:\n{{checkout_url}}\n\nAfter payment, return here and reply PAID.",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246714Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150011,
+      "name": "MESCOMMERCE_CHECKOUT_FAILED",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {},
+      "rendered_result": "I could not create the Yoco checkout just now. Please try again in a moment.",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246742Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150011,
+      "name": "MESCOMMERCE_CHECKOUT_FAILED",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {},
+      "rendered_result": "I could not create the Yoco checkout just now. Please try again in a moment.",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246769Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150012,
+      "name": "MESCOMMERCE_PAYMENT_PENDING",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {},
+      "rendered_result": "Your payment is not confirmed yet. Complete the Yoco checkout, then reply PAID. Reply RESTART to begin again.",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246793Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150012,
+      "name": "MESCOMMERCE_PAYMENT_PENDING",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {},
+      "rendered_result": "Your payment is not confirmed yet. Complete the Yoco checkout, then reply PAID. Reply RESTART to begin again.",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246818Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150013,
+      "name": "MESCOMMERCE_PAYMENT_CONFIRMED",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {},
+      "rendered_result": "Payment confirmed. What is your selling price in rand?\nExample: 12500",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246845Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150013,
+      "name": "MESCOMMERCE_PAYMENT_CONFIRMED",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {},
+      "rendered_result": "Payment confirmed. What is your selling price in rand?\nExample: 12500",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246871Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150014,
+      "name": "MESCOMMERCE_PRICE_INVALID",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {},
+      "rendered_result": "Please send only the selling price in rand. Example: 12500",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.246895Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150014,
+      "name": "MESCOMMERCE_PRICE_INVALID",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {},
+      "rendered_result": "Please send only the selling price in rand. Example: 12500",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247061Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150015,
+      "name": "MESCOMMERCE_LOCATION_REQUEST",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {},
+      "rendered_result": "Now send the product or service location using WhatsApp's attachment button \u2192 Location \u2192 Send your current location.",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247089Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150015,
+      "name": "MESCOMMERCE_LOCATION_REQUEST",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {},
+      "rendered_result": "Now send the product or service location using WhatsApp's attachment button \u2192 Location \u2192 Send your current location.",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247115Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150016,
+      "name": "MESCOMMERCE_LOCATION_INVALID",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {},
+      "rendered_result": "Please send a WhatsApp location pin\u2014not a typed address.",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247141Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150016,
+      "name": "MESCOMMERCE_LOCATION_INVALID",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {},
+      "rendered_result": "Please send a WhatsApp location pin\u2014not a typed address.",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247165Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150017,
+      "name": "MESCOMMERCE_RESTART_REQUIRED",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {},
+      "rendered_result": "Something went wrong. Reply RESTART to try again.",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247198Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150017,
+      "name": "MESCOMMERCE_RESTART_REQUIRED",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {},
+      "rendered_result": "Something went wrong. Reply RESTART to try again.",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247228Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150018,
+      "name": "MESCOMMERCE_LISTING_LIVE",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "category": "{{category}}",
+        "price": "{{price}}"
+      },
+      "rendered_result": "Your {{category}} listing is live at R {{price}}. Buyers who activate marketplace access can contact you directly using the channel you approved.\n\nReply LIST whenever you want to add another price.",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247269Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150018,
+      "name": "MESCOMMERCE_LISTING_LIVE",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "category": "{{category}}",
+        "price": "{{price}}"
+      },
+      "rendered_result": "Your {{category}} listing is live at R {{price}}. Buyers who activate marketplace access can contact you directly using the channel you approved.\n\nReply LIST whenever you want to add another price.",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247305Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150019,
+      "name": "MESCOMMERCE_ALREADY_LIVE",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {},
+      "rendered_result": "Your last listing is already live. Reply LIST to add another one.",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247333Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150019,
+      "name": "MESCOMMERCE_ALREADY_LIVE",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {},
+      "rendered_result": "Your last listing is already live. Reply LIST to add another one.",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247360Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150020,
+      "name": "MESCOMMERCE_CONDITION_PROMPT",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "new_label": "{{new_label}}",
+        "used_label": "{{used_label}}"
+      },
+      "rendered_result": "Payment confirmed.\n\nIs this product {{new_label}} or {{used_label}}?\n\n1. {{new_label}}\n2. {{used_label}}",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247402Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150020,
+      "name": "MESCOMMERCE_CONDITION_PROMPT",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "new_label": "{{new_label}}",
+        "used_label": "{{used_label}}"
+      },
+      "rendered_result": "Payment confirmed.\n\nIs this product {{new_label}} or {{used_label}}?\n\n1. {{new_label}}\n2. {{used_label}}",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247442Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150021,
+      "name": "MESCOMMERCE_CONDITION_INVALID",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "new_label": "{{new_label}}",
+        "used_label": "{{used_label}}"
+      },
+      "rendered_result": "Please reply with 1 or 2.\n\n1. {{new_label}}\n2. {{used_label}}",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247478Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150021,
+      "name": "MESCOMMERCE_CONDITION_INVALID",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "new_label": "{{new_label}}",
+        "used_label": "{{used_label}}"
+      },
+      "rendered_result": "Please reply with 1 or 2.\n\n1. {{new_label}}\n2. {{used_label}}",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247511Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150022,
+      "name": "MESCOMMERCE_PRICE_REQUEST",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {},
+      "rendered_result": "What is your selling price in rand?\nExample: 12500",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247538Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150022,
+      "name": "MESCOMMERCE_PRICE_REQUEST",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {},
+      "rendered_result": "What is your selling price in rand?\nExample: 12500",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247564Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150023,
+      "name": "MESCOMMERCE_ADMIN_REPLY",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "message": "{{message}}"
+      },
+      "rendered_result": "{{message}}",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247597Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150023,
+      "name": "MESCOMMERCE_ADMIN_REPLY",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "message": "{{message}}"
+      },
+      "rendered_result": "{{message}}",
+      "description": "MesCommerce seller onboarding communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247627Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150032,
+      "name": "MESCOMMERCE_SELLER_CONTACT_CONSENT_REQUIRED",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "consent_version": "{{consent_version}}"
+      },
+      "rendered_result": "To publish this listing, choose whether buyers who complete the MesCommerce inquiry introduction may contact you directly using this WhatsApp number.\n\nReply AGREE to publish with direct contact or DECLINE to stop without publishing.\nConsent version: {{consent_version}}",
+      "description": "MesCommerce seller direct-contact consent communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247660Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150032,
+      "name": "MESCOMMERCE_SELLER_CONTACT_CONSENT_REQUIRED",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "consent_version": "{{consent_version}}"
+      },
+      "rendered_result": "To publish this listing, choose whether buyers who complete the MesCommerce inquiry introduction may contact you directly using this WhatsApp number.\n\nReply AGREE to publish with direct contact or DECLINE to stop without publishing.\nConsent version: {{consent_version}}",
+      "description": "MesCommerce seller direct-contact consent communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247693Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150033,
+      "name": "MESCOMMERCE_SELLER_CONTACT_CONSENT_DECLINED",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {},
+      "rendered_result": "Your listing was not published because direct buyer contact was not approved. Reply LIST whenever you want to begin again.",
+      "description": "MesCommerce seller direct-contact consent outcome communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247719Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150033,
+      "name": "MESCOMMERCE_SELLER_CONTACT_CONSENT_DECLINED",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {},
+      "rendered_result": "Your listing was not published because direct buyer contact was not approved. Reply LIST whenever you want to begin again.",
+      "description": "MesCommerce seller direct-contact consent outcome communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247745Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150034,
+      "name": "MESCOMMERCE_MARKETING_CONSENT_REQUIRED",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "consent_version": "{{consent_version}}"
+      },
+      "rendered_result": "Would you like to receive optional MesCommerce news, offers and competition updates on this channel? This is not required to list or inquire.\n\nReply MARKETING YES to opt in or MARKETING NO to decline.\nMarketing consent version: {{consent_version}}",
+      "description": "MesCommerce optional marketing consent communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247776Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150034,
+      "name": "MESCOMMERCE_MARKETING_CONSENT_REQUIRED",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "consent_version": "{{consent_version}}"
+      },
+      "rendered_result": "Would you like to receive optional MesCommerce news, offers and competition updates on this channel? This is not required to list or inquire.\n\nReply MARKETING YES to opt in or MARKETING NO to decline.\nMarketing consent version: {{consent_version}}",
+      "description": "MesCommerce optional marketing consent communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247806Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150035,
+      "name": "MESCOMMERCE_MARKETING_CONSENT_RECORDED",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "preference": "{{preference}}"
+      },
+      "rendered_result": "Your marketing preference is now {{preference}}. You can change it at any time by replying MARKETING YES or MARKETING NO.",
+      "description": "MesCommerce optional marketing consent outcome communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247837Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150035,
+      "name": "MESCOMMERCE_MARKETING_CONSENT_RECORDED",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "preference": "{{preference}}"
+      },
+      "rendered_result": "Your marketing preference is now {{preference}}. You can change it at any time by replying MARKETING YES or MARKETING NO.",
+      "description": "MesCommerce optional marketing consent outcome communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247867Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150036,
+      "name": "MESCOMMERCE_SHARE_DISCLOSURE",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "category": "{{category}}",
+        "terms_url": "{{terms_url}}"
+      },
+      "rendered_result": "MesCommerce can create a unique tracked link for this {{category}} listing. Competition credit is awarded when a new visitor opens your link\u2014not merely when the share sheet opens.\n\nReply SHARE to create the link or CANCEL to stop.\nCompetition terms: {{terms_url}}",
+      "description": "MesCommerce tracked-share and competition disclosure.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247910Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150036,
+      "name": "MESCOMMERCE_SHARE_DISCLOSURE",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "category": "{{category}}",
+        "terms_url": "{{terms_url}}"
+      },
+      "rendered_result": "MesCommerce can create a unique tracked link for this {{category}} listing. Competition credit is awarded when a new visitor opens your link\u2014not merely when the share sheet opens.\n\nReply SHARE to create the link or CANCEL to stop.\nCompetition terms: {{terms_url}}",
+      "description": "MesCommerce tracked-share and competition disclosure.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247948Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150037,
+      "name": "MESCOMMERCE_SHARE_READY",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "share_url": "{{share_url}}",
+        "entry_count": "{{entry_count}}"
+      },
+      "rendered_result": "Your tracked MesCommerce share link is ready:\n{{share_url}}\n\nVerified competition entries: {{entry_count}}",
+      "description": "MesCommerce tracked-share outcome communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.247984Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150037,
+      "name": "MESCOMMERCE_SHARE_READY",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "share_url": "{{share_url}}",
+        "entry_count": "{{entry_count}}"
+      },
+      "rendered_result": "Your tracked MesCommerce share link is ready:\n{{share_url}}\n\nVerified competition entries: {{entry_count}}",
+      "description": "MesCommerce tracked-share outcome communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.248019Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150024,
+      "name": "MESCOMMERCE_MARKETPLACE_ACCESS_CONSENT",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "consent_version": "{{consent_version}}",
+        "terms_url": "{{terms_url}}"
+      },
+      "rendered_result": "Welcome to MesCommerce. Before you contact marketplace sellers directly, please confirm that MesCommerce and PosTooChat may process your channel identity and remember that you accepted the marketplace access terms.\n\nThis consent enables direct contact with any listing in any category. It does not subscribe you to marketing.\n\nTo continue, type AGREE in the message box and tap Send. To cancel, type DECLINE and tap Send.\nConsent version: {{consent_version}}\nTerms: {{terms_url}}",
+      "description": "MesCommerce first-time marketplace access consent.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.248057Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150024,
+      "name": "MESCOMMERCE_MARKETPLACE_ACCESS_CONSENT",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "consent_version": "{{consent_version}}",
+        "terms_url": "{{terms_url}}"
+      },
+      "rendered_result": "Welcome to MesCommerce. Before you contact marketplace sellers directly, please confirm that MesCommerce and PosTooChat may process your channel identity and remember that you accepted the marketplace access terms.\n\nThis consent enables direct contact with any listing in any category. It does not subscribe you to marketing.\n\nTo continue, type AGREE in the message box and tap Send. To cancel, type DECLINE and tap Send.\nConsent version: {{consent_version}}\nTerms: {{terms_url}}",
+      "description": "MesCommerce first-time marketplace access consent.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.248093Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150025,
+      "name": "MESCOMMERCE_MARKETPLACE_ACCESS_READY",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {
+        "marketplace_url": "{{marketplace_url}}"
+      },
+      "rendered_result": "You're all set. We hope you find what you're looking for.\n\nReturn to MesCommerce using the secure link below. You can now contact any listing in any category directly using its available WhatsApp or Telegram button:\n{{marketplace_url}}",
+      "description": "MesCommerce marketplace access confirmation and return link.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.248124Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150025,
+      "name": "MESCOMMERCE_MARKETPLACE_ACCESS_READY",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {
+        "marketplace_url": "{{marketplace_url}}"
+      },
+      "rendered_result": "You're all set. We hope you find what you're looking for.\n\nReturn to MesCommerce using the secure link below. You can now contact any listing in any category directly using its available WhatsApp or Telegram button:\n{{marketplace_url}}",
+      "description": "MesCommerce marketplace access confirmation and return link.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.248156Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150026,
+      "name": "MESCOMMERCE_MARKETPLACE_ACCESS_DECLINED",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {},
+      "rendered_result": "Marketplace contact access was not activated. No seller contact details were unlocked.\n\nYou can browse MesCommerce and activate access later by tapping a WhatsApp or Telegram contact button again.",
+      "description": "MesCommerce marketplace access consent outcome.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.248183Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150026,
+      "name": "MESCOMMERCE_MARKETPLACE_ACCESS_DECLINED",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {},
+      "rendered_result": "Marketplace contact access was not activated. No seller contact details were unlocked.\n\nYou can browse MesCommerce and activate access later by tapping a WhatsApp or Telegram contact button again.",
+      "description": "MesCommerce marketplace access consent outcome.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.248209Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150038,
+      "name": "MESCOMMERCE_REFERRAL_INVALID",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {},
+      "rendered_result": "This referral link is no longer available or cannot be used from this number. Ask the person who invited you to share a new link.",
+      "description": "MesCommerce invalid, expired or self-referral outcome communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.248236Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150038,
+      "name": "MESCOMMERCE_REFERRAL_INVALID",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {},
+      "rendered_result": "This referral link is no longer available or cannot be used from this number. Ask the person who invited you to share a new link.",
+      "description": "MesCommerce invalid, expired or self-referral outcome communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.248261Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150039,
+      "name": "MESCOMMERCE_TAGS_REQUEST",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {},
+      "rendered_result": "Add searchable tags for this listing, separated by commas.\nExample: Bellville, Brackenfell\n\nUse up to 8 tags. Reply SKIP if you do not want to add tags.",
+      "description": "MesCommerce listing tag request communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.248285Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150039,
+      "name": "MESCOMMERCE_TAGS_REQUEST",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {},
+      "rendered_result": "Add searchable tags for this listing, separated by commas.\nExample: Bellville, Brackenfell\n\nUse up to 8 tags. Reply SKIP if you do not want to add tags.",
+      "description": "MesCommerce listing tag request communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.248310Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150040,
+      "name": "MESCOMMERCE_TAGS_INVALID",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "telegram",
+      "variables": {},
+      "rendered_result": "Please send up to 8 tags separated by commas. Each tag may contain up to 30 characters.\nExample: Bellville, Brackenfell\n\nReply SKIP if you do not want to add tags.",
+      "description": "MesCommerce invalid listing tags communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.248334Z",
+      "delivery": "plain_text",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": false
+    },
+    {
+      "id": 202608150040,
+      "name": "MESCOMMERCE_TAGS_INVALID",
+      "suite_key": "",
+      "group": "postoochat_market",
+      "category": "",
+      "channel": "whatsapp",
+      "variables": {},
+      "rendered_result": "Please send up to 8 tags separated by commas. Each tag may contain up to 30 characters.\nExample: Bellville, Brackenfell\n\nReply SKIP if you do not want to add tags.",
+      "description": "MesCommerce invalid listing tags communication.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.248361Z",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    },
+    {
+      "id": 202608150041,
+      "name": "START",
+      "suite_key": "",
+      "group": "postoochat_chatcenter",
+      "category": "General",
+      "channel": "telegram",
+      "variables": {
+        "title": "Welcome to ChatCenter"
+      },
+      "rendered_result": "Welcome to ChatCenter. Reply to begin.",
+      "description": "Starts a ChatCenter conversation in WhatsApp or Telegram.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.248387Z",
+      "title": "Welcome to ChatCenter",
+      "delivery": "inline_buttons",
+      "parse_mode": "Markdown",
+      "binding": {},
+      "actions": [],
+      "inline_buttons_enabled": true
+    },
+    {
+      "id": 202608150041,
+      "name": "START",
+      "suite_key": "",
+      "group": "postoochat_chatcenter",
+      "category": "General",
+      "channel": "whatsapp",
+      "variables": {
+        "title": "Welcome to ChatCenter"
+      },
+      "rendered_result": "Welcome to ChatCenter. Reply to begin.",
+      "description": "Starts a ChatCenter conversation in WhatsApp or Telegram.",
+      "assets": [],
+      "links": [],
+      "updated_at": "2026-09-08T06:11:56.248413Z",
+      "title": "Welcome to ChatCenter",
+      "delivery": "plain_text",
+      "binding": {
+        "content_sid_env": ""
+      },
+      "actions": [],
+      "template_enabled": false
+    }
+  ]
+}

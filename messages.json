@@ -65,7 +65,7 @@
         }
       },
       "default": {
-        "title": "🚀 {{company_name}}",
+        "title": "\ud83d\ude80 {{company_name}}",
         "blocks": [
           {
             "id": "intro",
@@ -96,7 +96,7 @@
             "required": true,
             "parts": [
               {
-                "text": "💬Chat Center",
+                "text": "\ud83d\udcacChat Center",
                 "format": [
                   "bold"
                 ]
@@ -112,7 +112,7 @@
             "required": true,
             "parts": [
               {
-                "text": "🚗 Book a Trip",
+                "text": "\ud83d\ude97 Book a Trip",
                 "format": [
                   "bold"
                 ]
@@ -128,7 +128,7 @@
             "required": true,
             "parts": [
               {
-                "text": "📅 More Bookings",
+                "text": "\ud83d\udcc5 More Bookings",
                 "format": [
                   "bold"
                 ]
@@ -144,7 +144,7 @@
             "required": true,
             "parts": [
               {
-                "text": "🛡️ Register NOW",
+                "text": "\ud83d\udee1\ufe0f Register NOW",
                 "format": [
                   "bold"
                 ]
@@ -160,7 +160,7 @@
             "required": true,
             "parts": [
               {
-                "text": "🎮 Start DEMO",
+                "text": "\ud83c\udfae Start DEMO",
                 "format": [
                   "bold"
                 ]
@@ -176,7 +176,7 @@
             "required": true,
             "parts": [
               {
-                "text": "💡 Pro Tip",
+                "text": "\ud83d\udca1 Pro Tip",
                 "format": [
                   "bold"
                 ]
@@ -286,7 +286,7 @@
               "required": true,
               "parts": [
                 {
-                  "text": "💬Chat Center",
+                  "text": "\ud83d\udcacChat Center",
                   "format": [
                     "bold"
                   ]
@@ -302,7 +302,7 @@
               "required": true,
               "parts": [
                 {
-                  "text": "🚗 Book a Trip",
+                  "text": "\ud83d\ude97 Book a Trip",
                   "format": [
                     "bold"
                   ]
@@ -318,7 +318,7 @@
               "required": true,
               "parts": [
                 {
-                  "text": "📅 More Bookings",
+                  "text": "\ud83d\udcc5 More Bookings",
                   "format": [
                     "bold"
                   ]
@@ -334,7 +334,7 @@
               "required": false,
               "parts": [
                 {
-                  "text": "🛡️ Register NOW",
+                  "text": "\ud83d\udee1\ufe0f Register NOW",
                   "format": [
                     "bold"
                   ]
@@ -350,7 +350,7 @@
               "required": false,
               "parts": [
                 {
-                  "text": "🎮 Start DEMO",
+                  "text": "\ud83c\udfae Start DEMO",
                   "format": [
                     "bold"
                   ]
@@ -366,7 +366,7 @@
               "required": true,
               "parts": [
                 {
-                  "text": "💡 Pro Tip",
+                  "text": "\ud83d\udca1 Pro Tip",
                   "format": [
                     "bold"
                   ]
@@ -417,7 +417,7 @@
               "required": true,
               "parts": [
                 {
-                  "text": "💬Chat Center",
+                  "text": "\ud83d\udcacChat Center",
                   "format": [
                     "bold"
                   ]
@@ -433,7 +433,7 @@
               "required": true,
               "parts": [
                 {
-                  "text": "🚗 Book a Trip",
+                  "text": "\ud83d\ude97 Book a Trip",
                   "format": [
                     "bold"
                   ]
@@ -449,7 +449,7 @@
               "required": true,
               "parts": [
                 {
-                  "text": "📅 More Bookings",
+                  "text": "\ud83d\udcc5 More Bookings",
                   "format": [
                     "bold"
                   ]
@@ -465,7 +465,7 @@
               "required": true,
               "parts": [
                 {
-                  "text": "🛡️ Register NOW",
+                  "text": "\ud83d\udee1\ufe0f Register NOW",
                   "format": [
                     "bold"
                   ]
@@ -481,7 +481,7 @@
               "required": true,
               "parts": [
                 {
-                  "text": "🎮 Start DEMO",
+                  "text": "\ud83c\udfae Start DEMO",
                   "format": [
                     "bold"
                   ]
@@ -497,7 +497,7 @@
               "required": true,
               "parts": [
                 {
-                  "text": "💡 Pro Tip",
+                  "text": "\ud83d\udca1 Pro Tip",
                   "format": [
                     "bold"
                   ]
@@ -544,7 +544,7 @@
         }
       },
       "default": {
-        "title": "👋 Looks like you're already with us!",
+        "title": "\ud83d\udc4b Looks like you're already with us!",
         "body": {
           "id": "body",
           "type": "text",
@@ -649,7 +649,7 @@
       "description": "Collects new account details; Media Studio references attached here follow the message.",
       "variables": {},
       "default": {
-        "title": "🚀 Onboarding",
+        "title": "\ud83d\ude80 Onboarding",
         "body": {
           "id": "body",
           "type": "text",
@@ -828,7 +828,7 @@
       "description": "Introduces PosTooChat; Media Studio references attached here follow the message.",
       "variables": {},
       "default": {
-        "title": "🚀 PosToo Suite",
+        "title": "\ud83d\ude80 PosToo Suite",
         "body": {
           "id": "body",
           "type": "text",
@@ -857,7 +857,7 @@
             "type": "text",
             "parts": [
               {
-                "text": "💬PosTooChat ",
+                "text": "\ud83d\udcacPosTooChat ",
                 "format": [
                   "bold"
                 ]
@@ -875,7 +875,7 @@
             "type": "text",
             "parts": [
               {
-                "text": "🚗 PosTooGo ",
+                "text": "\ud83d\ude97 PosTooGo ",
                 "format": [
                   "bold"
                 ]
@@ -1048,7 +1048,7 @@
       "description": "Collects onboarding details; Media Studio references attached here follow the message.",
       "variables": {},
       "default": {
-        "title": "🚀 Onboarding",
+        "title": "\ud83d\ude80 Onboarding",
         "body": {
           "id": "body",
           "type": "text",
@@ -1152,7 +1152,7 @@
         }
       },
       "default": {
-        "title": "👋 Looks like you're already with us!",
+        "title": "\ud83d\udc4b Looks like you're already with us!",
         "body": {
           "id": "body",
           "type": "text",
@@ -1473,7 +1473,7 @@
           "type": "text",
           "parts": [
             {
-              "text": "To continue, please sign in using your authenticator mobile app. Open the app, have your 6‑digit code ready, tap ",
+              "text": "To continue, please sign in using your authenticator mobile app. Open the app, have your 6\u2011digit code ready, tap ",
               "format": []
             },
             {
@@ -1537,7 +1537,7 @@
       "description": "Describe what this message is for.",
       "variables": {},
       "default": {
-        "title": "Check‑IN time!",
+        "title": "Check\u2011IN time!",
         "body": {
           "id": "body",
           "type": "text",
@@ -1547,7 +1547,7 @@
               "format": []
             },
             {
-              "text": "6‑digit code ",
+              "text": "6\u2011digit code ",
               "format": [
                 "bold",
                 "italic"
@@ -1618,7 +1618,7 @@
           "type": "text",
           "parts": [
             {
-              "text": "🔐 Your authentication was successful",
+              "text": "\ud83d\udd10 Your authentication was successful",
               "format": []
             }
           ],
@@ -1705,7 +1705,7 @@
       "description": "Describe what this message is for.",
       "variables": {},
       "default": {
-        "title": "Check‑IN FAILED",
+        "title": "Check\u2011IN FAILED",
         "body": {
           "id": "body",
           "type": "text",
@@ -1715,7 +1715,7 @@
               "format": []
             },
             {
-              "text": "6‑digit code ",
+              "text": "6\u2011digit code ",
               "format": [
                 "bold"
               ]
@@ -1967,7 +1967,7 @@
           "type": "text",
           "parts": [
             {
-              "text": "🔐 You are now checked in and can invite workers and generate the website QR entry for users.",
+              "text": "\ud83d\udd10 You are now checked in and can invite workers and generate the website QR entry for users.",
               "format": []
             }
           ],
@@ -2062,7 +2062,7 @@
           "type": "text",
           "parts": [
             {
-              "text": "🔐 You are now checked in to accept or ignore user chats.",
+              "text": "\ud83d\udd10 You are now checked in to accept or ignore user chats.",
               "format": []
             }
           ],
@@ -2135,7 +2135,7 @@
           "type": "text",
           "parts": [
             {
-              "text": "🔐 You are now checked in. Send your inquiry here and the first available worker will join the chat and respond promptly.",
+              "text": "\ud83d\udd10 You are now checked in. Send your inquiry here and the first available worker will join the chat and respond promptly.",
               "format": []
             }
           ],
@@ -2169,7 +2169,7 @@
             "type": "text",
             "parts": [
               {
-                "text": "⚠️ Please note: If there is no activity in this chat for 2 minutes, you will be automatically logged out.",
+                "text": "\u26a0\ufe0f Please note: If there is no activity in this chat for 2 minutes, you will be automatically logged out.",
                 "format": []
               },
               {
@@ -3663,7 +3663,7 @@
           "type": "text",
           "parts": [
             {
-              "text": "⚠️ Please note: There was no activity in this chat for 2 minutes; you were automatically logged out.",
+              "text": "\u26a0\ufe0f Please note: There was no activity in this chat for 2 minutes; you were automatically logged out.",
               "format": []
             }
           ],
@@ -5283,7 +5283,7 @@
           "type": "text",
           "parts": [
             {
-              "text": "Great—{{category}}.\n\nYour listing fee is R {{listing_fee}}. Pay securely with Yoco:\n{{checkout_url}}\n\nAfter payment, return here and reply PAID."
+              "text": "Great\u2014{{category}}.\n\nYour listing fee is R {{listing_fee}}. Pay securely with Yoco:\n{{checkout_url}}\n\nAfter payment, return here and reply PAID."
             }
           ],
           "required": true
@@ -5478,7 +5478,7 @@
           "type": "text",
           "parts": [
             {
-              "text": "Now send the product or service location using WhatsApp's attachment button → Location → Send your current location."
+              "text": "Now send the product or service location using WhatsApp's attachment button \u2192 Location \u2192 Send your current location."
             }
           ],
           "required": true
@@ -5517,7 +5517,7 @@
           "type": "text",
           "parts": [
             {
-              "text": "Please send a WhatsApp location pin—not a typed address."
+              "text": "Please send a WhatsApp location pin\u2014not a typed address."
             }
           ],
           "required": true
@@ -6053,7 +6053,7 @@
           "type": "text",
           "parts": [
             {
-              "text": "MesCommerce can create a unique tracked link for this {{category}} listing. Competition credit is awarded when a new visitor opens your link—not merely when the share sheet opens.\n\nReply SHARE to create the link or CANCEL to stop.\nCompetition terms: {{terms_url}}"
+              "text": "MesCommerce can create a unique tracked link for this {{category}} listing. Competition credit is awarded when a new visitor opens your link\u2014not merely when the share sheet opens.\n\nReply SHARE to create the link or CANCEL to stop.\nCompetition terms: {{terms_url}}"
             }
           ],
           "required": true

@@ -27,3 +27,8 @@ const authBootstrap = `<script>
 </script>`;
 const html = source.slice(bodyStart, end).replace("</head>", `${authBootstrap}</head>`);
 await writeFile(new URL("../worker-assets/index.html", import.meta.url), html, "utf8");
+await writeFile(
+  new URL("../worker-assets/catalog-export.json", import.meta.url),
+  await readFile(new URL("../messages.export.json", import.meta.url), "utf8"),
+  "utf8",
+);

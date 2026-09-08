@@ -754,6 +754,7 @@ def export_message_record(message: dict[str, Any], channel: str) -> dict[str, An
     return {
         "id": normalized.get("id"),
         "name": normalized.get("name"),
+        "suite_key": normalized.get("suite_key", ""),
         "group": normalized.get("group", "postoochat"),
         "category": normalized.get("category", ""),
         "channel": channel,
