@@ -1,14 +1,11 @@
 {
   "taxonomy": {
-    "postoo_chat": [
-      "",
-      "archive",
-      "templates"
-    ],
     "postoochat_chatcenter": [
       "",
       "General",
       "admin",
+      "archive",
+      "templates",
       "user",
       "worker"
     ],
@@ -718,27 +715,16 @@
     {
       "name": "I_CONSENT",
       "id": 202605271152,
-      "description": "Consent on using personal details available from the channel.",
-      "variables": {
-        "mobile_number": {
-          "type": "text",
-          "required": true,
-          "default": "+27813214765"
-        },
-        "registration_number": {
-          "type": "text",
-          "required": true,
-          "default": "6805305134088"
-        }
-      },
+      "description": "Records Suite onboarding consent before 2FA setup.",
+      "variables": {},
       "default": {
-        "title": "PosTooChat Onboarding Consent",
+        "title": "Confirm onboarding consent",
         "body": {
           "id": "body",
           "type": "text",
           "parts": [
             {
-              "text": "Mobile: {{mobile_number}}\nWebsite: {{company_website}}",
+              "text": "By choosing Agree & Request 2FA Setup Key, you agree that PosTooChat may use your channel identity and the profile details you just supplied to create and secure your account with two-factor authentication. ",
               "format": []
             }
           ],
@@ -746,11 +732,11 @@
         },
         "blocks": [
           {
-            "id": "paragraph_2",
+            "id": "paragraph_1",
             "type": "text",
             "parts": [
               {
-                "text": "By requesting your onboarding key, you consent to PosTooChat using your mobile number, display name, and company website to create your secure onboarding session.",
+                "text": "This consent is for onboarding and account security only; it is not marketing.",
                 "format": [
                   "italic"
                 ]
@@ -760,44 +746,59 @@
             "required": true
           },
           {
-            "id": "paragraph_3",
+            "id": "paragraph_2",
             "type": "text",
             "parts": [
               {
-                "text": "Continue to ",
+                "text": "You may ",
                 "format": []
               },
               {
-                "text": "Request 2FA Setup Key ",
+                "text": "decline",
                 "format": [
                   "bold"
                 ]
               },
               {
-                "text": "to set up Two-Factor Authentication (2FA) using an authenticator app for enhanced security.",
+                "text": " now. You may withdraw consent at any time by replying",
+                "format": []
+              },
+              {
+                "text": " WITHDRAW",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": "; onboarding will stop and access that depends on this consent may be unavailable.",
                 "format": []
               }
             ],
             "format": [],
             "required": true
-          },
-          {
-            "id": "numbered_menu",
-            "type": "text",
-            "text": "Reply with any number from numbered-menu.\n\n1. Request Setup Key",
-            "required": true
           }
         ],
         "actions": [
           {
-            "key": "request_setup_key",
-            "label": "Request 2FA Setup Key",
+            "key": "agree_request_2fa",
+            "label": "Agree & Request 2FA Setup Key",
             "triggers": [
               "1",
-              "request_setup_key",
-              "request 2fa setup key"
+              "agree",
+              "agree_request_2fa",
+              "agree & request 2fa setup key"
             ],
-            "nextMessageId": 202605281231,
+            "nextMessageId": 202605291023,
+            "live": true
+          },
+          {
+            "key": "decline",
+            "label": "Decline",
+            "triggers": [
+              "2",
+              "decline"
+            ],
+            "nextMessageId": 202609090101,
             "live": true
           }
         ]
@@ -809,8 +810,20 @@
           "inline_buttons_enabled": true
         },
         "whatsapp": {
-          "delivery": "interactive",
+          "body": {
+            "id": "body",
+            "required": true,
+            "parts": [
+              {
+                "text": "To continue with PosTooChat onboarding, reply AGREE. To stop, reply DECLINE. You can withdraw later by replying WITHDRAW. Consent is for onboarding and account security only; it is not marketing.",
+                "format": []
+              }
+            ],
+            "type": "text"
+          },
           "template_enabled": false,
+          "delivery": "plain_text",
+          "blocks": [],
           "binding": {
             "content_sid_env": ""
           }
@@ -1011,11 +1024,42 @@
         ],
         "actions": [
           {
-            "key": "postoochat",
-            "label": "PosTooChat",
+            "key": "chatcenter",
+            "label": "ChatCenter",
             "triggers": [
               "1",
+              "chatcenter",
               "postoochat"
+            ],
+            "nextMessageId": 202605281246,
+            "live": true
+          },
+          {
+            "key": "faceluv",
+            "label": "FaceLuv",
+            "triggers": [
+              "2",
+              "faceluv"
+            ],
+            "nextMessageId": 202605281246,
+            "live": true
+          },
+          {
+            "key": "market",
+            "label": "Market",
+            "triggers": [
+              "3",
+              "market"
+            ],
+            "nextMessageId": 202605281246,
+            "live": true
+          },
+          {
+            "key": "ride",
+            "label": "Ride",
+            "triggers": [
+              "4",
+              "ride"
             ],
             "nextMessageId": 202605281246,
             "live": true
@@ -1025,11 +1069,24 @@
       "overrides": {
         "telegram": {
           "delivery": "inline_buttons",
-          "parse_mode": "Markdown",
+          "parse_mode": "HTML",
           "inline_buttons_enabled": true
         },
         "whatsapp": {
-          "delivery": "interactive",
+          "title": "PosToo Suite",
+          "body": {
+            "id": "body",
+            "type": "text",
+            "parts": [
+              {
+                "text": "Welcome to PosToo Suite. To enter PosTooChat and begin onboarding, reply POSTOOCHAT.",
+                "format": []
+              }
+            ],
+            "required": true
+          },
+          "blocks": [],
+          "delivery": "plain_text",
           "template_enabled": false,
           "binding": {
             "content_sid_env": ""
@@ -1054,7 +1111,7 @@
           "type": "text",
           "parts": [
             {
-              "text": " Let's get your account set up. Please reply with your mobile number and company registration number separated by a space. If you do not have a company number, please add your government ID number.",
+              "text": "Let's get your account set up. ",
               "format": []
             }
           ],
@@ -1062,49 +1119,35 @@
         },
         "blocks": [
           {
+            "id": "paragraph_1",
+            "type": "text",
+            "parts": [
+              {
+                "text": "Please reply with your mobile number and birth date in the format below.",
+                "format": []
+              },
+              {
+                "text": "",
+                "format": [
+                  "bold"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
             "id": "paragraph_2",
             "type": "text",
             "parts": [
               {
-                "text": "SPACES IN THE MOBILE - , ID - AND COMPANY REGISTRATION NUMBERS ARE NOT ALLOWED!",
+                "text": " +27821234567 1990-04-28",
                 "format": [
                   "bold"
                 ]
               }
             ],
             "format": [],
-            "required": true
-          },
-          {
-            "id": "paragraph_3",
-            "type": "text",
-            "parts": [
-              {
-                "text": "+27821234567 2024/123456/07 OR +27821234567 4005305896088",
-                "format": []
-              }
-            ],
-            "format": [],
-            "required": true
-          },
-          {
-            "id": "paragraph_4",
-            "type": "text",
-            "parts": [
-              {
-                "text": "See the example below. An example screenshot is available.",
-                "format": [
-                  "bold"
-                ]
-              }
-            ],
-            "format": [],
-            "required": true
-          },
-          {
-            "id": "numbered_menu",
-            "type": "text",
-            "text": "Reply with 1 for an example screenshot!",
             "required": true
           }
         ],
@@ -1247,82 +1290,28 @@
       },
       "assets": [],
       "links": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
       "name": "CONSENT_REQUEST_2FA",
       "id": 202605281249,
-      "description": "Consent on using personal details available from the channel, and request 2FA key.",
-      "variables": {
-        "mobile_number": {
-          "type": "text",
-          "required": true,
-          "default": "+27813214765"
-        },
-        "company_website": {
-          "type": "text",
-          "required": true,
-          "default": "www.petruskeller.co.za"
-        }
-      },
+      "description": "Confirms consent and offers the next 2FA setup step.",
+      "variables": {},
       "default": {
-        "title": "PosToo Onboarding Consent",
+        "title": "Set up two-factor authentication",
         "body": {
           "id": "body",
           "type": "text",
           "parts": [
             {
-              "text": "Mobile Number: {{mobile_number}}\nGovernment ID / Registration Number: {{registration_number}}",
+              "text": "Your onboarding consent has been recorded. Request your 2FA setup key to continue securing your PosTooChat account.",
               "format": []
             }
           ],
           "required": true
         },
-        "blocks": [
-          {
-            "id": "paragraph_2",
-            "type": "text",
-            "parts": [
-              {
-                "text": "By requesting your onboarding key, you consent to PosToo using your mobile number, registration number, and channel details to create your secure onboarding session.",
-                "format": [
-                  "italic"
-                ]
-              }
-            ],
-            "format": [],
-            "required": true
-          },
-          {
-            "id": "paragraph_3",
-            "type": "text",
-            "parts": [
-              {
-                "text": "Continue to ",
-                "format": []
-              },
-              {
-                "text": "Request 2FA Setup Key ",
-                "format": [
-                  "bold"
-                ]
-              },
-              {
-                "text": "to set up Two-Factor Authentication (2FA) using an authenticator app for enhanced security.",
-                "format": []
-              }
-            ],
-            "format": [],
-            "required": true
-          },
-          {
-            "id": "numbered_menu",
-            "type": "text",
-            "text": "Reply with any number from numbered-menu.\n\n1. Request 2FA Setup Key",
-            "required": true
-          }
-        ],
+        "blocks": [],
         "actions": [
           {
             "key": "request_setup_key",
@@ -1696,7 +1685,7 @@
       },
       "assets": [],
       "links": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
@@ -1883,7 +1872,7 @@
         }
       },
       "assets": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
@@ -1952,7 +1941,7 @@
         }
       },
       "assets": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
@@ -2047,7 +2036,7 @@
       },
       "assets": [],
       "links": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
@@ -2120,7 +2109,7 @@
       },
       "assets": [],
       "links": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
@@ -2217,7 +2206,7 @@
       },
       "assets": [],
       "links": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
@@ -2304,7 +2293,7 @@
       },
       "assets": [],
       "links": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
@@ -2389,7 +2378,7 @@
       },
       "assets": [],
       "links": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
@@ -2474,7 +2463,7 @@
       },
       "assets": [],
       "links": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
@@ -2559,7 +2548,7 @@
       },
       "assets": [],
       "links": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
@@ -2648,7 +2637,7 @@
       },
       "assets": [],
       "links": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
@@ -2733,7 +2722,7 @@
       },
       "assets": [],
       "links": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
@@ -2818,7 +2807,7 @@
       },
       "assets": [],
       "links": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
@@ -2893,7 +2882,7 @@
       },
       "assets": [],
       "links": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
@@ -2983,7 +2972,7 @@
       },
       "assets": [],
       "links": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
@@ -3070,7 +3059,7 @@
       },
       "assets": [],
       "links": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
@@ -3157,7 +3146,7 @@
       },
       "assets": [],
       "links": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
@@ -3244,7 +3233,7 @@
       },
       "assets": [],
       "links": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
@@ -3331,7 +3320,7 @@
       },
       "assets": [],
       "links": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
@@ -3392,7 +3381,7 @@
         }
       },
       "assets": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
@@ -3451,7 +3440,7 @@
       },
       "assets": [],
       "links": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
@@ -3520,7 +3509,7 @@
       },
       "assets": [],
       "links": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
@@ -3589,7 +3578,7 @@
       },
       "assets": [],
       "links": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
@@ -3648,7 +3637,7 @@
       },
       "assets": [],
       "links": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
@@ -3731,7 +3720,7 @@
       },
       "assets": [],
       "links": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
@@ -3807,7 +3796,7 @@
         }
       },
       "assets": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
@@ -3884,7 +3873,7 @@
         }
       },
       "assets": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
@@ -3995,7 +3984,7 @@
         }
       },
       "assets": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
@@ -4214,13 +4203,13 @@
         }
       },
       "assets": [],
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": ""
     },
     {
       "name": "NEW_MESSAGE_2",
       "id": 202606071279,
-      "group": "postoochat_suite",
+      "group": "test_group",
       "category": "",
       "description": "Describe what this message is for.",
       "variables": {},
@@ -4294,85 +4283,9 @@
       "assets": []
     },
     {
-      "name": "NEW_MESSAGE_3",
-      "id": 202606071280,
-      "group": "postoochat_suite",
-      "category": "templates",
-      "description": "Describe what this message is for.",
-      "variables": {},
-      "links": [],
-      "default": {
-        "title": "New Message",
-        "body": {
-          "id": "body",
-          "type": "text",
-          "parts": [
-            {
-              "text": "Write",
-              "format": [
-                "bold",
-                "italic"
-              ]
-            },
-            {
-              "text": " your new message body here."
-            }
-          ],
-          "required": true
-        },
-        "blocks": [
-          {
-            "id": "numbered_menu",
-            "type": "text",
-            "text": "Reply with any number from numbered-menu.\\n\\n1. Previous Message\\n2. Next Message",
-            "required": true
-          }
-        ],
-        "actions": [
-          {
-            "key": "previous_message",
-            "label": "Previous Message",
-            "triggers": [
-              "1",
-              "previous_message",
-              "previous message"
-            ],
-            "nextMessageId": 202606071279,
-            "live": true
-          },
-          {
-            "key": "next_message",
-            "label": "Next Message",
-            "triggers": [
-              "2",
-              "next_message",
-              "next message"
-            ],
-            "nextMessageId": 202606071281,
-            "live": true
-          }
-        ]
-      },
-      "overrides": {
-        "telegram": {
-          "delivery": "inline_buttons",
-          "parse_mode": "Markdown",
-          "inline_buttons_enabled": true
-        },
-        "whatsapp": {
-          "delivery": "interactive",
-          "template_enabled": false,
-          "binding": {
-            "content_sid_env": ""
-          }
-        }
-      },
-      "assets": []
-    },
-    {
       "name": "NEW_MESSAGE_4",
       "id": 202606071281,
-      "group": "postoo_chat",
+      "group": "postoochat_chatcenter",
       "category": "archive",
       "description": "Describe what this message is for.",
       "variables": {},
@@ -4676,7 +4589,7 @@
     {
       "name": "NEW_MESSAGE_8",
       "id": 202606071285,
-      "group": "postoo_chat",
+      "group": "postoochat_chatcenter",
       "category": "archive",
       "description": "Describe what this message is for.",
       "variables": {},
@@ -4752,7 +4665,7 @@
     {
       "name": "NEW_MESSAGE_9",
       "id": 202606071286,
-      "group": "postoo_chat",
+      "group": "postoochat_chatcenter",
       "category": "archive",
       "description": "Describe what this message is for.",
       "variables": {},
@@ -4828,7 +4741,7 @@
     {
       "name": "NEW_MESSAGE_11",
       "id": 202606071288,
-      "group": "postoo_chat",
+      "group": "postoochat_chatcenter",
       "category": "archive",
       "description": "Describe what this message is for.",
       "variables": {},
@@ -6417,6 +6330,146 @@
         }
       },
       "assets": []
+    },
+    {
+      "name": "HELP",
+      "id": 202609090101,
+      "description": "Suite-wide help and recovery message.",
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_HELP",
+      "variables": {},
+      "default": {
+        "title": "PosTooChat Help",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Need help? Reply MENU to return to the available apps. To stop a consent-based onboarding after you have agreed, reply WITHDRAW. If you cannot continue, contact support@postoochat.com and include a short description of what happened.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "HTML",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": []
+    },
+    {
+      "name": "SESSION_EXPIRED",
+      "id": 202609090102,
+      "description": "Suite-wide session expiry notification.",
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_SESSION_EXPIRED",
+      "variables": {},
+      "default": {
+        "title": "Session expired",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "For your security, this session has expired. Reply START to begin again.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "HTML",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": []
+    },
+    {
+      "name": "SYSTEM_UNAVAILABLE",
+      "id": 202609090103,
+      "description": "Suite-wide temporary service-unavailability notification.",
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_SYSTEM_UNAVAILABLE",
+      "variables": {},
+      "default": {
+        "title": "Temporarily unavailable",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "That app is currently under construction and will be available soon. Your account setup is complete; please return later to continue. Choose Close to return to the Suite menu, or Exit to sign out and return to the start.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": [
+          {
+            "key": "close",
+            "label": "Close",
+            "triggers": [
+              "close"
+            ],
+            "live": true
+          },
+          {
+            "key": "exit",
+            "label": "Exit",
+            "triggers": [
+              "exit"
+            ],
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "HTML",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [],
+      "links": []
     }
   ]
 }

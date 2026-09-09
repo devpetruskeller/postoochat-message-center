@@ -32,6 +32,45 @@ messages.json
 `messages.json` is committed to Git and is the catalog deployed to production.
 `messages.export.json` remains a local generated artifact.
 
+## Postoochat Suite routing
+
+`postoochat_suite` is the shared conversational front door. Its **General**
+messages expose stable `suite_key` aliases while retaining the established
+delivery names during migration. The communication server uses the following
+contract for both Telegram and WhatsApp:
+
+- A person who has not yet entered a chat app receives `SUITE_APP_ROUTER` (`START_HERE`).
+- Once they have entered an app, `MENU`, `START`, and `HOME` send `SUITE_ENTRY` (`START_MENU`).
+- An app-specific entry word routes to that app and records it as the person's
+  last active app.
+- Any other inbound message resumes the last active app; when no app is known,
+  it receives `SUITE_APP_ROUTER`.
+
+Apps should provide their own explicit entry words. The Suite Start message
+must therefore explain the available apps and how to return with `HOME`.
+
+### Local onboarding and 2FA fallback
+
+For the local Suite test flow, Message Center is the content source of truth:
+
+1. `START_HERE` (`SUITE_APP_ROUTER`) lets the person choose PosTooChat.
+2. `ONBOARDING` (`SUITE_ONBOARDING_PROFILE`) collects a mobile number and birth date.
+3. `I_CONSENT` (`SUITE_PRIVACY_CONSENT`) records `AGREE`, `DECLINE`, or `WITHDRAW`.
+4. `CONSENT_REQUEST_2FA` and `ONBOARD_2FA` issue a local authenticator setup key and validate the current six-digit TOTP code.
+5. When the code is valid, the current local fallback sends `SUITE_SYSTEM_UNAVAILABLE`: “That app is currently under construction and will be available soon.”
+
+A later app handoff must be explicitly configured with the selected app's
+trusted callback endpoint and an approved, minimum-data payload contract.
+
+### App-directory safe sync
+
+On Notify, Message Center derives the Suite app directory from groups named
+`postoochat_<app-id>`. Entries present in the export are enabled or updated.
+If a previously Message Center-managed group is removed, its directory entry is
+disabled rather than deleted. Re-adding the group re-enables it. This directory
+contains only app-picker metadata; secure callback URLs and signing secrets are
+managed separately by the communications application registry.
+
 ## Production release flow
 
 The production Message Center is updated by the GitHub Actions workflow in

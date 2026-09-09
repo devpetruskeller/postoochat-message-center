@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import io
 import hmac
+import html
 import mimetypes
 import os
 import re
@@ -84,6 +85,31 @@ def normalize_taxonomy(raw_taxonomy: Any, messages: list[dict[str, Any]]) -> dic
         group: sorted(categories, key=lambda value: (value != "", value))
         for group, categories in sorted(taxonomy.items())
     }
+
+
+def build_suite_app_directory(taxonomy: dict[str, list[str]]) -> list[dict[str, str]]:
+    """Derive safe app-picker metadata from Message Center group names."""
+    labels = {
+        "chatcenter": "ChatCenter",
+        "faceluv": "FaceLuv",
+        "market": "Market",
+        "ride": "Ride",
+    }
+    apps: list[dict[str, str]] = []
+    for group in sorted(taxonomy):
+        if not group.startswith("postoochat_") or group == "postoochat_suite":
+            continue
+        app_id = group.removeprefix("postoochat_")
+        if not app_id:
+            continue
+        apps.append({
+            "app_id": app_id,
+            "label": labels.get(app_id, app_id.replace("_", " ").title()),
+            "message_group": group,
+            "onboarding": "suite",
+            "availability": "under_construction",
+        })
+    return apps
 
 
 def load_catalog() -> dict[str, Any]:
@@ -639,47 +665,69 @@ def apply_transforms(text: str, formats: list[str] | None = None) -> str:
     return value
 
 
-def wrap_styled_text(text: str, formats: list[str] | None, channel: str) -> str:
+def wrap_styled_text(
+    text: str,
+    formats: list[str] | None,
+    channel: str,
+    parse_mode: str = "",
+    escape_html: bool = True,
+) -> str:
     value = apply_transforms(text, formats)
+    is_telegram_html = channel == "telegram" and parse_mode.lower() == "html"
+    if is_telegram_html and escape_html:
+        value = html.escape(value)
+    # Telegram's Markdown delimiters cannot contain the trailing or leading
+    # spaces that naturally occur between Composer text parts. Keep those
+    # spaces outside the delimiters, for example `_*Mini-App*_ ` rather than
+    # `_*Mini-App *_`, so Telegram renders the selected formatting.
+    leading_whitespace = value[:len(value) - len(value.lstrip())]
+    trailing_whitespace = value[len(value.rstrip()):]
+    value = value.strip()
+    if not value:
+        return leading_whitespace + trailing_whitespace
     wrappers: list[tuple[str, str]] = []
     format_list = formats or []
 
     if "bold" in format_list:
-        wrappers.append(("*", "*"))
+        wrappers.append(("<b>", "</b>") if is_telegram_html else ("*", "*"))
     if "italic" in format_list:
-        wrappers.append(("_", "_"))
+        wrappers.append(("<i>", "</i>") if is_telegram_html else ("_", "_"))
     if "strike" in format_list:
-        wrappers.append(("~", "~"))
+        wrappers.append(("<s>", "</s>") if is_telegram_html else ("~", "~"))
     if "code" in format_list:
-        wrappers.append(("`", "`"))
+        wrappers.append(("<code>", "</code>") if is_telegram_html else ("`", "`"))
     if "quote" in format_list:
         value = f"> {value}"
-    if "underline" in format_list and channel == "whatsapp":
+    if "underline" in format_list and is_telegram_html:
+        wrappers.append(("<u>", "</u>"))
+    elif "underline" in format_list and channel == "whatsapp":
         wrappers.append(("_", "_"))
     if "spoiler" in format_list:
         wrappers.append(("||", "||"))
 
     for prefix, suffix in wrappers:
         value = f"{prefix}{value}{suffix}"
-    return value
+    return f"{leading_whitespace}{value}{trailing_whitespace}"
 
 
 def interpolate_text(text: str, variables: dict[str, str]) -> str:
     return re.sub(r"{{\s*([a-zA-Z0-9_]+)\s*}}", lambda match: variables.get(match.group(1), ""), text)
 
 
-def render_block_text(block: dict[str, Any], variables: dict[str, str], channel: str) -> str:
+def render_block_text(block: dict[str, Any], variables: dict[str, str], channel: str, parse_mode: str = "") -> str:
     if isinstance(block.get("parts"), list) and block.get("parts"):
         parts: list[str] = []
         for part in block.get("parts", []):
             if not isinstance(part, dict):
                 continue
             interpolated = interpolate_text(str(part.get("text", "")), variables)
-            parts.append(wrap_styled_text(interpolated, part.get("format"), channel))
-        return wrap_styled_text("".join(parts), block.get("format"), channel)
+            parts.append(wrap_styled_text(interpolated, part.get("format"), channel, parse_mode))
+        return wrap_styled_text(
+            "".join(parts), block.get("format"), channel, parse_mode, escape_html=False
+        )
 
     interpolated = interpolate_text(str(block.get("text", "")), variables)
-    return wrap_styled_text(interpolated, block.get("format"), channel)
+    return wrap_styled_text(interpolated, block.get("format"), channel, parse_mode)
 
 
 def merge_variant(base: dict[str, Any] | None, override: dict[str, Any] | None) -> dict[str, Any]:
@@ -712,13 +760,14 @@ def build_export_variables(message: dict[str, Any], channel_variant: dict[str, A
 
 def build_rendered_result(message: dict[str, Any], channel: str) -> tuple[dict[str, str], str]:
     channel_variant = apply_channel_behavior(merge_channel_variant(message, channel), channel)
+    parse_mode = str(channel_variant.get("parse_mode", "") or "")
     visible_blocks = resolved_content_blocks(channel_variant, str(message.get("name", "message")))
     export_variables = build_export_variables(message, channel_variant)
     placeholder_variables = {name: f"{{{{{name}}}}}" for name in export_variables}
 
     lines: list[str] = []
     for block in visible_blocks:
-        rendered = render_block_text(block, placeholder_variables, channel)
+        rendered = render_block_text(block, placeholder_variables, channel, parse_mode)
         if rendered.strip():
             lines.append(rendered)
     return export_variables, "\n\n".join(lines)
@@ -770,14 +819,28 @@ def export_message_record(message: dict[str, Any], channel: str) -> dict[str, An
 
 def build_export_payload(catalog: dict[str, Any]) -> dict[str, Any]:
     messages = [normalize_message_shape(message) for message in catalog.get("messages", []) if isinstance(message, dict)]
+    taxonomy = normalize_taxonomy(catalog.get("taxonomy"), messages)
+    app_directory = build_suite_app_directory(taxonomy)
     exported_messages: list[dict[str, Any]] = []
     for message in messages:
         for channel in ("telegram", "whatsapp"):
-            exported_messages.append(export_message_record(message, channel))
+            exported = export_message_record(message, channel)
+            if message.get("name") == "START_HERE" and message.get("group") == "postoochat_suite":
+                exported["actions"] = [
+                    {
+                        "key": app["app_id"],
+                        "label": app["label"],
+                        "triggers": [str(index + 1), app["app_id"]],
+                        "live": True,
+                    }
+                    for index, app in enumerate(app_directory)
+                ]
+            exported_messages.append(exported)
     return {
         "source": "message_studio",
         "sent_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
         "messages": exported_messages,
+        "app_directory": app_directory,
     }
 
 
@@ -957,6 +1020,10 @@ def filter_export_for_collector(
     ]
     result = dict(payload)
     result["messages"] = filtered
+    result["app_directory"] = [
+        app for app in payload.get("app_directory", [])
+        if isinstance(app, dict) and str(app.get("message_group", "")) in groups
+    ]
     result["collector"] = normalize_collector_group_key(collector_id)
     return result
 
@@ -966,7 +1033,7 @@ INDEX_HTML = r"""<!doctype html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Postoo Message Studio</title>
+  <title>PosTooChat Message Center</title>
   <style>
     :root {
       --bg: #f3efe8;
@@ -2885,7 +2952,13 @@ INDEX_HTML = r"""<!doctype html>
             ...messages
               .filter((message) => message.group === state.selectedGroup)
               .map((message) => message.category)
-          ])].sort((left, right) => String(left).localeCompare(String(right)))
+          ])]
+            // Every group has an internal blank category. Only show it when it
+            // actually contains messages; otherwise it would duplicate "General".
+            .filter((category) => category !== "" || messages.some((message) =>
+              message.group === state.selectedGroup && message.category === ""
+            ))
+            .sort((left, right) => String(left).localeCompare(String(right)))
         : [];
 
       if (state.selectedCategory !== null && !categoryKeys.includes(state.selectedCategory)) {

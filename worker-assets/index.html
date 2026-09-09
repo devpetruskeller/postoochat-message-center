@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Postoo Message Studio</title>
+  <title>PosTooChat Message Center</title>
   <style>
     :root {
       --bg: #f3efe8;
@@ -1937,7 +1937,13 @@
             ...messages
               .filter((message) => message.group === state.selectedGroup)
               .map((message) => message.category)
-          ])].sort((left, right) => String(left).localeCompare(String(right)))
+          ])]
+            // Every group has an internal blank category. Only show it when it
+            // actually contains messages; otherwise it would duplicate "General".
+            .filter((category) => category !== "" || messages.some((message) =>
+              message.group === state.selectedGroup && message.category === ""
+            ))
+            .sort((left, right) => String(left).localeCompare(String(right)))
         : [];
 
       if (state.selectedCategory !== null && !categoryKeys.includes(state.selectedCategory)) {
