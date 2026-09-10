@@ -4030,9 +4030,11 @@ INDEX_HTML = r"""<!doctype html>
           throw new Error(`Notify endpoint returned ${response.status} ${response.statusText || "response"} as ${contentType}, not JSON.`);
         }
         if (!response.ok) {
-          const detail = payload.failed_count
-            ? `${payload.failed_count} collector notification(s) failed`
-            : (payload.error || "Collector notification failed");
+          const detail = payload.detail
+            ? `${payload.error || "Collector notification failed"}: ${payload.detail}`
+            : (payload.failed_count
+              ? `${payload.failed_count} collector notification(s) failed`
+              : (payload.error || "Collector notification failed"));
           throw new Error(detail);
         }
         els.statusText.textContent =
