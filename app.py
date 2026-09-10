@@ -4021,7 +4021,14 @@ INDEX_HTML = r"""<!doctype html>
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({})
         });
-        const payload = await response.json();
+        const responseText = await response.text();
+        let payload = {};
+        try {
+          payload = responseText ? JSON.parse(responseText) : {};
+        } catch {
+          const contentType = response.headers.get("content-type") || "unknown content type";
+          throw new Error(`Notify endpoint returned ${response.status} ${response.statusText || "response"} as ${contentType}, not JSON.`);
+        }
         if (!response.ok) {
           const detail = payload.failed_count
             ? `${payload.failed_count} collector notification(s) failed`
