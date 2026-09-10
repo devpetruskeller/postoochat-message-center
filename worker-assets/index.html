@@ -1005,7 +1005,7 @@
         <div class="composer-header">
           <div>
             <p class="composer-title">Message Composer</p>
-            <p class="composer-copy">Edit the title and body visually. The JSON updates automatically underneath.</p>
+            <p class="composer-copy" id="composer-context">Edit the selected channel's title and body visually. The JSON updates automatically underneath.</p>
           </div>
           <div class="composer-actions">
             <button class="btn secondary" id="add-body-part-button" type="button">Add Text Part</button>
@@ -1041,6 +1041,13 @@
       <div class="channel-admin">
         <p class="channel-admin-copy">Channel block rules let you make a paragraph optional for the selected channel. Numbered menus auto-hide when inline buttons exist.</p>
         <div class="channel-block-list" id="channel-block-list"></div>
+      </div>
+
+      <div class="channel-admin" id="actions-menu-editor" hidden>
+        <p class="channel-admin-copy"><strong>WhatsApp action menu</strong> is generated from this message's <code>actions</code>. Its number, label, and trigger all route through the same action key.</p>
+        <label class="field-label"><input id="actions-menu-enabled" type="checkbox"> Include the generated menu in this message</label>
+        <label class="field-label">Menu instruction<input id="actions-menu-instruction" type="text"></label>
+        <label class="field-label">Item format<input id="actions-menu-item-format" type="text" placeholder="{index}. {label}"></label>
       </div>
 
       <div class="editor-body">
@@ -1162,6 +1169,7 @@
       editorDescription: document.getElementById("editor-description"),
       channelSelect: document.getElementById("channel-select"),
       composerTitleInput: document.getElementById("composer-title-input"),
+      composerContext: document.getElementById("composer-context"),
       composerParts: document.getElementById("composer-parts"),
       composerBlocks: document.getElementById("composer-blocks"),
       addBodyPartButton: document.getElementById("add-body-part-button"),
@@ -1170,6 +1178,10 @@
       jsonEditor: document.getElementById("json-editor"),
       variablesGrid: document.getElementById("variables-grid"),
       channelBlockList: document.getElementById("channel-block-list"),
+      actionsMenuEditor: document.getElementById("actions-menu-editor"),
+      actionsMenuEnabled: document.getElementById("actions-menu-enabled"),
+      actionsMenuInstruction: document.getElementById("actions-menu-instruction"),
+      actionsMenuItemFormat: document.getElementById("actions-menu-item-format"),
       statusText: document.getElementById("status-text"),
       phoneChannel: document.getElementById("phone-channel"),
       deliveryBadge: document.getElementById("delivery-badge"),
@@ -1412,6 +1424,7 @@
         body: (() => {
           const baseBody = base && base.body && typeof base.body === "object" ? base.body : null;
           const overrideBody = override && override.body && typeof override.body === "object" ? override.body : null;
+          if (overrideBody && overrideBody.required === false) return baseBody;
           if (baseBody && overrideBody) return { ...baseBody, ...overrideBody };
           return overrideBody || baseBody;
         })(),
@@ -1429,6 +1442,7 @@
       variant.body = (() => {
         const baseBody = normalizeBodyBlock(message.name || "message", message.default && message.default.body);
         const overrideBody = normalizeBodyBlock(message.name || "message", message.overrides[channel] && message.overrides[channel].body);
+        if (overrideBody && overrideBody.required === false) return baseBody;
         if (baseBody && overrideBody) return { ...baseBody, ...overrideBody };
         return overrideBody || baseBody;
       })();
@@ -1469,10 +1483,10 @@
     }
 
     function ensureBodyBlock(message) {
-      message.default = message.default || {};
-      if (message.default.body && typeof message.default.body === "object") {
-        message.default.body = normalizeBodyBlock(message.name || "message", message.default.body);
-        return message.default.body;
+      const variant = ensureComposerVariant(message);
+      if (variant.body && typeof variant.body === "object") {
+        variant.body = normalizeBodyBlock(message.name || "message", variant.body);
+        return variant.body;
       }
       const body = normalizeBodyBlock(message.name || "message", {
         id: "body",
@@ -1488,8 +1502,19 @@
         ],
         required: true
       });
-      message.default.body = body;
+      variant.body = body;
       return body;
+    }
+
+    // The preview has always resolved a channel override, but the composer used
+    // the shared default.  Keep the editor and preview on the same variant.
+    function ensureComposerVariant(message) {
+      const channel = els.channelSelect.value;
+      message.overrides = message.overrides || {};
+      if (!message.overrides[channel]) {
+        message.overrides[channel] = cloneJson(mergeChannelVariant(message, channel));
+      }
+      return message.overrides[channel];
     }
 
     function normalizeComposerParts(body) {
@@ -1507,7 +1532,8 @@
     }
 
     function editableDefaultBlocks(message) {
-      const blocks = normalizeBlocks(message.name || "message", message.default && message.default.blocks);
+      const variant = mergeChannelVariant(message, els.channelSelect.value);
+      const blocks = normalizeBlocks(message.name || "message", variant.blocks);
       return blocks.filter((block) => block.id !== "numbered_menu");
     }
 
@@ -1552,9 +1578,19 @@
 
     function renderComposer(message) {
       state.syncingComposer = true;
-      const defaultVariant = message && message.default ? message.default : {};
-      const body = normalizeBodyBlock(message && message.name || "message", defaultVariant.body);
-      els.composerTitleInput.value = defaultVariant.title || "";
+      const channel = els.channelSelect.value;
+      els.composerContext.textContent = `Editing the ${channel} channel content. The JSON updates automatically underneath.`;
+      const channelVariant = message ? mergeChannelVariant(message, channel) : {};
+      const supportsActionMenu = channel === "whatsapp" && message && message.group === "postoochat_suite";
+      els.actionsMenuEditor.hidden = !supportsActionMenu;
+      if (supportsActionMenu) {
+        const menu = channelVariant.actions_menu || {};
+        els.actionsMenuEnabled.checked = menu.enabled === true;
+        els.actionsMenuInstruction.value = menu.instruction || "To go to any of the Chat Apps, reply ONLY with the number in front of it.";
+        els.actionsMenuItemFormat.value = menu.item_format || "{index}. {label}";
+      }
+      const body = normalizeBodyBlock(message && message.name || "message", channelVariant.body);
+      els.composerTitleInput.value = channelVariant.title || "";
       els.composerParts.innerHTML = "";
       els.composerBlocks.innerHTML = "";
 
@@ -1626,9 +1662,21 @@
 
     function updateComposerTitle() {
       syncComposerIntoEditor((message) => {
-        message.default = message.default || {};
-        message.default.title = els.composerTitleInput.value;
+        ensureComposerVariant(message).title = els.composerTitleInput.value;
       });
+    }
+
+    function updateActionsMenu() {
+      syncComposerIntoEditor((message) => {
+        const variant = ensureComposerVariant(message);
+        variant.actions_menu = {
+          ...(variant.actions_menu || {}),
+          enabled: els.actionsMenuEnabled.checked,
+          source: "actions",
+          instruction: els.actionsMenuInstruction.value.trim() || "To go to any of the Chat Apps, reply ONLY with the number in front of it.",
+          item_format: els.actionsMenuItemFormat.value.trim() || "{index}. {label}"
+        };
+      }, els.actionsMenuEnabled.checked ? "Included the generated WhatsApp action menu." : "Removed the generated WhatsApp action menu.");
     }
 
     function updateComposerPartText(index, value) {
@@ -1642,12 +1690,13 @@
 
     function updateBlockComposerPartText(blockIndex, partIndex, value) {
       syncComposerIntoEditor((message) => {
+        const variant = ensureComposerVariant(message);
         const blocks = editableDefaultBlocks(message);
         if (!blocks[blockIndex]) return;
         const normalized = normalizeComposableBlock(blocks[blockIndex]);
         if (!normalized.parts[partIndex]) return;
         normalized.parts[partIndex].text = value;
-        message.default.blocks = normalizeBlocks(message.name || "message", message.default.blocks || []).map((block) => (
+        variant.blocks = normalizeBlocks(message.name || "message", variant.blocks || []).map((block) => (
           block.id === normalized.id ? { ...normalized } : block
         ));
       });
@@ -1670,6 +1719,7 @@
 
     function toggleBlockComposerPartFormat(blockIndex, partIndex, formatName) {
       syncComposerIntoEditor((message) => {
+        const variant = ensureComposerVariant(message);
         const blocks = editableDefaultBlocks(message);
         if (!blocks[blockIndex]) return;
         const normalized = normalizeComposableBlock(blocks[blockIndex]);
@@ -1681,7 +1731,7 @@
           formats.add(formatName);
         }
         normalized.parts[partIndex].format = [...formats];
-        message.default.blocks = normalizeBlocks(message.name || "message", message.default.blocks || []).map((block) => (
+        variant.blocks = normalizeBlocks(message.name || "message", variant.blocks || []).map((block) => (
           block.id === normalized.id ? { ...normalized } : block
         ));
       }, `Updated ${formatName} formatting.`);
@@ -1689,6 +1739,7 @@
 
     function toggleBlockComposerFormat(blockIndex, formatName) {
       syncComposerIntoEditor((message) => {
+        const variant = ensureComposerVariant(message);
         const blocks = editableDefaultBlocks(message);
         if (!blocks[blockIndex]) return;
         const normalized = normalizeComposableBlock(blocks[blockIndex]);
@@ -1699,7 +1750,7 @@
           formats.add(formatName);
         }
         normalized.format = [...formats];
-        message.default.blocks = normalizeBlocks(message.name || "message", message.default.blocks || []).map((block) => (
+        variant.blocks = normalizeBlocks(message.name || "message", variant.blocks || []).map((block) => (
           block.id === normalized.id ? { ...normalized } : block
         ));
       }, `Updated block ${formatName} formatting.`);
@@ -1717,6 +1768,7 @@
 
     function removeBlockComposerPart(blockIndex, partIndex) {
       syncComposerIntoEditor((message) => {
+        const variant = ensureComposerVariant(message);
         const blocks = editableDefaultBlocks(message);
         if (!blocks[blockIndex]) return;
         const normalized = normalizeComposableBlock(blocks[blockIndex]);
@@ -1724,7 +1776,7 @@
         if (!normalized.parts.length) {
           normalized.parts = [{ text: "", format: [] }];
         }
-        message.default.blocks = normalizeBlocks(message.name || "message", message.default.blocks || []).map((block) => (
+        variant.blocks = normalizeBlocks(message.name || "message", variant.blocks || []).map((block) => (
           block.id === normalized.id ? { ...normalized } : block
         ));
       }, "Removed block part.");
@@ -1740,11 +1792,12 @@
 
     function addBlockComposerTextPart(blockIndex) {
       syncComposerIntoEditor((message) => {
+        const variant = ensureComposerVariant(message);
         const blocks = editableDefaultBlocks(message);
         if (!blocks[blockIndex]) return;
         const normalized = normalizeComposableBlock(blocks[blockIndex]);
         normalized.parts.push({ text: "New block text.", format: [] });
-        message.default.blocks = normalizeBlocks(message.name || "message", message.default.blocks || []).map((block) => (
+        variant.blocks = normalizeBlocks(message.name || "message", variant.blocks || []).map((block) => (
           block.id === normalized.id ? { ...normalized } : block
         ));
       }, "Added block text part.");
@@ -1780,12 +1833,13 @@
       const variableName = slugify(proposed);
       if (!variableName) return;
       syncComposerIntoEditor((message) => {
+        const variant = ensureComposerVariant(message);
         const blocks = editableDefaultBlocks(message);
         if (!blocks[blockIndex]) return;
         const normalized = normalizeComposableBlock(blocks[blockIndex]);
         normalized.parts.push({ text: `{{${variableName}}}`, format: ["bold"] });
         ensureVariable(message, variableName);
-        message.default.blocks = normalizeBlocks(message.name || "message", message.default.blocks || []).map((block) => (
+        variant.blocks = normalizeBlocks(message.name || "message", variant.blocks || []).map((block) => (
           block.id === normalized.id ? { ...normalized } : block
         ));
       }, `Added variable ${variableName}.`);
@@ -1793,8 +1847,8 @@
 
     function addComposerBlock() {
       syncComposerIntoEditor((message) => {
-        message.default = message.default || {};
-        message.default.blocks = normalizeBlocks(message.name || "message", message.default.blocks || []);
+        const variant = ensureComposerVariant(message);
+        variant.blocks = normalizeBlocks(message.name || "message", variant.blocks || []);
         const newBlock = {
           id: nextParagraphId(message),
           type: "text",
@@ -1810,21 +1864,22 @@
           format: [],
           required: true
         };
-        const numberedMenuIndex = message.default.blocks.findIndex((block) => block.id === "numbered_menu");
+        const numberedMenuIndex = variant.blocks.findIndex((block) => block.id === "numbered_menu");
         if (numberedMenuIndex >= 0) {
-          message.default.blocks.splice(numberedMenuIndex, 0, newBlock);
+          variant.blocks.splice(numberedMenuIndex, 0, newBlock);
         } else {
-          message.default.blocks.push(newBlock);
+          variant.blocks.push(newBlock);
         }
       }, "Added a new block.");
     }
 
     function removeComposerBlock(blockIndex) {
       syncComposerIntoEditor((message) => {
+        const variant = ensureComposerVariant(message);
         const editableBlocks = editableDefaultBlocks(message);
         if (!editableBlocks[blockIndex]) return;
         const blockId = editableBlocks[blockIndex].id;
-        message.default.blocks = normalizeBlocks(message.name || "message", message.default.blocks || []).filter((block) => block.id !== blockId);
+        variant.blocks = normalizeBlocks(message.name || "message", variant.blocks || []).filter((block) => block.id !== blockId);
       }, "Removed block.");
     }
 
@@ -2975,19 +3030,19 @@
       try {
         const message = parseEditorMessage();
         if (!message) return;
-        message.default = message.default || {};
-        message.default.blocks = normalizeBlocks(message.name || "message", message.default.blocks || []);
+        const variant = ensureComposerVariant(message);
+        variant.blocks = normalizeBlocks(message.name || "message", variant.blocks || []);
         const newBlock = {
           id: nextParagraphId(message),
           type: "text",
           text: "New paragraph.",
           required: true
         };
-        const numberedMenuIndex = message.default.blocks.findIndex((block) => block.id === "numbered_menu");
+        const numberedMenuIndex = variant.blocks.findIndex((block) => block.id === "numbered_menu");
         if (numberedMenuIndex >= 0) {
-          message.default.blocks.splice(numberedMenuIndex, 0, newBlock);
+          variant.blocks.splice(numberedMenuIndex, 0, newBlock);
         } else {
-          message.default.blocks.push(newBlock);
+          variant.blocks.push(newBlock);
         }
         writeEditorMessage(message);
         renderComposer(message);
@@ -3029,7 +3084,10 @@
     els.channelSelect.addEventListener("change", () => {
       try {
         const message = parseEditorMessage();
-        if (message) renderChannelBlockControls(message);
+        if (message) {
+          renderComposer(message);
+          renderChannelBlockControls(message);
+        }
       } catch {
         els.channelBlockList.innerHTML = '<div class="channel-block-note">Fix the JSON to manage channel block rules.</div>';
       }
@@ -3042,6 +3100,9 @@
     els.editCategoryButton.addEventListener("click", editSelectedCategory);
     els.removeCategoryButton.addEventListener("click", removeSelectedCategory);
     els.composerTitleInput.addEventListener("change", updateComposerTitle);
+    els.actionsMenuEnabled.addEventListener("change", updateActionsMenu);
+    els.actionsMenuInstruction.addEventListener("change", updateActionsMenu);
+    els.actionsMenuItemFormat.addEventListener("change", updateActionsMenu);
     els.addBodyPartButton.addEventListener("click", addComposerTextPart);
     els.addVariablePartButton.addEventListener("click", addComposerVariablePart);
     els.addBlockButton.addEventListener("click", addComposerBlock);

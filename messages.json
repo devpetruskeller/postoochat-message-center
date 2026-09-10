@@ -182,12 +182,6 @@
                 "text": ": A README with video links is on the way for this flow."
               }
             ]
-          },
-          {
-            "id": "numbered_menu",
-            "type": "text",
-            "text": "Reply with any number from numbered-menu.\n\n1. Chat Center\n2. Book a Trip\n3. More Bookings\n4. Register NOW\n5. Start DEMO",
-            "required": true
           }
         ],
         "actions": [
@@ -372,12 +366,6 @@
                   "text": ": A README with video links is on the way for this flow."
                 }
               ]
-            },
-            {
-              "id": "numbered_menu",
-              "type": "text",
-              "text": "Reply with any number from numbered-menu.\n\n1. Chat Center\n2. Book a Trip\n3. More Bookings\n4. Register NOW\n5. Start DEMO",
-              "required": true
             }
           ]
         },
@@ -385,7 +373,7 @@
           "delivery": "interactive",
           "template_enabled": false,
           "binding": {
-            "content_sid_env": "TWILIO_WHATSAPP_INTRO_CONTENT_SID"
+            "content_sid_env": ""
           },
           "blocks": [
             {
@@ -503,14 +491,14 @@
                   "text": ": A README with video links is on the way for this flow."
                 }
               ]
-            },
-            {
-              "id": "numbered_menu",
-              "type": "text",
-              "text": "Reply with any number from numbered-menu.\n\n1. Chat Center\n2. Book a Trip\n3. More Bookings\n4. Register NOW\n5. Start DEMO",
-              "required": true
             }
-          ]
+          ],
+          "actions_menu": {
+            "enabled": true,
+            "source": "actions",
+            "instruction": "Reply with the number ONLY for any of the following numbered options.",
+            "item_format": "{index}. {label}"
+          }
         }
       },
       "assets": [],
@@ -598,12 +586,6 @@
             ],
             "format": [],
             "required": true
-          },
-          {
-            "id": "numbered_menu",
-            "type": "text",
-            "text": "To proceed, please reply with 1.  Authenticate Now",
-            "required": true
           }
         ],
         "actions": [
@@ -631,6 +613,12 @@
           "template_enabled": false,
           "binding": {
             "content_sid_env": ""
+          },
+          "actions_menu": {
+            "enabled": true,
+            "source": "actions",
+            "instruction": "Reply with one of the following options.",
+            "item_format": "{index}. {label}"
           }
         }
       },
@@ -682,12 +670,6 @@
             ],
             "format": [],
             "required": true
-          },
-          {
-            "id": "numbered_menu",
-            "type": "text",
-            "text": "Reply with 1 for an example screenshot!",
-            "required": true
           }
         ],
         "actions": []
@@ -703,6 +685,12 @@
           "template_enabled": false,
           "binding": {
             "content_sid_env": ""
+          },
+          "actions_menu": {
+            "enabled": false,
+            "source": "actions",
+            "instruction": "Reply with one of the following options.",
+            "item_format": "{index}. {label}"
           }
         }
       },
@@ -780,8 +768,8 @@
         ],
         "actions": [
           {
-            "key": "agree_request_2fa",
-            "label": "Agree & Request 2FA Setup Key",
+            "key": "agree",
+            "label": "Agree",
             "triggers": [
               "1",
               "agree",
@@ -807,7 +795,28 @@
         "telegram": {
           "delivery": "inline_buttons",
           "parse_mode": "Markdown",
-          "inline_buttons_enabled": true
+          "inline_buttons_enabled": true,
+          "body": {
+            "id": "body",
+            "type": "text",
+            "parts": [
+              {
+                "text": "By choosing ",
+                "format": []
+              },
+              {
+                "text": "Agree, ",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": "you agree that PosTooChat may use your channel identity and the profile details you just supplied to create and secure your account with two-factor authentication",
+                "format": []
+              }
+            ],
+            "required": true
+          }
         },
         "whatsapp": {
           "body": {
@@ -815,7 +824,17 @@
             "required": true,
             "parts": [
               {
-                "text": "To continue with PosTooChat onboarding, reply AGREE. To stop, reply DECLINE. You can withdraw later by replying WITHDRAW. Consent is for onboarding and account security only; it is not marketing.",
+                "text": "To continue with PosTooChat onboarding, reply ",
+                "format": []
+              },
+              {
+                "text": "AGREE. ",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": "To stop, reply DECLINE. You can withdraw later by replying WITHDRAW. Consent is for onboarding and account security only; it is not marketing.",
                 "format": []
               }
             ],
@@ -826,6 +845,12 @@
           "blocks": [],
           "binding": {
             "content_sid_env": ""
+          },
+          "actions_menu": {
+            "enabled": true,
+            "source": "actions",
+            "instruction": "Reply with one of the following options.",
+            "item_format": "{index}. {label}"
           }
         }
       },
@@ -858,7 +883,7 @@
               ]
             },
             {
-              "text": "right within Telegram.",
+              "text": "right within your favorite Chat.",
               "format": []
             }
           ],
@@ -1014,12 +1039,6 @@
             ],
             "format": [],
             "required": true
-          },
-          {
-            "id": "numbered_menu",
-            "type": "text",
-            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
-            "required": true
           }
         ],
         "actions": [
@@ -1074,22 +1093,168 @@
         },
         "whatsapp": {
           "title": "PosToo Suite",
-          "body": {
-            "id": "body",
-            "type": "text",
-            "parts": [
-              {
-                "text": "Welcome to PosToo Suite. To enter PosTooChat and begin onboarding, reply POSTOOCHAT.",
-                "format": []
-              }
-            ],
-            "required": true
-          },
-          "blocks": [],
+          "blocks": [
+            {
+              "id": "paragraph_2",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "\ud83d\udcacPosTooChat ",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": "is a Chat Center that enables management to follow and record secure, private chats between sales agents and customers, or teachers and students, or brokers and policy holders,  to provide immediate support, facilitation, and quality control without ever leaving the chat. ",
+                  "format": []
+                }
+              ],
+              "format": [],
+              "required": true
+            },
+            {
+              "id": "paragraph_3",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "\ud83d\ude97 PosTooGo ",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": " let users book rides or register as drivers to earn money. ",
+                  "format": []
+                },
+                {
+                  "text": "Launching Date: 1 September 2026",
+                  "format": [
+                    "italic"
+                  ]
+                }
+              ],
+              "format": [],
+              "required": true
+            },
+            {
+              "id": "paragraph_4",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "PosTooPark ",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": "lets users instantly book a parking space or register to provide parking to earn money. ",
+                  "format": []
+                },
+                {
+                  "text": "Launching Date: 1 September 2026",
+                  "format": [
+                    "italic"
+                  ]
+                }
+              ],
+              "format": [],
+              "required": false
+            },
+            {
+              "id": "paragraph_5",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "PosTooLuv ",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": "helps people find and connect ",
+                  "format": []
+                },
+                {
+                  "text": "anonymously ",
+                  "format": [
+                    "bold",
+                    "italic",
+                    "underline"
+                  ]
+                },
+                {
+                  "text": "with romantic partners via text, and voice calls. ",
+                  "format": []
+                },
+                {
+                  "text": "Launching Date: 15 June 2026",
+                  "format": [
+                    "italic"
+                  ]
+                }
+              ],
+              "format": [],
+              "required": false
+            },
+            {
+              "id": "paragraph_6",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "PosTooMoney ",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": "lets users instantly send quotes, invoices, or purchase orders. ",
+                  "format": []
+                },
+                {
+                  "text": "Launching Date: 1 July 2026",
+                  "format": [
+                    "italic"
+                  ]
+                }
+              ],
+              "format": [],
+              "required": false
+            },
+            {
+              "id": "paragraph_7",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "PosTooBook ",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": "lets users instantly book appointments. ",
+                  "format": []
+                },
+                {
+                  "text": "Launching Date: 1 August 2026",
+                  "format": [
+                    "italic"
+                  ]
+                }
+              ],
+              "format": [],
+              "required": false
+            }
+          ],
           "delivery": "plain_text",
           "template_enabled": false,
           "binding": {
             "content_sid_env": ""
+          },
+          "actions_menu": {
+            "enabled": true,
+            "source": "actions",
+            "instruction": "To go to any of the Chat Apps, reply ONLY with the number in front of it.",
+            "item_format": "{index}. {label}"
           }
         }
       },
@@ -1123,7 +1288,7 @@
             "type": "text",
             "parts": [
               {
-                "text": "Please reply with your mobile number and birth date in the format below.",
+                "text": "Telegram: reply with your mobile number and birth date in the format below. WhatsApp: reply only with your birth date.",
                 "format": []
               },
               {
@@ -1164,6 +1329,52 @@
           "template_enabled": false,
           "binding": {
             "content_sid_env": ""
+          },
+          "body": {
+            "id": "body",
+            "type": "text",
+            "parts": [
+              {
+                "text": "Let's get you up and running. ",
+                "format": [
+                  "bold",
+                  "italic"
+                ]
+              }
+            ],
+            "required": true
+          },
+          "blocks": [
+            {
+              "id": "paragraph_1",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "Reply only with your birth date in YYYY-MM-DD format.",
+                  "format": []
+                }
+              ],
+              "required": true
+            },
+            {
+              "id": "paragraph_2",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "Example: 1990-04-28",
+                  "format": [
+                    "bold"
+                  ]
+                }
+              ],
+              "required": true
+            }
+          ],
+          "actions_menu": {
+            "enabled": false,
+            "source": "actions",
+            "instruction": "Reply with one of the following options.",
+            "item_format": "{index}. {label}"
           }
         }
       },
@@ -1337,6 +1548,12 @@
           "template_enabled": false,
           "binding": {
             "content_sid_env": ""
+          },
+          "actions_menu": {
+            "enabled": true,
+            "source": "actions",
+            "instruction": "Reply with one of the following options.",
+            "item_format": "{index}. {label}"
           }
         }
       },
@@ -1350,13 +1567,7 @@
       "name": "ONBOARD_2FA",
       "id": 202605291023,
       "description": "Set up the authenticator app verification and reply with the 6-digit code.",
-      "variables": {
-        "setup_key": {
-          "type": "text",
-          "required": false,
-          "default": "6RFD6OUD2Q2ZRHK6Z7ZF7ZJP67XOIYMO"
-        }
-      },
+      "variables": {},
       "default": {
         "title": "Authenticator Setup",
         "body": {
@@ -1370,7 +1581,7 @@
               ]
             },
             {
-              "text": "\n\n",
+              "text": "\n\nYour setup key follows in a separate message. Copy it, add it to your authenticator app, then reply with the 6-digit code.",
               "format": []
             }
           ],
@@ -1378,41 +1589,17 @@
         },
         "blocks": [
           {
-            "id": "paragraph_2",
-            "type": "text",
-            "parts": [
-              {
-                "text": "Setup Key: ",
-                "format": [
-                  "bold"
-                ]
-              },
-              {
-                "text": "{{setup_key}}",
-                "format": []
-              }
-            ],
-            "format": [],
-            "required": true
-          },
-          {
             "id": "paragraph_3",
             "type": "text",
             "parts": [
               {
-                "text": "After adding the setup key to your authenticator app, reply with the 6-digit code.",
+                "text": "Copy it, add it to your authenticator app, then reply with the 6-digit code.",
                 "format": [
                   "bold"
                 ]
               }
             ],
             "format": [],
-            "required": true
-          },
-          {
-            "id": "numbered_menu",
-            "type": "text",
-            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
             "required": true
           }
         ],
@@ -1434,14 +1621,80 @@
         "telegram": {
           "delivery": "inline_buttons",
           "parse_mode": "Markdown",
-          "inline_buttons_enabled": true
+          "inline_buttons_enabled": true,
+          "body": {
+            "id": "body",
+            "type": "text",
+            "parts": [
+              {
+                "text": "Set up the authenticator app verification before continuing.",
+                "format": []
+              }
+            ],
+            "required": true
+          },
+          "blocks": [
+            {
+              "id": "paragraph_2",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "Your setup key follows in a separate message. ",
+                  "format": [
+                    "italic"
+                  ]
+                }
+              ],
+              "format": [],
+              "required": true
+            }
+          ],
+          "actions_menu": {
+            "enabled": true,
+            "source": "actions",
+            "instruction": "Reply with the number next to the following options.",
+            "item_format": "{index}. {label}"
+          }
         },
         "whatsapp": {
           "delivery": "interactive",
           "template_enabled": false,
           "binding": {
             "content_sid_env": ""
-          }
+          },
+          "actions_menu": {
+            "enabled": false,
+            "source": "actions",
+            "instruction": "Reply with the number next to the following options.",
+            "item_format": "{index}. {label}"
+          },
+          "body": {
+            "id": "body",
+            "type": "text",
+            "parts": [
+              {
+                "text": "Set up the authenticator app verification before continuing.",
+                "format": []
+              }
+            ],
+            "required": true
+          },
+          "blocks": [
+            {
+              "id": "paragraph_2",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "Your setup key follows in a separate message. ",
+                  "format": [
+                    "italic"
+                  ]
+                }
+              ],
+              "format": [],
+              "required": true
+            }
+          ]
         }
       },
       "assets": [],
@@ -1478,14 +1731,7 @@
           ],
           "required": true
         },
-        "blocks": [
-          {
-            "id": "numbered_menu",
-            "type": "text",
-            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
-            "required": true
-          }
-        ],
+        "blocks": [],
         "actions": [
           {
             "key": "authenticate_now",
@@ -1511,6 +1757,12 @@
           "template_enabled": false,
           "binding": {
             "content_sid_env": ""
+          },
+          "actions_menu": {
+            "enabled": true,
+            "source": "actions",
+            "instruction": "Reply with one of the following options.",
+            "item_format": "{index}. {label}"
           }
         }
       },
@@ -1549,14 +1801,7 @@
           ],
           "required": true
         },
-        "blocks": [
-          {
-            "id": "numbered_menu",
-            "type": "text",
-            "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
-            "required": true
-          }
-        ],
+        "blocks": [],
         "actions": []
       },
       "overrides": {
@@ -1564,14 +1809,7 @@
           "delivery": "inline_buttons",
           "parse_mode": "Markdown",
           "inline_buttons_enabled": true,
-          "blocks": [
-            {
-              "id": "numbered_menu",
-              "type": "text",
-              "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
-              "required": false
-            }
-          ]
+          "blocks": []
         },
         "whatsapp": {
           "delivery": "interactive",
@@ -1579,14 +1817,13 @@
           "binding": {
             "content_sid_env": ""
           },
-          "blocks": [
-            {
-              "id": "numbered_menu",
-              "type": "text",
-              "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
-              "required": false
-            }
-          ]
+          "blocks": [],
+          "actions_menu": {
+            "enabled": false,
+            "source": "actions",
+            "instruction": "Reply with one of the following options.",
+            "item_format": "{index}. {label}"
+          }
         }
       },
       "assets": [],
@@ -1745,12 +1982,6 @@
             ],
             "format": [],
             "required": true
-          },
-          {
-            "id": "numbered_menu",
-            "type": "text",
-            "text": "Reply with any number from numbered-menu.\n\n1. Watch 2FA Video\n2. Send Email NOW!",
-            "required": true
           }
         ],
         "actions": [
@@ -1783,20 +2014,19 @@
           "delivery": "inline_buttons",
           "parse_mode": "Markdown",
           "inline_buttons_enabled": true,
-          "blocks": [
-            {
-              "id": "numbered_menu",
-              "type": "text",
-              "text": "Reply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
-              "required": false
-            }
-          ]
+          "blocks": []
         },
         "whatsapp": {
           "delivery": "interactive",
           "template_enabled": false,
           "binding": {
             "content_sid_env": ""
+          },
+          "actions_menu": {
+            "enabled": true,
+            "source": "actions",
+            "instruction": "Reply with one of the following options.",
+            "item_format": "{index}. {label}"
           }
         }
       },
@@ -6366,6 +6596,12 @@
           "template_enabled": false,
           "binding": {
             "content_sid_env": ""
+          },
+          "actions_menu": {
+            "enabled": false,
+            "source": "actions",
+            "instruction": "Reply with one of the following options.",
+            "item_format": "{index}. {label}"
           }
         }
       },
@@ -6407,6 +6643,12 @@
           "template_enabled": false,
           "binding": {
             "content_sid_env": ""
+          },
+          "actions_menu": {
+            "enabled": false,
+            "source": "actions",
+            "instruction": "Reply with one of the following options.",
+            "item_format": "{index}. {label}"
           }
         }
       },
@@ -6465,6 +6707,12 @@
           "template_enabled": false,
           "binding": {
             "content_sid_env": ""
+          },
+          "actions_menu": {
+            "enabled": true,
+            "source": "actions",
+            "instruction": "Reply with one of the following options.",
+            "item_format": "{index}. {label}"
           }
         }
       },
