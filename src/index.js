@@ -35,7 +35,7 @@ function collectorAuthorized(request, env) {
 }
 
 async function exportPayload(request, env) {
-  const response = await fetch(new Request(new URL("/catalog-export.json", request.url)));
+  const response = await env.ASSETS.fetch(new Request(new URL("/catalog-export.json", request.url)));
   if (!response.ok) throw new Error("catalog_export_not_available");
   return response.json();
 }
@@ -153,13 +153,17 @@ export default {
     }
     if (url.pathname === "/api/export-webhook" && request.method === "POST") {
       if (!env.PT_MESSAGE_COLLECTOR_WEBHOOK || !env.PT_MESSAGE_COLLECTOR_TOKEN) return json({ error: "collector_configuration_missing" }, 409);
-      const payload = await exportPayload(request, env);
-      const response = await fetch(env.PT_MESSAGE_COLLECTOR_WEBHOOK, {
-        method: "POST",
-        headers: { "authorization": `Bearer ${env.PT_MESSAGE_COLLECTOR_TOKEN}`, "content-type": "application/json" },
-        body: JSON.stringify({ event: "message_export.ready", source: payload.source, collector: "postoochat", sent_at: payload.sent_at, rendered_count: payload.messages.length, collection_url: `${url.origin}/api/export/collect/postoochat` }),
-      });
-      return json({ ok: response.ok, exported_count: payload.messages.length, notified_count: response.ok ? 1 : 0, failed_count: response.ok ? 0 : 1 }, response.ok ? 200 : 502);
+      try {
+        const payload = await exportPayload(request, env);
+        const response = await fetch(env.PT_MESSAGE_COLLECTOR_WEBHOOK, {
+          method: "POST",
+          headers: { "authorization": `Bearer ${env.PT_MESSAGE_COLLECTOR_TOKEN}`, "content-type": "application/json" },
+          body: JSON.stringify({ event: "message_export.ready", source: payload.source, collector: "postoochat", sent_at: payload.sent_at, rendered_count: payload.messages.length, collection_url: `${url.origin}/api/export/collect/postoochat` }),
+        });
+        return json({ ok: response.ok, exported_count: payload.messages.length, notified_count: response.ok ? 1 : 0, failed_count: response.ok ? 0 : 1 }, response.ok ? 200 : 502);
+      } catch (error) {
+        return json({ error: "collector_notification_failed", detail: error instanceof Error ? error.message : String(error) }, 502);
+      }
     }
     return json({ error: "not_found" }, 404);
   },
