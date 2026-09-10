@@ -1,3 +1,5 @@
+import catalogExport from "../worker-assets/catalog-export.json";
+
 const json = (value, status = 200) => new Response(JSON.stringify(value), {
   status,
   headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" },
@@ -34,10 +36,8 @@ function collectorAuthorized(request, env) {
   return Boolean(env.PT_MESSAGE_COLLECTOR_TOKEN) && request.headers.get("authorization") === `Bearer ${env.PT_MESSAGE_COLLECTOR_TOKEN}`;
 }
 
-async function exportPayload(request, env) {
-  const response = await fetch(new Request(new URL("/catalog-export.json", request.url)));
-  if (!response.ok) throw new Error("catalog_export_not_available");
-  return response.json();
+function exportPayload() {
+  return catalogExport;
 }
 
 function slugify(value) {
@@ -81,12 +81,12 @@ export default {
     if (!url.pathname.startsWith("/api/")) return env.ASSETS.fetch(request);
     if (url.pathname === "/api/export/collect/postoochat" && request.method === "GET") {
       if (!collectorAuthorized(request, env)) return json({ error: "unauthorized" }, 401);
-      return json(await exportPayload(request, env));
+      return json(exportPayload());
     }
     if (!authorized(request, env)) return json({ error: "unauthorized" }, 401);
 
     if (url.pathname === "/api/catalog" && request.method === "GET") return json(normaliseCatalog(await loadCatalog(env.DB)));
-    if (url.pathname === "/api/export" && request.method === "GET") return json(await exportPayload(request, env));
+    if (url.pathname === "/api/export" && request.method === "GET") return json(exportPayload());
 
     if (url.pathname === "/api/message" && request.method === "GET") {
       const message = messageByName(await loadCatalog(env.DB), url.searchParams.get("name") || "");
@@ -154,7 +154,7 @@ export default {
     if (url.pathname === "/api/export-webhook" && request.method === "POST") {
       if (!env.PT_MESSAGE_COLLECTOR_WEBHOOK || !env.PT_MESSAGE_COLLECTOR_TOKEN) return json({ error: "collector_configuration_missing" }, 409);
       try {
-        const payload = await exportPayload(request, env);
+        const payload = exportPayload();
         const response = await fetch(env.PT_MESSAGE_COLLECTOR_WEBHOOK, {
           method: "POST",
           headers: { "authorization": `Bearer ${env.PT_MESSAGE_COLLECTOR_TOKEN}`, "content-type": "application/json" },
