@@ -1,5 +1,3 @@
-import catalogExport from "../worker-assets/catalog-export.json";
-
 const json = (value, status = 200) => new Response(JSON.stringify(value), {
   status,
   headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" },
@@ -36,8 +34,77 @@ function collectorAuthorized(request, env) {
   return Boolean(env.PT_MESSAGE_COLLECTOR_TOKEN) && request.headers.get("authorization") === `Bearer ${env.PT_MESSAGE_COLLECTOR_TOKEN}`;
 }
 
-function exportPayload() {
-  return catalogExport;
+// The editor persists the authoring catalog in D1.  Do not use a bundled JSON
+// file for collection: doing so makes a successful Save + Notify publish an
+// older deployment artifact rather than the edit the author just saved.
+function mergedVariant(message, channel) {
+  const base = message?.default && typeof message.default === "object" ? message.default : {};
+  const override = message?.overrides?.[channel] && typeof message.overrides[channel] === "object" ? message.overrides[channel] : {};
+  return {
+    ...base, ...override,
+    binding: { ...(base.binding || {}), ...(override.binding || {}) },
+    // An empty override intentionally inherits the shared blocks.
+    blocks: Array.isArray(override.blocks) && override.blocks.length ? override.blocks : (base.blocks || []),
+    actions: Array.isArray(override.actions) ? override.actions : (base.actions || []),
+  };
+}
+
+function renderPart(part, channel, parseMode) {
+  let text = String(part?.text || "");
+  const formats = Array.isArray(part?.format) ? part.format : [];
+  if (formats.includes("uppercase")) text = text.toUpperCase();
+  if (formats.includes("lowercase")) text = text.toLowerCase();
+  if (formats.includes("capitalize")) text = text.replace(/\b\w/g, (char) => char.toUpperCase());
+  const html = channel === "telegram" && String(parseMode).toLowerCase() === "html";
+  if (html) text = text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const wrappers = [["bold", html ? "<b>" : "*", html ? "</b>" : "*"], ["italic", html ? "<i>" : "_", html ? "</i>" : "_"], ["strike", html ? "<s>" : "~", html ? "</s>" : "~"], ["code", html ? "<code>" : "`", html ? "</code>" : "`"]];
+  for (const [format, prefix, suffix] of wrappers) if (formats.includes(format)) text = `${prefix}${text.trim()}${suffix}`;
+  if (formats.includes("underline") && html) text = `<u>${text.trim()}</u>`;
+  if (formats.includes("quote")) text = `> ${text}`;
+  return text;
+}
+
+function exportRecord(message, channel) {
+  const variant = mergedVariant(message, channel);
+  if (channel === "telegram" && variant.inline_buttons_enabled === false) { variant.delivery = "plain_text"; variant.actions = []; }
+  if (channel === "whatsapp" && variant.template_enabled !== true) { variant.delivery = "plain_text"; variant.actions = []; }
+  const parseMode = String(variant.parse_mode || "");
+  const variables = {};
+  if (variant.title) variables.title = String(variant.title);
+  for (const name of Object.keys(message.variables || {})) variables[name] = `{{${name}}}`;
+  // Body is rendered before the named blocks, matching the editor preview.
+  // A non-required text block is editor-only and is not sent to customers.
+  const content = [variant.body, ...(Array.isArray(variant.blocks) ? variant.blocks : [])]
+    .filter((block, index, all) => block && !(block.type === "text" && block.required === false) && (index === 0 || !all.slice(0, index).some((prior) => prior?.id && prior.id === block.id)));
+  const rendered = content
+    .map((block) => Array.isArray(block.parts) && block.parts.length
+      ? block.parts.map((part) => renderPart(part, channel, parseMode)).join("")
+      : renderPart({ text: block?.text, format: block?.format }, channel, parseMode))
+    .filter((text) => text.trim()).join("\n\n");
+  return {
+    id: message.id, name: message.name, suite_key: message.suite_key || "", group: message.group || "postoochat",
+    category: message.category || "", channel, variables, rendered_result: rendered,
+    description: message.description || "", assets: message.assets || [], links: message.links || [], updated_at: new Date().toISOString(),
+    ...(variant.title ? { title: variant.title } : {}), ...(variant.delivery ? { delivery: variant.delivery } : {}),
+    ...(variant.parse_mode ? { parse_mode: variant.parse_mode } : {}), binding: variant.binding || {}, actions: variant.actions || [],
+    ...(channel === "telegram" ? { inline_buttons_enabled: variant.inline_buttons_enabled !== false } : { template_enabled: variant.template_enabled === true }),
+  };
+}
+
+async function exportPayload(db) {
+  const catalog = normaliseCatalog(await loadCatalog(db));
+  const labels = { chatcenter: "ChatCenter", faceluv: "FaceLuv", market: "Market", ride: "Ride" };
+  const app_directory = Object.keys(catalog.taxonomy).sort()
+    .filter((group) => group.startsWith("postoochat_") && group !== "postoochat_suite")
+    .map((message_group) => {
+      const app_id = message_group.slice("postoochat_".length);
+      return { app_id, label: labels[app_id] || app_id.replace(/_/g, " ").replace(/\b\w/g, (char) => char.toUpperCase()), message_group, onboarding: "suite", availability: "under_construction" };
+    });
+  return {
+    source: "message_studio", sent_at: new Date().toISOString(),
+    messages: catalog.messages.flatMap((message) => [exportRecord(message, "telegram"), exportRecord(message, "whatsapp")]),
+    app_directory,
+  };
 }
 
 function slugify(value) {
@@ -81,12 +148,12 @@ export default {
     if (!url.pathname.startsWith("/api/")) return env.ASSETS.fetch(request);
     if (url.pathname === "/api/export/collect/postoochat" && request.method === "GET") {
       if (!collectorAuthorized(request, env)) return json({ error: "unauthorized" }, 401);
-      return json(exportPayload());
+      return json(await exportPayload(env.DB));
     }
     if (!authorized(request, env)) return json({ error: "unauthorized" }, 401);
 
     if (url.pathname === "/api/catalog" && request.method === "GET") return json(normaliseCatalog(await loadCatalog(env.DB)));
-    if (url.pathname === "/api/export" && request.method === "GET") return json(exportPayload());
+    if (url.pathname === "/api/export" && request.method === "GET") return json(await exportPayload(env.DB));
 
     if (url.pathname === "/api/message" && request.method === "GET") {
       const message = messageByName(await loadCatalog(env.DB), url.searchParams.get("name") || "");
@@ -154,7 +221,7 @@ export default {
     if (url.pathname === "/api/export-webhook" && request.method === "POST") {
       if (!env.PT_MESSAGE_COLLECTOR_WEBHOOK || !env.PT_MESSAGE_COLLECTOR_TOKEN) return json({ error: "collector_configuration_missing" }, 409);
       try {
-        const payload = exportPayload();
+        const payload = await exportPayload(env.DB);
         const response = await fetch(env.PT_MESSAGE_COLLECTOR_WEBHOOK, {
           method: "POST",
           headers: { "authorization": `Bearer ${env.PT_MESSAGE_COLLECTOR_TOKEN}`, "content-type": "application/json" },

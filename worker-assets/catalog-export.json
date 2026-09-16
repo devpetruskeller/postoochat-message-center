@@ -1,6 +1,6 @@
 {
   "source": "message_studio",
-  "sent_at": "2026-09-09T14:31:44.982044Z",
+  "sent_at": "2026-09-16T16:14:04.096930Z",
   "messages": [
     {
       "id": 202605270100,
@@ -19,7 +19,7 @@
       "description": "Public start menu for Telegram and WhatsApp entry points.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.963273Z",
+      "updated_at": "2026-09-16T16:14:04.087450Z",
       "title": "\ud83d\ude80 {{company_name}}",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -96,18 +96,80 @@
         "explorer_name": "{{explorer_name}}",
         "explorer_lname": "{{explorer_lname}}"
       },
-      "rendered_result": "Hello *{{explorer_name}}*. Whether you're here to dive into the action or just exploring the possibilities, we've got a path for you. Choose your own adventure from the options below:\n\n*\ud83d\udcacChat Center*: Jump straight into the conversation.\n\n*\ud83d\ude97 Book a Trip*: Map out your next journey.\n\n*\ud83d\udcc5 More Bookings*: Book a pickup, trusted services, or appointments with ease.\n\n*\ud83d\udee1\ufe0f Register NOW*: Unlock new earning opportunities as a driver, lift provider, or caregiver.\n\n*\ud83c\udfae Start DEMO*: Take a guided test drive of the Chat Center.\n\n*\ud83d\udca1 Pro Tip*: A README with video links is on the way for this flow.\n\nReply with any number from numbered-menu.\n\n1. Chat Center\n2. Book a Trip\n3. More Bookings\n4. Register NOW\n5. Start DEMO",
+      "rendered_result": "Hello *{{explorer_name}}*. Whether you're here to dive into the action or just exploring the possibilities, we've got a path for you. Choose your own adventure from the options below:\n\n*\ud83d\udcacChat Center*: Jump straight into the conversation.\n\n*\ud83d\ude97 Book a Trip*: Map out your next journey.\n\n*\ud83d\udcc5 More Bookings*: Book a pickup, trusted services, or appointments with ease.\n\n*\ud83d\udee1\ufe0f Register NOW*: Unlock new earning opportunities as a driver, lift provider, or caregiver.\n\n*\ud83c\udfae Start DEMO*: Take a guided test drive of the Chat Center.\n\n*\ud83d\udca1 Pro Tip*: A README with video links is on the way for this flow.\n\nReply with the number ONLY for any of the following numbered options.\n\n1. Chat Center\n2. Book a Trip\n3. More Bookings\n4. Register NOW\n5. Start DEMO",
       "description": "Public start menu for Telegram and WhatsApp entry points.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.963273Z",
+      "updated_at": "2026-09-16T16:14:04.087688Z",
       "title": "\ud83d\ude80 {{company_name}}",
       "delivery": "plain_text",
       "binding": {
-        "content_sid_env": "TWILIO_WHATSAPP_INTRO_CONTENT_SID"
+        "content_sid_env": ""
       },
-      "actions": [],
-      "template_enabled": false
+      "actions": [
+        {
+          "key": "chat_center",
+          "label": "Chat Center",
+          "triggers": [
+            "1",
+            "chat_center",
+            "chat center"
+          ],
+          "nextMessageId": null,
+          "live": true
+        },
+        {
+          "key": "book_trip",
+          "label": "Book a Trip",
+          "triggers": [
+            "2",
+            "book_trip",
+            "book a trip"
+          ],
+          "nextMessageId": null,
+          "live": true
+        },
+        {
+          "key": "more_bookings",
+          "label": "More Bookings",
+          "triggers": [
+            "3",
+            "more_bookings",
+            "more bookings"
+          ],
+          "nextMessageId": null,
+          "live": true
+        },
+        {
+          "key": "register_now",
+          "label": "Register NOW",
+          "triggers": [
+            "4",
+            "register_now",
+            "register now"
+          ],
+          "nextMessageId": 202605270200,
+          "live": false
+        },
+        {
+          "key": "start_demo",
+          "label": "Start DEMO",
+          "triggers": [
+            "5",
+            "start_demo",
+            "start demo"
+          ],
+          "nextMessageId": 202605281231,
+          "live": false
+        }
+      ],
+      "template_enabled": false,
+      "actions_menu": {
+        "enabled": true,
+        "source": "actions",
+        "instruction": "Reply with the number ONLY for any of the following numbered options.",
+        "item_format": "{index}. {label}"
+      }
     },
     {
       "id": 202605270200,
@@ -126,7 +188,7 @@
       "description": "Checks whether the user already has an account.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.963273Z",
+      "updated_at": "2026-09-16T16:14:04.087848Z",
       "title": "\ud83d\udc4b Looks like you're already with us!",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -159,18 +221,36 @@
         "owner_name": "{{owner_name}}",
         "company_website": "{{company_website}}"
       },
-      "rendered_result": "An account matching your information already exists. It was created, {{creation_date}} by {{owner_name}} for {{company_website}}.\n\n_*If this wasn't you, please email support@postoochat.com for a swift resolution.*_\n\nIf this is you, `open your authenticator app` and tap Authenticate Now.\n_*Please wait for our next request to enter your 2FA code.*_\n\nTo proceed, please reply with 1.  Authenticate Now",
+      "rendered_result": "An account matching your information already exists. It was created, {{creation_date}} by {{owner_name}} for {{company_website}}.\n\n_*If this wasn't you, please email support@postoochat.com for a swift resolution.*_\n\nIf this is you, `open your authenticator app` and tap Authenticate Now.\n_*Please wait for our next request to enter your 2FA code.*_\n\nReply with one of the following options.\n\n1. Authenticate Now",
       "description": "Checks whether the user already has an account.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.964320Z",
+      "updated_at": "2026-09-16T16:14:04.087939Z",
       "title": "\ud83d\udc4b Looks like you're already with us!",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
       },
-      "actions": [],
-      "template_enabled": false
+      "actions": [
+        {
+          "key": "previous_message",
+          "label": "Authenticate Now",
+          "triggers": [
+            "1",
+            "previous_message",
+            "authenticate now"
+          ],
+          "nextMessageId": 202605270300,
+          "live": true
+        }
+      ],
+      "template_enabled": false,
+      "actions_menu": {
+        "enabled": true,
+        "source": "actions",
+        "instruction": "Reply with one of the following options.",
+        "item_format": "{index}. {label}"
+      }
     },
     {
       "id": 202605270300,
@@ -182,11 +262,11 @@
       "variables": {
         "title": "\ud83d\ude80 Onboarding"
       },
-      "rendered_result": " _*Let's get your account set up. Please reply with your mobile number and company website separated by a space.*_ _See the example below. An example screenshot is available._\n\n`*+27821234567 www.company.com*`\n\nReply with 1 for an example screenshot!",
+      "rendered_result": " _*Let's get your account set up. Please reply with your mobile number and company website separated by a space.*_ _See the example below. An example screenshot is available._\n\n`*+27821234567 www.company.com*`",
       "description": "Collects new account details; Media Studio references attached here follow the message.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.964320Z",
+      "updated_at": "2026-09-16T16:14:04.088010Z",
       "title": "\ud83d\ude80 Onboarding",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -204,18 +284,24 @@
       "variables": {
         "title": "\ud83d\ude80 Onboarding"
       },
-      "rendered_result": " _*Let's get your account set up. Please reply with your mobile number and company website separated by a space.*_ _See the example below. An example screenshot is available._\n\n`*+27821234567 www.company.com*`\n\nReply with 1 for an example screenshot!",
+      "rendered_result": " _*Let's get your account set up. Please reply with your mobile number and company website separated by a space.*_ _See the example below. An example screenshot is available._\n\n`*+27821234567 www.company.com*`",
       "description": "Collects new account details; Media Studio references attached here follow the message.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.964320Z",
+      "updated_at": "2026-09-16T16:14:04.088059Z",
       "title": "\ud83d\ude80 Onboarding",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
       },
       "actions": [],
-      "template_enabled": false
+      "template_enabled": false,
+      "actions_menu": {
+        "enabled": false,
+        "source": "actions",
+        "instruction": "Reply with one of the following options.",
+        "item_format": "{index}. {label}"
+      }
     },
     {
       "id": 202605271152,
@@ -227,19 +313,19 @@
       "variables": {
         "title": "Confirm onboarding consent"
       },
-      "rendered_result": "By choosing Agree & Request 2FA Setup Key, you agree that PosTooChat may use your channel identity and the profile details you just supplied to create and secure your account with two-factor authentication. \n\n_This consent is for onboarding and account security only; it is not marketing._\n\nYou may *decline* now. You may withdraw consent at any time by replying *WITHDRAW*; onboarding will stop and access that depends on this consent may be unavailable.",
+      "rendered_result": "By choosing *Agree,* you agree that PosTooChat may use your channel identity and the profile details you just supplied to create and secure your account with two-factor authentication\n\n_This consent is for onboarding and account security only; it is not marketing._\n\nYou may *decline* now. You may withdraw consent at any time by replying *WITHDRAW*; onboarding will stop and access that depends on this consent may be unavailable.",
       "description": "Records Suite onboarding consent before 2FA setup.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.964320Z",
+      "updated_at": "2026-09-16T16:14:04.088140Z",
       "title": "Confirm onboarding consent",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
       "binding": {},
       "actions": [
         {
-          "key": "agree_request_2fa",
-          "label": "Agree & Request 2FA Setup Key",
+          "key": "agree",
+          "label": "Agree",
           "triggers": [
             "1",
             "agree",
@@ -272,18 +358,47 @@
       "variables": {
         "title": "Confirm onboarding consent"
       },
-      "rendered_result": "To continue with PosTooChat onboarding, reply AGREE. To stop, reply DECLINE. You can withdraw later by replying WITHDRAW. Consent is for onboarding and account security only; it is not marketing.",
+      "rendered_result": "To continue with PosTooChat onboarding, reply *AGREE.* To stop, reply DECLINE. You can withdraw later by replying WITHDRAW. Consent is for onboarding and account security only; it is not marketing.\n\n_This consent is for onboarding and account security only; it is not marketing._\n\nYou may *decline* now. You may withdraw consent at any time by replying *WITHDRAW*; onboarding will stop and access that depends on this consent may be unavailable.\n\nReply with one of the following options.\n\n1. Agree\n2. Decline",
       "description": "Records Suite onboarding consent before 2FA setup.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.964320Z",
+      "updated_at": "2026-09-16T16:14:04.088225Z",
       "title": "Confirm onboarding consent",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
       },
-      "actions": [],
-      "template_enabled": false
+      "actions": [
+        {
+          "key": "agree",
+          "label": "Agree",
+          "triggers": [
+            "1",
+            "agree",
+            "agree_request_2fa",
+            "agree & request 2fa setup key"
+          ],
+          "nextMessageId": 202605291023,
+          "live": true
+        },
+        {
+          "key": "decline",
+          "label": "Decline",
+          "triggers": [
+            "2",
+            "decline"
+          ],
+          "nextMessageId": 202609090101,
+          "live": true
+        }
+      ],
+      "template_enabled": false,
+      "actions_menu": {
+        "enabled": true,
+        "source": "actions",
+        "instruction": "Reply with one of the following options.",
+        "item_format": "{index}. {label}"
+      }
     },
     {
       "id": 202605281231,
@@ -299,7 +414,7 @@
       "description": "Introduces PosTooChat; Media Studio references attached here follow the message.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.964320Z",
+      "updated_at": "2026-09-16T16:14:04.088418Z",
       "title": "\ud83d\ude80 PosToo Suite",
       "delivery": "inline_buttons",
       "parse_mode": "HTML",
@@ -354,11 +469,11 @@
       "variables": {
         "title": "PosToo Suite"
       },
-      "rendered_result": "Welcome to PosToo Suite. To enter PosTooChat and begin onboarding, reply POSTOOCHAT.",
+      "rendered_result": "Try any _*Mini-App*_ right within your favorite Chat.\n\n*\ud83d\udcacPosTooChat* is a Chat Center that enables management to follow and record secure, private chats between sales agents and customers, or teachers and students, or brokers and policy holders,  to provide immediate support, facilitation, and quality control without ever leaving the chat. \n\n*\ud83d\ude97 PosTooGo*  let users book rides or register as drivers to earn money. _Launching Date: 1 September 2026_\n\nTo go to any of the Chat Apps, reply ONLY with the number in front of it.\n\n1. ChatCenter\n2. FaceLuv\n3. Market\n4. Ride",
       "description": "Introduces PosTooChat; Media Studio references attached here follow the message.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.964320Z",
+      "updated_at": "2026-09-16T16:14:04.088547Z",
       "title": "PosToo Suite",
       "delivery": "plain_text",
       "binding": {
@@ -402,7 +517,13 @@
           "live": true
         }
       ],
-      "template_enabled": false
+      "template_enabled": false,
+      "actions_menu": {
+        "enabled": true,
+        "source": "actions",
+        "instruction": "To go to any of the Chat Apps, reply ONLY with the number in front of it.",
+        "item_format": "{index}. {label}"
+      }
     },
     {
       "id": 202605281246,
@@ -414,11 +535,11 @@
       "variables": {
         "title": "\ud83d\ude80 Onboarding"
       },
-      "rendered_result": "Let's get your account set up. \n\nPlease reply with your mobile number and birth date in the format below.\n\n *+27821234567 1990-04-28*",
+      "rendered_result": "Let's get your account set up. \n\nReply with your mobile number and birth date in the format below.\n\n *+27821234567 1990-04-25*",
       "description": "Collects onboarding details; Media Studio references attached here follow the message.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.965139Z",
+      "updated_at": "2026-09-16T16:14:04.088654Z",
       "title": "\ud83d\ude80 Onboarding",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -436,18 +557,24 @@
       "variables": {
         "title": "\ud83d\ude80 Onboarding"
       },
-      "rendered_result": "Let's get your account set up. \n\nPlease reply with your mobile number and birth date in the format below.\n\n *+27821234567 1990-04-28*",
+      "rendered_result": "_*Let's get you up and running.*_ \n\nReply only with your birth date in YYYY-MM-DD format.\n\n*Example: 1990-04-24*",
       "description": "Collects onboarding details; Media Studio references attached here follow the message.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.965139Z",
+      "updated_at": "2026-09-16T16:14:04.088723Z",
       "title": "\ud83d\ude80 Onboarding",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
       },
       "actions": [],
-      "template_enabled": false
+      "template_enabled": false,
+      "actions_menu": {
+        "enabled": false,
+        "source": "actions",
+        "instruction": "Reply with one of the following options.",
+        "item_format": "{index}. {label}"
+      }
     },
     {
       "id": 202605281248,
@@ -466,7 +593,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.965139Z",
+      "updated_at": "2026-09-16T16:14:04.088813Z",
       "title": "\ud83d\udc4b Looks like you're already with us!",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -503,7 +630,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.965139Z",
+      "updated_at": "2026-09-16T16:14:04.088906Z",
       "title": "\ud83d\udc4b Looks like you're already with us!",
       "delivery": "plain_text",
       "binding": {
@@ -526,7 +653,7 @@
       "description": "Confirms consent and offers the next 2FA setup step.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.965139Z",
+      "updated_at": "2026-09-16T16:14:04.088945Z",
       "title": "Set up two-factor authentication",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -556,18 +683,36 @@
       "variables": {
         "title": "Set up two-factor authentication"
       },
-      "rendered_result": "Your onboarding consent has been recorded. Request your 2FA setup key to continue securing your PosTooChat account.",
+      "rendered_result": "Your onboarding consent has been recorded. Request your 2FA setup key to continue securing your PosTooChat account.\n\nReply with one of the following options.\n\n1. Request 2FA Setup Key",
       "description": "Confirms consent and offers the next 2FA setup step.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.965139Z",
+      "updated_at": "2026-09-16T16:14:04.088983Z",
       "title": "Set up two-factor authentication",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
       },
-      "actions": [],
-      "template_enabled": false
+      "actions": [
+        {
+          "key": "request_setup_key",
+          "label": "Request 2FA Setup Key",
+          "triggers": [
+            "1",
+            "request_setup_key",
+            "request 2fa setup key"
+          ],
+          "nextMessageId": 202605291023,
+          "live": true
+        }
+      ],
+      "template_enabled": false,
+      "actions_menu": {
+        "enabled": true,
+        "source": "actions",
+        "instruction": "Reply with one of the following options.",
+        "item_format": "{index}. {label}"
+      }
     },
     {
       "id": 202605291023,
@@ -577,14 +722,13 @@
       "category": "General",
       "channel": "telegram",
       "variables": {
-        "title": "Authenticator Setup",
-        "setup_key": "{{setup_key}}"
+        "title": "Authenticator Setup"
       },
-      "rendered_result": "_Set up the authenticator app verification before continuing.\nUse manual entry first if you are on the same phone as Telegram._\n\n\n\n\n\n*Setup Key:* {{setup_key}}\n\n*After adding the setup key to your authenticator app, reply with the 6-digit code.*",
+      "rendered_result": "Set up the authenticator app verification before continuing.\n\n_Your setup key follows in a separate message._ \n\n*Copy it, add it to your authenticator app, then reply with the 6-digit code.*",
       "description": "Set up the authenticator app verification and reply with the 6-digit code.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.965706Z",
+      "updated_at": "2026-09-16T16:14:04.089053Z",
       "title": "Authenticator Setup",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -612,21 +756,38 @@
       "category": "General",
       "channel": "whatsapp",
       "variables": {
-        "title": "Authenticator Setup",
-        "setup_key": "{{setup_key}}"
+        "title": "Authenticator Setup"
       },
-      "rendered_result": "_Set up the authenticator app verification before continuing.\nUse manual entry first if you are on the same phone as Telegram._\n\n\n\n\n\n*Setup Key:* {{setup_key}}\n\n*After adding the setup key to your authenticator app, reply with the 6-digit code.*\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "rendered_result": "Set up the authenticator app verification before continuing.\n\n_Your setup key follows in a separate message._ \n\n*Copy it, add it to your authenticator app, then reply with the 6-digit code.*",
       "description": "Set up the authenticator app verification and reply with the 6-digit code.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.965706Z",
+      "updated_at": "2026-09-16T16:14:04.089116Z",
       "title": "Authenticator Setup",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
       },
-      "actions": [],
-      "template_enabled": false
+      "actions": [
+        {
+          "key": "watch_auth_setup",
+          "label": "Watch Authenticator Setup Video",
+          "triggers": [
+            "1",
+            "watch_auth_setup",
+            "watch authenticator setup video"
+          ],
+          "nextMessageId": 202605281249,
+          "live": true
+        }
+      ],
+      "template_enabled": false,
+      "actions_menu": {
+        "enabled": false,
+        "source": "actions",
+        "instruction": "Reply with the number next to the following options.",
+        "item_format": "{index}. {label}"
+      }
     },
     {
       "id": 202606020511,
@@ -642,7 +803,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.965706Z",
+      "updated_at": "2026-09-16T16:14:04.089170Z",
       "title": "Welcome Back!",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -672,18 +833,36 @@
       "variables": {
         "title": "Welcome Back!"
       },
-      "rendered_result": "To continue, please sign in using your authenticator mobile app. Open the app, have your 6\u2011digit code ready, tap *Authenticate Now* and hold on for the next request to enter your 2FA code.\n\nReply with any number from numbered-menu.\n\n1. Previous Message\n2. Next Message",
+      "rendered_result": "To continue, please sign in using your authenticator mobile app. Open the app, have your 6\u2011digit code ready, tap *Authenticate Now* and hold on for the next request to enter your 2FA code.\n\nReply with one of the following options.\n\n1. Authenticate NOW",
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.965706Z",
+      "updated_at": "2026-09-16T16:14:04.089214Z",
       "title": "Welcome Back!",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
       },
-      "actions": [],
-      "template_enabled": false
+      "actions": [
+        {
+          "key": "authenticate_now",
+          "label": "Authenticate NOW",
+          "triggers": [
+            "1",
+            "authenticate_now",
+            "authenticate now"
+          ],
+          "nextMessageId": 202606020534,
+          "live": true
+        }
+      ],
+      "template_enabled": false,
+      "actions_menu": {
+        "enabled": true,
+        "source": "actions",
+        "instruction": "Reply with one of the following options.",
+        "item_format": "{index}. {label}"
+      }
     },
     {
       "id": 202606020534,
@@ -699,7 +878,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.965706Z",
+      "updated_at": "2026-09-16T16:14:04.089270Z",
       "title": "Check\u2011IN time!",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -721,14 +900,20 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.965706Z",
+      "updated_at": "2026-09-16T16:14:04.089312Z",
       "title": "Check\u2011IN time!",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
       },
       "actions": [],
-      "template_enabled": false
+      "template_enabled": false,
+      "actions_menu": {
+        "enabled": false,
+        "source": "actions",
+        "instruction": "Reply with one of the following options.",
+        "item_format": "{index}. {label}"
+      }
     },
     {
       "id": 202606020535,
@@ -744,7 +929,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.965706Z",
+      "updated_at": "2026-09-16T16:14:04.089366Z",
       "title": "Checked-IN",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -800,7 +985,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.965706Z",
+      "updated_at": "2026-09-16T16:14:04.089425Z",
       "title": "Checked-IN",
       "delivery": "plain_text",
       "binding": {
@@ -819,11 +1004,11 @@
       "variables": {
         "title": "Check\u2011IN FAILED"
       },
-      "rendered_result": "Please try again and reply with your mobile authenticator's *6\u2011digit code* to check in. ",
+      "rendered_result": "Please try again and reply with your mobile authenticator's *6\u2011digit code* to check in. \n\n_*If it fails again, please watch the video on how to set up and use your mobile Authenticator.*_ \n\n*Send an email to support@postoochat.com for a swift resolution.*",
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.965706Z",
+      "updated_at": "2026-09-16T16:14:04.089484Z",
       "title": "Check\u2011IN FAILED",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -864,18 +1049,47 @@
       "variables": {
         "title": "Check\u2011IN FAILED"
       },
-      "rendered_result": "Please try again and reply with your mobile authenticator's *6\u2011digit code* to check in. \n\n_*If it fails again, please watch the video on how to set up and use your mobile Authenticator.*_ \n\n*Send an email to support@postoochat.com for a swift resolution.*\n\nReply with any number from numbered-menu.\n\n1. Watch 2FA Video\n2. Send Email NOW!",
+      "rendered_result": "Please try again and reply with your mobile authenticator's *6\u2011digit code* to check in. \n\n_*If it fails again, please watch the video on how to set up and use your mobile Authenticator.*_ \n\n*Send an email to support@postoochat.com for a swift resolution.*\n\nReply with one of the following options.\n\n1. Watch 2FA Video\n2. Send Email NOW!",
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.965706Z",
+      "updated_at": "2026-09-16T16:14:04.089549Z",
       "title": "Check\u2011IN FAILED",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
       },
-      "actions": [],
-      "template_enabled": false
+      "actions": [
+        {
+          "key": "watch_2fa_video",
+          "label": "Watch 2FA Video",
+          "triggers": [
+            "1",
+            "watch_2fa_video",
+            "watch 2fa video"
+          ],
+          "nextMessageId": 202605291023,
+          "live": true
+        },
+        {
+          "key": "send_email",
+          "label": "Send Email NOW!",
+          "triggers": [
+            "2",
+            "send_email",
+            "send email now!"
+          ],
+          "nextMessageId": null,
+          "live": true
+        }
+      ],
+      "template_enabled": false,
+      "actions_menu": {
+        "enabled": true,
+        "source": "actions",
+        "instruction": "Reply with one of the following options.",
+        "item_format": "{index}. {label}"
+      }
     },
     {
       "id": 202606041250,
@@ -900,7 +1114,7 @@
           "key": "admin_link_follow_up"
         }
       ],
-      "updated_at": "2026-09-09T14:31:44.965706Z",
+      "updated_at": "2026-09-16T16:14:04.089608Z",
       "title": "Invite Admin",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -931,7 +1145,7 @@
           "key": "admin_link_follow_up"
         }
       ],
-      "updated_at": "2026-09-09T14:31:44.966715Z",
+      "updated_at": "2026-09-16T16:14:04.089653Z",
       "title": "Invite Admin",
       "delivery": "plain_text",
       "binding": {
@@ -963,7 +1177,7 @@
           "key": "worker_link_follow_up"
         }
       ],
-      "updated_at": "2026-09-09T14:31:44.966715Z",
+      "updated_at": "2026-09-16T16:14:04.089693Z",
       "title": "Invite Worker",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -994,7 +1208,7 @@
           "key": "worker_link_follow_up"
         }
       ],
-      "updated_at": "2026-09-09T14:31:44.966715Z",
+      "updated_at": "2026-09-16T16:14:04.089734Z",
       "title": "Invite Worker",
       "delivery": "plain_text",
       "binding": {
@@ -1017,7 +1231,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.966715Z",
+      "updated_at": "2026-09-16T16:14:04.089779Z",
       "title": "Admin Checked-IN",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -1073,7 +1287,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.966715Z",
+      "updated_at": "2026-09-16T16:14:04.089837Z",
       "title": "Admin Checked-IN",
       "delivery": "plain_text",
       "binding": {
@@ -1096,7 +1310,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.966715Z",
+      "updated_at": "2026-09-16T16:14:04.089881Z",
       "title": "Worker Checked-IN",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -1130,7 +1344,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.966715Z",
+      "updated_at": "2026-09-16T16:14:04.089934Z",
       "title": "Worker Checked-IN",
       "delivery": "plain_text",
       "binding": {
@@ -1153,7 +1367,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.966715Z",
+      "updated_at": "2026-09-16T16:14:04.089998Z",
       "title": "User Checked-IN",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -1187,7 +1401,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.966715Z",
+      "updated_at": "2026-09-16T16:14:04.090068Z",
       "title": "User Checked-IN",
       "delivery": "plain_text",
       "binding": {
@@ -1211,7 +1425,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.966715Z",
+      "updated_at": "2026-09-16T16:14:04.090125Z",
       "title": "Invite Invalid",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -1234,7 +1448,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.966715Z",
+      "updated_at": "2026-09-16T16:14:04.090182Z",
       "title": "Invite Invalid",
       "delivery": "plain_text",
       "binding": {
@@ -1258,7 +1472,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.966715Z",
+      "updated_at": "2026-09-16T16:14:04.090235Z",
       "title": "Invite Expired",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -1281,7 +1495,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.967754Z",
+      "updated_at": "2026-09-16T16:14:04.090288Z",
       "title": "Invite Expired",
       "delivery": "plain_text",
       "binding": {
@@ -1305,7 +1519,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.967754Z",
+      "updated_at": "2026-09-16T16:14:04.090339Z",
       "title": "Invite Already Used",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -1328,7 +1542,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.967754Z",
+      "updated_at": "2026-09-16T16:14:04.090401Z",
       "title": "Invite Already Used",
       "delivery": "plain_text",
       "binding": {
@@ -1352,7 +1566,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.967754Z",
+      "updated_at": "2026-09-16T16:14:04.090452Z",
       "title": "Invite Revoked",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -1375,7 +1589,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.967754Z",
+      "updated_at": "2026-09-16T16:14:04.090509Z",
       "title": "Invite Revoked",
       "delivery": "plain_text",
       "binding": {
@@ -1399,7 +1613,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.967754Z",
+      "updated_at": "2026-09-16T16:14:04.090562Z",
       "title": "Invite Wrong Workspace",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -1422,7 +1636,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.968420Z",
+      "updated_at": "2026-09-16T16:14:04.090622Z",
       "title": "Invite Wrong Workspace",
       "delivery": "plain_text",
       "binding": {
@@ -1446,7 +1660,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.968420Z",
+      "updated_at": "2026-09-16T16:14:04.090677Z",
       "title": "QR Code Invalid",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -1469,7 +1683,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.968420Z",
+      "updated_at": "2026-09-16T16:14:04.090826Z",
       "title": "QR Code Invalid",
       "delivery": "plain_text",
       "binding": {
@@ -1493,7 +1707,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.968420Z",
+      "updated_at": "2026-09-16T16:14:04.090928Z",
       "title": "QR Code Expired",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -1516,7 +1730,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.968420Z",
+      "updated_at": "2026-09-16T16:14:04.091006Z",
       "title": "QR Code Expired",
       "delivery": "plain_text",
       "binding": {
@@ -1540,7 +1754,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.968420Z",
+      "updated_at": "2026-09-16T16:14:04.091076Z",
       "title": "QR Code Already Used",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -1563,7 +1777,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.968420Z",
+      "updated_at": "2026-09-16T16:14:04.091131Z",
       "title": "QR Code Already Used",
       "delivery": "plain_text",
       "binding": {
@@ -1587,7 +1801,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.968420Z",
+      "updated_at": "2026-09-16T16:14:04.091195Z",
       "title": "QR Code Wrong Workspace",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -1633,7 +1847,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.968420Z",
+      "updated_at": "2026-09-16T16:14:04.091286Z",
       "title": "QR Code Wrong Workspace",
       "delivery": "plain_text",
       "binding": {
@@ -1657,7 +1871,7 @@
       "description": "Shown when a direct-message action is attempted with an invalid or inactive session.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.968420Z",
+      "updated_at": "2026-09-16T16:14:04.091356Z",
       "title": "Session Invalid",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -1680,7 +1894,7 @@
       "description": "Shown when a direct-message action is attempted with an invalid or inactive session.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.969429Z",
+      "updated_at": "2026-09-16T16:14:04.091423Z",
       "title": "Session Invalid",
       "delivery": "plain_text",
       "binding": {
@@ -1704,7 +1918,7 @@
       "description": "Shown when a direct-message route is not allowed in the current governed phase.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.969429Z",
+      "updated_at": "2026-09-16T16:14:04.091485Z",
       "title": "Route Not Allowed",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -1727,7 +1941,7 @@
       "description": "Shown when a direct-message route is not allowed in the current governed phase.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.969429Z",
+      "updated_at": "2026-09-16T16:14:04.091550Z",
       "title": "Route Not Allowed",
       "delivery": "plain_text",
       "binding": {
@@ -1751,7 +1965,7 @@
       "description": "Shown when the intended direct-message recipient cannot be resolved inside the current workspace.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.969429Z",
+      "updated_at": "2026-09-16T16:14:04.091614Z",
       "title": "Recipient Not Found",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -1774,7 +1988,7 @@
       "description": "Shown when the intended direct-message recipient cannot be resolved inside the current workspace.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.969429Z",
+      "updated_at": "2026-09-16T16:14:04.091679Z",
       "title": "Recipient Not Found",
       "delivery": "plain_text",
       "binding": {
@@ -1798,7 +2012,7 @@
       "description": "Shown when a direct-message attempt crosses workspace boundaries.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.969429Z",
+      "updated_at": "2026-09-16T16:14:04.091742Z",
       "title": "Workspace Mismatch",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -1821,7 +2035,7 @@
       "description": "Shown when a direct-message attempt crosses workspace boundaries.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.969429Z",
+      "updated_at": "2026-09-16T16:14:04.091806Z",
       "title": "Workspace Mismatch",
       "delivery": "plain_text",
       "binding": {
@@ -1853,7 +2067,7 @@
           "key": "qrcode_link_follow_up"
         }
       ],
-      "updated_at": "2026-09-09T14:31:44.969429Z",
+      "updated_at": "2026-09-16T16:14:04.091855Z",
       "title": "Website QR Code",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -1884,7 +2098,7 @@
           "key": "qrcode_link_follow_up"
         }
       ],
-      "updated_at": "2026-09-09T14:31:44.969429Z",
+      "updated_at": "2026-09-16T16:14:04.091904Z",
       "title": "Website QR Code",
       "delivery": "plain_text",
       "binding": {
@@ -1907,7 +2121,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.969429Z",
+      "updated_at": "2026-09-16T16:14:04.091945Z",
       "title": "Checked-OUT Admin",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -1941,7 +2155,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.969429Z",
+      "updated_at": "2026-09-16T16:14:04.091995Z",
       "title": "Checked-OUT Admin",
       "delivery": "plain_text",
       "binding": {
@@ -1964,7 +2178,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.969429Z",
+      "updated_at": "2026-09-16T16:14:04.092046Z",
       "title": "Admin Check-IN",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -1998,7 +2212,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.969429Z",
+      "updated_at": "2026-09-16T16:14:04.092102Z",
       "title": "Admin Check-IN",
       "delivery": "plain_text",
       "binding": {
@@ -2021,7 +2235,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.969429Z",
+      "updated_at": "2026-09-16T16:14:04.092149Z",
       "title": "Worker Check-IN",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -2055,7 +2269,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.970431Z",
+      "updated_at": "2026-09-16T16:14:04.092204Z",
       "title": "Worker Check-IN",
       "delivery": "plain_text",
       "binding": {
@@ -2078,7 +2292,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.970431Z",
+      "updated_at": "2026-09-16T16:14:04.092245Z",
       "title": "Checked-OUT Worker",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -2112,7 +2326,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.970431Z",
+      "updated_at": "2026-09-16T16:14:04.092298Z",
       "title": "Checked-OUT Worker",
       "delivery": "plain_text",
       "binding": {
@@ -2135,7 +2349,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.970431Z",
+      "updated_at": "2026-09-16T16:14:04.092363Z",
       "title": "User Checked OUT",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -2157,7 +2371,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.970431Z",
+      "updated_at": "2026-09-16T16:14:04.092429Z",
       "title": "User Checked OUT",
       "delivery": "plain_text",
       "binding": {
@@ -2180,7 +2394,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.970431Z",
+      "updated_at": "2026-09-16T16:14:04.092478Z",
       "title": "New Message",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -2225,7 +2439,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.970431Z",
+      "updated_at": "2026-09-16T16:14:04.092536Z",
       "title": "New Message",
       "delivery": "plain_text",
       "binding": {
@@ -2248,7 +2462,7 @@
       "description": "Set company working hours.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.970431Z",
+      "updated_at": "2026-09-16T16:14:04.092591Z",
       "title": "Onboard Checked-IN",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -2282,7 +2496,7 @@
       "description": "Set company working hours.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.971431Z",
+      "updated_at": "2026-09-16T16:14:04.092670Z",
       "title": "Onboard Checked-IN",
       "delivery": "plain_text",
       "binding": {
@@ -2305,7 +2519,7 @@
       "description": "Set working days and working hours.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.971431Z",
+      "updated_at": "2026-09-16T16:14:04.092745Z",
       "title": "Set Working Hours",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -2327,7 +2541,7 @@
       "description": "Set working days and working hours.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.971431Z",
+      "updated_at": "2026-09-16T16:14:04.092829Z",
       "title": "Set Working Hours",
       "delivery": "plain_text",
       "binding": {
@@ -2350,7 +2564,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.971431Z",
+      "updated_at": "2026-09-16T16:14:04.092941Z",
       "title": "Set Working Hours Error",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -2372,7 +2586,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.971431Z",
+      "updated_at": "2026-09-16T16:14:04.093054Z",
       "title": "Set Working Hours Error",
       "delivery": "plain_text",
       "binding": {
@@ -2395,7 +2609,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.972430Z",
+      "updated_at": "2026-09-16T16:14:04.093109Z",
       "title": "New Message",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -2440,7 +2654,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.972430Z",
+      "updated_at": "2026-09-16T16:14:04.093169Z",
       "title": "New Message",
       "delivery": "plain_text",
       "binding": {
@@ -2463,7 +2677,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.972430Z",
+      "updated_at": "2026-09-16T16:14:04.093214Z",
       "title": "New Message",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -2508,7 +2722,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.972430Z",
+      "updated_at": "2026-09-16T16:14:04.093289Z",
       "title": "New Message",
       "delivery": "plain_text",
       "binding": {
@@ -2531,7 +2745,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.972430Z",
+      "updated_at": "2026-09-16T16:14:04.093343Z",
       "title": "New Message",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -2576,7 +2790,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.972430Z",
+      "updated_at": "2026-09-16T16:14:04.093399Z",
       "title": "New Message",
       "delivery": "plain_text",
       "binding": {
@@ -2599,7 +2813,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.972430Z",
+      "updated_at": "2026-09-16T16:14:04.093445Z",
       "title": "New Message",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -2644,7 +2858,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.972430Z",
+      "updated_at": "2026-09-16T16:14:04.093498Z",
       "title": "New Message",
       "delivery": "plain_text",
       "binding": {
@@ -2667,7 +2881,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.973431Z",
+      "updated_at": "2026-09-16T16:14:04.093541Z",
       "title": "New Message",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -2712,7 +2926,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.973431Z",
+      "updated_at": "2026-09-16T16:14:04.093594Z",
       "title": "New Message",
       "delivery": "plain_text",
       "binding": {
@@ -2735,7 +2949,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.973431Z",
+      "updated_at": "2026-09-16T16:14:04.093639Z",
       "title": "New Message",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -2780,7 +2994,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.973431Z",
+      "updated_at": "2026-09-16T16:14:04.093698Z",
       "title": "New Message",
       "delivery": "plain_text",
       "binding": {
@@ -2803,7 +3017,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.973431Z",
+      "updated_at": "2026-09-16T16:14:04.093742Z",
       "title": "New Message",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -2848,7 +3062,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.973431Z",
+      "updated_at": "2026-09-16T16:14:04.093795Z",
       "title": "New Message",
       "delivery": "plain_text",
       "binding": {
@@ -2871,7 +3085,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.973431Z",
+      "updated_at": "2026-09-16T16:14:04.093838Z",
       "title": "New Message",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -2916,7 +3130,7 @@
       "description": "Describe what this message is for.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.973431Z",
+      "updated_at": "2026-09-16T16:14:04.093892Z",
       "title": "New Message",
       "delivery": "plain_text",
       "binding": {
@@ -2937,7 +3151,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.973431Z",
+      "updated_at": "2026-09-16T16:14:04.093930Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -2956,7 +3170,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.974430Z",
+      "updated_at": "2026-09-16T16:14:04.093965Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -2976,7 +3190,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.974430Z",
+      "updated_at": "2026-09-16T16:14:04.094006Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -2995,7 +3209,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.974430Z",
+      "updated_at": "2026-09-16T16:14:04.094040Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -3015,7 +3229,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.974430Z",
+      "updated_at": "2026-09-16T16:14:04.094079Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -3034,7 +3248,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.974430Z",
+      "updated_at": "2026-09-16T16:14:04.094112Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -3054,7 +3268,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.974430Z",
+      "updated_at": "2026-09-16T16:14:04.094144Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -3073,7 +3287,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.974430Z",
+      "updated_at": "2026-09-16T16:14:04.094177Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -3093,7 +3307,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.974430Z",
+      "updated_at": "2026-09-16T16:14:04.094206Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -3112,7 +3326,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.974430Z",
+      "updated_at": "2026-09-16T16:14:04.094236Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -3132,7 +3346,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.974430Z",
+      "updated_at": "2026-09-16T16:14:04.094273Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -3151,7 +3365,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.974430Z",
+      "updated_at": "2026-09-16T16:14:04.094310Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -3171,7 +3385,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.975431Z",
+      "updated_at": "2026-09-16T16:14:04.094343Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -3190,7 +3404,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.975431Z",
+      "updated_at": "2026-09-16T16:14:04.094375Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -3210,7 +3424,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.975431Z",
+      "updated_at": "2026-09-16T16:14:04.094409Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -3229,7 +3443,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.975431Z",
+      "updated_at": "2026-09-16T16:14:04.094612Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -3249,7 +3463,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.976428Z",
+      "updated_at": "2026-09-16T16:14:04.094646Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -3268,7 +3482,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.976428Z",
+      "updated_at": "2026-09-16T16:14:04.094679Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -3292,7 +3506,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.976428Z",
+      "updated_at": "2026-09-16T16:14:04.094741Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -3315,7 +3529,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.976428Z",
+      "updated_at": "2026-09-16T16:14:04.094789Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -3335,7 +3549,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.976428Z",
+      "updated_at": "2026-09-16T16:14:04.094824Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -3354,7 +3568,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.976428Z",
+      "updated_at": "2026-09-16T16:14:04.094856Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -3374,7 +3588,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.976428Z",
+      "updated_at": "2026-09-16T16:14:04.094889Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -3393,7 +3607,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.976428Z",
+      "updated_at": "2026-09-16T16:14:04.094920Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -3413,7 +3627,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.976428Z",
+      "updated_at": "2026-09-16T16:14:04.094957Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -3432,7 +3646,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.976428Z",
+      "updated_at": "2026-09-16T16:14:04.094989Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -3452,7 +3666,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.977480Z",
+      "updated_at": "2026-09-16T16:14:04.095020Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -3471,7 +3685,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.977480Z",
+      "updated_at": "2026-09-16T16:14:04.095049Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -3491,7 +3705,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.977480Z",
+      "updated_at": "2026-09-16T16:14:04.095080Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -3510,7 +3724,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.977480Z",
+      "updated_at": "2026-09-16T16:14:04.095110Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -3530,7 +3744,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.977480Z",
+      "updated_at": "2026-09-16T16:14:04.095140Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -3549,7 +3763,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.977480Z",
+      "updated_at": "2026-09-16T16:14:04.095170Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -3569,7 +3783,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.977480Z",
+      "updated_at": "2026-09-16T16:14:04.095205Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -3588,7 +3802,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.977480Z",
+      "updated_at": "2026-09-16T16:14:04.095235Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -3611,7 +3825,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.977480Z",
+      "updated_at": "2026-09-16T16:14:04.095290Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -3633,7 +3847,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.977480Z",
+      "updated_at": "2026-09-16T16:14:04.095334Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -3653,7 +3867,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.977480Z",
+      "updated_at": "2026-09-16T16:14:04.095368Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -3672,7 +3886,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.977480Z",
+      "updated_at": "2026-09-16T16:14:04.095398Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -3695,7 +3909,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.977480Z",
+      "updated_at": "2026-09-16T16:14:04.095451Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -3717,7 +3931,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.977480Z",
+      "updated_at": "2026-09-16T16:14:04.095499Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -3740,7 +3954,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.978472Z",
+      "updated_at": "2026-09-16T16:14:04.095539Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -3762,7 +3976,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.978472Z",
+      "updated_at": "2026-09-16T16:14:04.095578Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -3782,7 +3996,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.978472Z",
+      "updated_at": "2026-09-16T16:14:04.095611Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -3801,7 +4015,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.978472Z",
+      "updated_at": "2026-09-16T16:14:04.095643Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -3823,7 +4037,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.978472Z",
+      "updated_at": "2026-09-16T16:14:04.095681Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -3844,7 +4058,7 @@
       "description": "MesCommerce seller onboarding communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.978472Z",
+      "updated_at": "2026-09-16T16:14:04.095721Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -3866,7 +4080,7 @@
       "description": "MesCommerce seller direct-contact consent communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.978472Z",
+      "updated_at": "2026-09-16T16:14:04.095763Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -3887,7 +4101,7 @@
       "description": "MesCommerce seller direct-contact consent communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.978472Z",
+      "updated_at": "2026-09-16T16:14:04.095800Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -3907,7 +4121,7 @@
       "description": "MesCommerce seller direct-contact consent outcome communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.978472Z",
+      "updated_at": "2026-09-16T16:14:04.095832Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -3926,7 +4140,7 @@
       "description": "MesCommerce seller direct-contact consent outcome communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.978472Z",
+      "updated_at": "2026-09-16T16:14:04.095864Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -3948,7 +4162,7 @@
       "description": "MesCommerce optional marketing consent communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.978472Z",
+      "updated_at": "2026-09-16T16:14:04.095902Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -3969,7 +4183,7 @@
       "description": "MesCommerce optional marketing consent communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.978472Z",
+      "updated_at": "2026-09-16T16:14:04.095939Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -3991,7 +4205,7 @@
       "description": "MesCommerce optional marketing consent outcome communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.978472Z",
+      "updated_at": "2026-09-16T16:14:04.095976Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -4012,7 +4226,7 @@
       "description": "MesCommerce optional marketing consent outcome communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.979561Z",
+      "updated_at": "2026-09-16T16:14:04.096014Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -4035,7 +4249,7 @@
       "description": "MesCommerce tracked-share and competition disclosure.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.979561Z",
+      "updated_at": "2026-09-16T16:14:04.096065Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -4057,7 +4271,7 @@
       "description": "MesCommerce tracked-share and competition disclosure.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.979561Z",
+      "updated_at": "2026-09-16T16:14:04.096110Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -4080,7 +4294,7 @@
       "description": "MesCommerce tracked-share outcome communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.979561Z",
+      "updated_at": "2026-09-16T16:14:04.096152Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -4102,7 +4316,7 @@
       "description": "MesCommerce tracked-share outcome communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.979561Z",
+      "updated_at": "2026-09-16T16:14:04.096191Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -4125,7 +4339,7 @@
       "description": "MesCommerce first-time marketplace access consent.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.979561Z",
+      "updated_at": "2026-09-16T16:14:04.096237Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -4147,7 +4361,7 @@
       "description": "MesCommerce first-time marketplace access consent.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.979561Z",
+      "updated_at": "2026-09-16T16:14:04.096287Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -4169,7 +4383,7 @@
       "description": "MesCommerce marketplace access confirmation and return link.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.979561Z",
+      "updated_at": "2026-09-16T16:14:04.096328Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -4190,7 +4404,7 @@
       "description": "MesCommerce marketplace access confirmation and return link.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.980487Z",
+      "updated_at": "2026-09-16T16:14:04.096365Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -4210,7 +4424,7 @@
       "description": "MesCommerce marketplace access consent outcome.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.980487Z",
+      "updated_at": "2026-09-16T16:14:04.096396Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -4229,7 +4443,7 @@
       "description": "MesCommerce marketplace access consent outcome.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.980487Z",
+      "updated_at": "2026-09-16T16:14:04.096428Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -4249,7 +4463,7 @@
       "description": "MesCommerce invalid, expired or self-referral outcome communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.980487Z",
+      "updated_at": "2026-09-16T16:14:04.096459Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -4268,7 +4482,7 @@
       "description": "MesCommerce invalid, expired or self-referral outcome communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.980487Z",
+      "updated_at": "2026-09-16T16:14:04.096488Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -4288,7 +4502,7 @@
       "description": "MesCommerce listing tag request communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.980487Z",
+      "updated_at": "2026-09-16T16:14:04.096518Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -4307,7 +4521,7 @@
       "description": "MesCommerce listing tag request communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.980487Z",
+      "updated_at": "2026-09-16T16:14:04.096546Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -4327,7 +4541,7 @@
       "description": "MesCommerce invalid listing tags communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.980487Z",
+      "updated_at": "2026-09-16T16:14:04.096576Z",
       "delivery": "plain_text",
       "parse_mode": "Markdown",
       "binding": {},
@@ -4346,7 +4560,7 @@
       "description": "MesCommerce invalid listing tags communication.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.980487Z",
+      "updated_at": "2026-09-16T16:14:04.096606Z",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
@@ -4368,7 +4582,7 @@
       "description": "Starts a ChatCenter conversation in WhatsApp or Telegram.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.980487Z",
+      "updated_at": "2026-09-16T16:14:04.096638Z",
       "title": "Welcome to ChatCenter",
       "delivery": "inline_buttons",
       "parse_mode": "Markdown",
@@ -4390,7 +4604,7 @@
       "description": "Starts a ChatCenter conversation in WhatsApp or Telegram.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.980487Z",
+      "updated_at": "2026-09-16T16:14:04.096672Z",
       "title": "Welcome to ChatCenter",
       "delivery": "plain_text",
       "binding": {
@@ -4413,7 +4627,7 @@
       "description": "Suite-wide help and recovery message.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.980487Z",
+      "updated_at": "2026-09-16T16:14:04.096709Z",
       "title": "PosTooChat Help",
       "delivery": "inline_buttons",
       "parse_mode": "HTML",
@@ -4435,14 +4649,20 @@
       "description": "Suite-wide help and recovery message.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.980487Z",
+      "updated_at": "2026-09-16T16:14:04.096746Z",
       "title": "PosTooChat Help",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
       },
       "actions": [],
-      "template_enabled": false
+      "template_enabled": false,
+      "actions_menu": {
+        "enabled": false,
+        "source": "actions",
+        "instruction": "Reply with one of the following options.",
+        "item_format": "{index}. {label}"
+      }
     },
     {
       "id": 202609090102,
@@ -4458,7 +4678,7 @@
       "description": "Suite-wide session expiry notification.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.980487Z",
+      "updated_at": "2026-09-16T16:14:04.096784Z",
       "title": "Session expired",
       "delivery": "inline_buttons",
       "parse_mode": "HTML",
@@ -4480,14 +4700,20 @@
       "description": "Suite-wide session expiry notification.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.980487Z",
+      "updated_at": "2026-09-16T16:14:04.096817Z",
       "title": "Session expired",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
       },
       "actions": [],
-      "template_enabled": false
+      "template_enabled": false,
+      "actions_menu": {
+        "enabled": false,
+        "source": "actions",
+        "instruction": "Reply with one of the following options.",
+        "item_format": "{index}. {label}"
+      }
     },
     {
       "id": 202609090103,
@@ -4503,7 +4729,7 @@
       "description": "Suite-wide temporary service-unavailability notification.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.980487Z",
+      "updated_at": "2026-09-16T16:14:04.096856Z",
       "title": "Temporarily unavailable",
       "delivery": "inline_buttons",
       "parse_mode": "HTML",
@@ -4538,18 +4764,41 @@
       "variables": {
         "title": "Temporarily unavailable"
       },
-      "rendered_result": "That app is currently under construction and will be available soon. Your account setup is complete; please return later to continue. Choose Close to return to the Suite menu, or Exit to sign out and return to the start.",
+      "rendered_result": "That app is currently under construction and will be available soon. Your account setup is complete; please return later to continue. Choose Close to return to the Suite menu, or Exit to sign out and return to the start.\n\nReply with one of the following options.\n\n1. Close\n2. Exit",
       "description": "Suite-wide temporary service-unavailability notification.",
       "assets": [],
       "links": [],
-      "updated_at": "2026-09-09T14:31:44.982044Z",
+      "updated_at": "2026-09-16T16:14:04.096898Z",
       "title": "Temporarily unavailable",
       "delivery": "plain_text",
       "binding": {
         "content_sid_env": ""
       },
-      "actions": [],
-      "template_enabled": false
+      "actions": [
+        {
+          "key": "close",
+          "label": "Close",
+          "triggers": [
+            "close"
+          ],
+          "live": true
+        },
+        {
+          "key": "exit",
+          "label": "Exit",
+          "triggers": [
+            "exit"
+          ],
+          "live": true
+        }
+      ],
+      "template_enabled": false,
+      "actions_menu": {
+        "enabled": true,
+        "source": "actions",
+        "instruction": "Reply with one of the following options.",
+        "item_format": "{index}. {label}"
+      }
     }
   ],
   "app_directory": [
