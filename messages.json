@@ -1316,7 +1316,30 @@
             "required": true
           }
         ],
-        "actions": []
+        "actions": [
+          {
+            "key": "watch_whatsapp_onboarding_example",
+            "label": "Watch WhatsApp example",
+            "triggers": [
+              "1",
+              "watch whatsapp example",
+              "whatsapp example"
+            ],
+            "nextMessageId": 202609170101,
+            "live": true
+          },
+          {
+            "key": "watch_telegram_onboarding_example",
+            "label": "Watch Telegram example",
+            "triggers": [
+              "2",
+              "watch telegram example",
+              "telegram example"
+            ],
+            "nextMessageId": 202609170102,
+            "live": true
+          }
+        ]
       },
       "overrides": {
         "telegram": {
@@ -1399,9 +1422,9 @@
             }
           ],
           "actions_menu": {
-            "enabled": false,
+            "enabled": true,
             "source": "actions",
-            "instruction": "Reply with one of the following options.",
+            "instruction": "Would you like to watch an onboarding example? Reply with a number.",
             "item_format": "{index}. {label}"
           }
         }
@@ -1411,6 +1434,104 @@
       "group": "postoochat_suite",
       "category": "General",
       "suite_key": "SUITE_ONBOARDING_PROFILE"
+    },
+    {
+      "name": "ONBOARDING_EXAMPLE_WHATSAPP",
+      "id": 202609170101,
+      "description": "Plays the WhatsApp onboarding example selected from the ONBOARDING action menu.",
+      "variables": {},
+      "default": {
+        "title": "WhatsApp onboarding example",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Watch this example of the WhatsApp onboarding flow.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [
+        {
+          "assetId": "whatsapp_onboarding_example",
+          "type": "video",
+          "url": "https://api.postoochat.com/wp-content/uploads/2026/09/whatsapp_onboarding.mp4",
+          "live": true,
+          "required": true,
+          "alt": "WhatsApp onboarding example video"
+        }
+      ],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_ONBOARDING_EXAMPLE_WHATSAPP"
+    },
+    {
+      "name": "ONBOARDING_EXAMPLE_TELEGRAM",
+      "id": 202609170102,
+      "description": "Plays the Telegram onboarding example selected from the ONBOARDING action menu.",
+      "variables": {},
+      "default": {
+        "title": "Telegram onboarding example",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Watch this example of the Telegram onboarding flow.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "plain_text",
+          "inline_buttons_enabled": false
+        },
+        "whatsapp": {
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          }
+        }
+      },
+      "assets": [
+        {
+          "assetId": "telegram_onboarding_example",
+          "type": "video",
+          "url": "https://api.postoochat.com/wp-content/uploads/2026/09/compressed_telegram_onboarding.mp4",
+          "live": true,
+          "required": true,
+          "alt": "Telegram onboarding example video"
+        }
+      ],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_ONBOARDING_EXAMPLE_TELEGRAM"
     },
     {
       "name": "ONBOARDED",

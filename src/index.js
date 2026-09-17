@@ -64,10 +64,14 @@ function renderPart(part, channel, parseMode) {
   return text;
 }
 
-function exportRecord(message, channel) {
+function exportRecord(message, channel, { suiteActions = [] } = {}) {
   const variant = mergedVariant(message, channel);
   if (channel === "telegram" && variant.inline_buttons_enabled === false) { variant.delivery = "plain_text"; variant.actions = []; }
-  if (channel === "whatsapp" && variant.template_enabled !== true) { variant.delivery = "plain_text"; variant.actions = []; }
+  // WhatsApp plain-text messages may still use actions as a numbered reply
+  // menu.  Removing them here made START_HERE publish without its router
+  // options, while action-less messages such as ONBOARDING appeared normal.
+  if (channel === "whatsapp" && variant.template_enabled !== true) variant.delivery = "plain_text";
+  if (message.group === "postoochat_suite" && message.name === "START_HERE") variant.actions = suiteActions;
   const parseMode = String(variant.parse_mode || "");
   const variables = {};
   if (variant.title) variables.title = String(variant.title);
@@ -76,18 +80,32 @@ function exportRecord(message, channel) {
   // A non-required text block is editor-only and is not sent to customers.
   const content = [variant.body, ...(Array.isArray(variant.blocks) ? variant.blocks : [])]
     .filter((block, index, all) => block && !(block.type === "text" && block.required === false) && (index === 0 || !all.slice(0, index).some((prior) => prior?.id && prior.id === block.id)));
-  const rendered = content
+  let rendered = content
     .map((block) => Array.isArray(block.parts) && block.parts.length
       ? block.parts.map((part) => renderPart(part, channel, parseMode)).join("")
       : renderPart({ text: block?.text, format: block?.format }, channel, parseMode))
     .filter((text) => text.trim()).join("\n\n");
+  const actionsMenu = variant.actions_menu && typeof variant.actions_menu === "object" ? variant.actions_menu : {};
+  if (channel === "whatsapp" && actionsMenu.enabled === true && variant.actions.length) {
+    const instruction = String(actionsMenu.instruction || "Reply with one of the following options.");
+    const itemFormat = String(actionsMenu.item_format || "{index}. {label}");
+    const menu = variant.actions.map((action, index) => itemFormat
+      .replaceAll("{index}", String(index + 1))
+      .replaceAll("{label}", String(action.label || action.key || ""))
+      .replaceAll("{key}", String(action.key || "")))
+      .join("\n");
+    rendered = [rendered, instruction, menu].filter(Boolean).join("\n\n");
+  }
   return {
     id: message.id, name: message.name, suite_key: message.suite_key || "", group: message.group || "postoochat",
     category: message.category || "", channel, variables, rendered_result: rendered,
     description: message.description || "", assets: message.assets || [], links: message.links || [], updated_at: new Date().toISOString(),
     ...(variant.title ? { title: variant.title } : {}), ...(variant.delivery ? { delivery: variant.delivery } : {}),
     ...(variant.parse_mode ? { parse_mode: variant.parse_mode } : {}), binding: variant.binding || {}, actions: variant.actions || [],
-    ...(channel === "telegram" ? { inline_buttons_enabled: variant.inline_buttons_enabled !== false } : { template_enabled: variant.template_enabled === true }),
+    ...(channel === "telegram" ? { inline_buttons_enabled: variant.inline_buttons_enabled !== false } : {
+      template_enabled: variant.template_enabled === true,
+      ...(Object.keys(actionsMenu).length ? { actions_menu: actionsMenu } : {}),
+    }),
   };
 }
 
@@ -100,9 +118,18 @@ async function exportPayload(db) {
       const app_id = message_group.slice("postoochat_".length);
       return { app_id, label: labels[app_id] || app_id.replace(/_/g, " ").replace(/\b\w/g, (char) => char.toUpperCase()), message_group, onboarding: "suite", availability: "under_construction" };
     });
+  const suiteActions = app_directory.map((app, index) => ({
+    key: app.app_id,
+    label: app.label,
+    triggers: [String(index + 1), app.app_id],
+    live: true,
+  }));
   return {
     source: "message_studio", sent_at: new Date().toISOString(),
-    messages: catalog.messages.flatMap((message) => [exportRecord(message, "telegram"), exportRecord(message, "whatsapp")]),
+    messages: catalog.messages.flatMap((message) => [
+      exportRecord(message, "telegram", { suiteActions }),
+      exportRecord(message, "whatsapp", { suiteActions }),
+    ]),
     app_directory,
   };
 }
