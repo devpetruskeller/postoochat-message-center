@@ -22,7 +22,6 @@ export interface Catalog {
 interface Env {
 	DB: D1Database;
 	ASSETS: Fetcher;
-	MESSAGE_CENTER_ADMIN_TOKEN?: string;
 	PT_MESSAGE_COLLECTOR_TOKEN?: string;
 	PT_MESSAGE_COLLECTOR_WEBHOOK?: string;
 	PT_MESSAGE_STUDIO_PUBLIC_URL?: string;
@@ -41,12 +40,9 @@ function unauthorized(): Response {
 	return json({ error: "unauthorized" }, 401);
 }
 
-function isAuthorized(request: Request, env: Env): boolean {
-	const token = env.MESSAGE_CENTER_ADMIN_TOKEN?.trim();
-	// A token is mandatory before deployment. Allowing its absence locally keeps
-	// first-run catalog import simple and does not expose a deployed worker.
-	return !token || request.headers.get("authorization") === `Bearer ${token}`;
-}
+// Browser/editor requests are protected by Cloudflare Access. The collector
+// endpoint below retains its separate bearer-token check for Supabase.
+function isAuthorized(_request: Request, _env: Env): boolean { return true; }
 
 function collectorAuthorized(request: Request, env: Env): boolean {
 	const token = env.PT_MESSAGE_COLLECTOR_TOKEN?.trim();

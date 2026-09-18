@@ -276,7 +276,6 @@ This endpoint exports only `postoochat_suite / General` records for Telegram and
 Set these Worker secrets before deployment:
 
 ```text
-MESSAGE_CENTER_ADMIN_TOKEN=...            # temporary API fallback only
 PT_MESSAGE_COLLECTOR_TOKEN=...            # shared only with Supabase
 PT_MESSAGE_COLLECTOR_WEBHOOK=https://...  # Supabase export-ready webhook
 ```
