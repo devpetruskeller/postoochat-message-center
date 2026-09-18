@@ -1,0 +1,127 @@
+{
+  "schema_version": "1.0.0",
+  "product": {
+    "name": "PosTooChat Message Center",
+    "purpose": "Author, validate, publish and export conversational messages, actions and media for Telegram and WhatsApp."
+  },
+  "architecture": {
+    "runtime": "Cloudflare Worker written in TypeScript",
+    "authoring_store": "D1",
+    "media_store": "R2 for images, videos and PDFs",
+    "video_delivery": "Direct HTTPS assets initially; Cloudflare Stream may be introduced for transcoding or protected playback.",
+    "source_of_truth": "The D1 catalog managed only by this Worker API.",
+    "legacy_role": "The legacy Python application and messages.json are import-only migration sources and are never a second live authoring path."
+  },
+  "channels": [
+    "telegram",
+    "whatsapp"
+  ],
+  "catalog_shape": {
+    "taxonomy": {
+      "<group>": [
+        "<category>"
+      ]
+    },
+    "messages": [
+      {
+        "id": "unique integer",
+        "name": "stable unique message name",
+        "suite_key": "stable runtime alias",
+        "group": "taxonomy group",
+        "category": "taxonomy category",
+        "description": "authoring note",
+        "variables": {
+          "<variable_name>": {
+            "type": "text",
+            "required": false,
+            "default": "optional default value"
+          }
+        },
+        "default": {
+          "title": "shared title",
+          "body": {
+            "id": "body",
+            "type": "text",
+            "parts": [
+              {
+                "text": "shared copy",
+                "format": []
+              }
+            ],
+            "required": true
+          },
+          "blocks": [],
+          "actions": []
+        },
+        "overrides": {
+          "telegram": {
+            "delivery": "inline_buttons",
+            "inline_buttons_enabled": true
+          },
+          "whatsapp": {
+            "delivery": "interactive",
+            "template_enabled": false,
+            "binding": {
+              "content_sid_env": "Twilio Content SID environment-variable name, or empty when unbound"
+            }
+          }
+        },
+        "assets": [
+          {
+            "assetId": "stable asset identifier",
+            "type": "image | video | audio | document | sticker",
+            "url": "https://published asset URL or Worker-served R2 URL",
+            "live": true,
+            "required": false,
+            "alt": "accessible media description"
+          }
+        ],
+        "links": [
+          {
+            "variable": "variable_name containing the URL",
+            "live": true,
+            "required": false,
+            "mode": "follow_up",
+            "key": "stable link identifier"
+          }
+        ]
+      }
+    ]
+  },
+  "invariants": [
+    "A message name and numeric ID are unique within the catalog.",
+    "A channel override is always saved explicitly under overrides.telegram or overrides.whatsapp; it never mutates default implicitly.",
+    "An action has key, label, triggers and live. It may either route with nextMessageId (which must reference an existing message) or open an asset with assetId (which must reference an asset on the same message), but never both.",
+    "An asset has assetId, type, URL or R2 key, live and required. Asset types are image, video, audio, document and sticker.",
+    "A link references a declared URL variable and is delivered separately only when its mode is follow_up.",
+    "A WhatsApp numbered menu is generated from that message's WhatsApp actions only when actions_menu.enabled is true.",
+    "A WhatsApp override preserves delivery, template_enabled and binding.content_sid_env even when no Twilio template is currently bound.",
+    "A Telegram inline button is generated from that message's Telegram actions only when inline_buttons_enabled is true.",
+    "Every save is followed by validation; invalid catalogs are rejected without changing the persisted catalog.",
+    "Exports are generated from the saved D1 catalog, never from a bundled JSON file."
+  ],
+  "minimum_editor_workflow": [
+    "Load catalog",
+    "Select message",
+    "Select channel",
+    "Edit shared default or explicit channel override",
+    "Validate",
+    "Save",
+    "Reload and compare",
+    "Preview and export"
+  ],
+  "required_api": {
+    "GET /api/health": "health check",
+    "GET /api/catalog": "load the canonical catalog",
+    "PUT /api/catalog": "replace a validated catalog during import or controlled bulk editing",
+    "PUT /api/messages/channel-override": "save one validated explicit channel override",
+    "GET /api/export": "produce Telegram and WhatsApp runtime records from the saved catalog"
+  },
+  "migration_sequence": [
+    "Implement schema validation and the catalog API.",
+    "Import a copy of legacy messages.json into local D1.",
+    "Validate START_HERE and ONBOARDING against the invariants.",
+    "Add the Composer and media library against this API only.",
+    "Run regression tests, then deploy a preview before production cutover."
+  ]
+}
