@@ -20,7 +20,7 @@
   const groupSelect = filters.querySelector("#studio-group");
   const categorySelect = filters.querySelector("#studio-category-select");
   const newMessageButton = filters.querySelector("#studio-new-message");
-  const request = async (path, init = {}) => { const response = await fetch(path, { headers: { "content-type": "application/json" }, ...init }); const payload = await response.json(); if (!response.ok) throw new Error(payload.error || "Request failed"); return payload; };
+  const request = async (path, init = {}) => { const token = sessionStorage.getItem("message_center_admin_token"); const response = await fetch(path, { headers: { "content-type": "application/json", ...(token ? { authorization: `Bearer ${token}` } : {}) }, ...init }); const payload = await response.json(); if (response.status === 401) { const supplied = window.prompt("Enter the Message Center admin token to continue."); if (supplied) { sessionStorage.setItem("message_center_admin_token", supplied.trim()); return request(path, init); } } if (!response.ok) throw new Error(payload.error || "Request failed"); return payload; };
   const applyFilter = () => window.dispatchEvent(new CustomEvent("message-studio-filter", { detail: { group: groupSelect.value, category: categorySelect.value } }));
   const populate = async (groupToSelect, categoryToSelect = "") => {
     const catalog = await request("/api/catalog");
