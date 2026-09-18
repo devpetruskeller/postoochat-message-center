@@ -4,7 +4,7 @@
  */
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "postoochat-message-center-v2",
+	"name": "postoochat-message-center",
 	"main": "src/index.ts",
 	"compatibility_date": "2026-09-16",
 	"compatibility_flags": [
