@@ -1,0 +1,2044 @@
+{
+  "taxonomy": {
+    "postoochat_suite": [
+      "General"
+    ]
+  },
+  "messages": [
+    {
+      "name": "START_MENU",
+      "id": 202605270100,
+      "description": "Public start menu for Telegram and WhatsApp entry points.",
+      "variables": {
+        "company_name": {
+          "type": "text",
+          "required": false,
+          "format": [
+            "uppercase",
+            "bold"
+          ],
+          "default": "PosTooChat"
+        },
+        "explorer_name": {
+          "type": "text",
+          "required": false,
+          "format": [
+            "capitalize",
+            "bold"
+          ],
+          "default": "Friend"
+        },
+        "explorer_lname": {
+          "type": "text",
+          "required": false,
+          "format": [
+            "capitalize",
+            "bold"
+          ],
+          "default": "Keller"
+        }
+      },
+      "default": {
+        "title": "🚀 {{company_name}}",
+        "blocks": [
+          {
+            "id": "intro",
+            "type": "text",
+            "required": true,
+            "parts": [
+              {
+                "text": "Hello ",
+                "format": []
+              },
+              {
+                "text": "{{explorer_name}}",
+                "format": [
+                  "capitalize",
+                  "bold"
+                ]
+              },
+              {
+                "text": ". Whether you're here to dive into the action or just exploring the possibilities, choose your own adventure from the options below:",
+                "format": []
+              }
+            ],
+            "format": []
+          },
+          {
+            "id": "chat_center",
+            "type": "text",
+            "required": true,
+            "parts": [
+              {
+                "text": "💬Chat Center",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": ": Jump straight into the conversation."
+              }
+            ]
+          },
+          {
+            "id": "book_trip",
+            "type": "text",
+            "required": true,
+            "parts": [
+              {
+                "text": "🚗 Book a Trip",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": ": Map out your next journey."
+              }
+            ]
+          },
+          {
+            "id": "more_bookings",
+            "type": "text",
+            "required": true,
+            "parts": [
+              {
+                "text": "📅 More Bookings",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": ": Book a pickup, trusted services, or appointments with ease."
+              }
+            ]
+          },
+          {
+            "id": "register_now",
+            "type": "text",
+            "required": true,
+            "parts": [
+              {
+                "text": "🛡️ Register NOW",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": ": Unlock new earning opportunities as a driver, lift provider, or caregiver."
+              }
+            ]
+          },
+          {
+            "id": "start_demo",
+            "type": "text",
+            "required": true,
+            "parts": [
+              {
+                "text": "🎮 Start DEMO",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": ": Take a guided test drive of the Chat Center."
+              }
+            ]
+          },
+          {
+            "id": "pro_tip",
+            "type": "text",
+            "required": true,
+            "parts": [
+              {
+                "text": "💡 Pro Tip",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": ": A README with video links is on the way for this flow."
+              }
+            ]
+          }
+        ],
+        "actions": [
+          {
+            "key": "chat_center",
+            "label": "Chat Center",
+            "triggers": [
+              "1",
+              "chat_center",
+              "chat center"
+            ],
+            "nextMessageId": null,
+            "live": true
+          },
+          {
+            "key": "book_trip",
+            "label": "Book a Trip",
+            "triggers": [
+              "2",
+              "book_trip",
+              "book a trip"
+            ],
+            "nextMessageId": null,
+            "live": true
+          },
+          {
+            "key": "more_bookings",
+            "label": "More Bookings",
+            "triggers": [
+              "3",
+              "more_bookings",
+              "more bookings"
+            ],
+            "nextMessageId": null,
+            "live": true
+          },
+          {
+            "key": "register_now",
+            "label": "Register NOW",
+            "triggers": [
+              "4",
+              "register_now",
+              "register now"
+            ],
+            "nextMessageId": 202605270200,
+            "live": false
+          },
+          {
+            "key": "start_demo",
+            "label": "Start DEMO",
+            "triggers": [
+              "5",
+              "start_demo",
+              "start demo"
+            ],
+            "nextMessageId": 202605281231,
+            "live": false
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true,
+          "blocks": [
+            {
+              "id": "intro",
+              "type": "text",
+              "required": true,
+              "parts": [
+                {
+                  "text": "Hello ",
+                  "format": []
+                },
+                {
+                  "text": "{{explorer_name}}",
+                  "format": [
+                    "capitalize",
+                    "bold"
+                  ]
+                },
+                {
+                  "text": ". Whether you're here to dive into the action or just exploring the possibilities, choose your own adventure from the options below:",
+                  "format": []
+                }
+              ],
+              "format": []
+            },
+            {
+              "id": "chat_center",
+              "type": "text",
+              "required": true,
+              "parts": [
+                {
+                  "text": "💬Chat Center",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": ": Jump straight into the conversation."
+                }
+              ]
+            },
+            {
+              "id": "book_trip",
+              "type": "text",
+              "required": true,
+              "parts": [
+                {
+                  "text": "🚗 Book a Trip",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": ": Map out your next journey."
+                }
+              ]
+            },
+            {
+              "id": "more_bookings",
+              "type": "text",
+              "required": true,
+              "parts": [
+                {
+                  "text": "📅 More Bookings",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": ": Book a pickup, trusted services, or appointments with ease."
+                }
+              ]
+            },
+            {
+              "id": "register_now",
+              "type": "text",
+              "required": false,
+              "parts": [
+                {
+                  "text": "🛡️ Register NOW",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": ": Unlock new earning opportunities as a driver, lift provider, or caregiver."
+                }
+              ]
+            },
+            {
+              "id": "start_demo",
+              "type": "text",
+              "required": false,
+              "parts": [
+                {
+                  "text": "🎮 Start DEMO",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": ": Take a guided test drive of the Chat Center."
+                }
+              ]
+            },
+            {
+              "id": "pro_tip",
+              "type": "text",
+              "required": true,
+              "parts": [
+                {
+                  "text": "💡 Pro Tip",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": ": A README with video links is on the way for this flow."
+                }
+              ]
+            }
+          ]
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          },
+          "blocks": [
+            {
+              "id": "intro",
+              "type": "text",
+              "required": true,
+              "parts": [
+                {
+                  "text": "Hello "
+                },
+                {
+                  "text": "{{explorer_name}}",
+                  "format": [
+                    "capitalize",
+                    "bold"
+                  ]
+                },
+                {
+                  "text": ". Whether you're here to dive into the action or just exploring the possibilities, we've got a path for you. Choose your own adventure from the options below:"
+                }
+              ]
+            },
+            {
+              "id": "chat_center",
+              "type": "text",
+              "required": true,
+              "parts": [
+                {
+                  "text": "💬Chat Center",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": ": Jump straight into the conversation."
+                }
+              ]
+            },
+            {
+              "id": "book_trip",
+              "type": "text",
+              "required": true,
+              "parts": [
+                {
+                  "text": "🚗 Book a Trip",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": ": Map out your next journey."
+                }
+              ]
+            },
+            {
+              "id": "more_bookings",
+              "type": "text",
+              "required": true,
+              "parts": [
+                {
+                  "text": "📅 More Bookings",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": ": Book a pickup, trusted services, or appointments with ease."
+                }
+              ]
+            },
+            {
+              "id": "register_now",
+              "type": "text",
+              "required": true,
+              "parts": [
+                {
+                  "text": "🛡️ Register NOW",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": ": Unlock new earning opportunities as a driver, lift provider, or caregiver."
+                }
+              ]
+            },
+            {
+              "id": "start_demo",
+              "type": "text",
+              "required": true,
+              "parts": [
+                {
+                  "text": "🎮 Start DEMO",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": ": Take a guided test drive of the Chat Center."
+                }
+              ]
+            },
+            {
+              "id": "pro_tip",
+              "type": "text",
+              "required": true,
+              "parts": [
+                {
+                  "text": "💡 Pro Tip",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": ": A README with video links is on the way for this flow."
+                }
+              ]
+            }
+          ],
+          "actions_menu": {
+            "enabled": true,
+            "source": "actions",
+            "instruction": "Reply with the number ONLY for any of the following numbered options.",
+            "item_format": "{index}. {label}"
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_ENTRY"
+    },
+    {
+      "name": "ONBOARDING_ACCOUNT_EXIST",
+      "id": 202605270200,
+      "description": "Checks whether the user already has an account.",
+      "variables": {
+        "creation_date": {
+          "type": "text",
+          "required": false,
+          "default": "some time ago"
+        },
+        "owner_name": {
+          "type": "text",
+          "required": false,
+          "default": "the owner"
+        },
+        "company_website": {
+          "type": "text",
+          "required": false,
+          "default": ""
+        }
+      },
+      "default": {
+        "title": "👋 Looks like you're already with us!",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "An account matching your information already exists. It was created, {{creation_date}} by {{owner_name}} for {{company_website}}.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "text": "New paragraph.",
+            "required": true,
+            "parts": [
+              {
+                "text": "If this wasn't you, please email support@postoochat.com for a swift resolution.",
+                "format": [
+                  "bold",
+                  "italic"
+                ]
+              }
+            ],
+            "format": []
+          },
+          {
+            "id": "paragraph_3",
+            "type": "text",
+            "parts": [
+              {
+                "text": "If this is you, ",
+                "format": []
+              },
+              {
+                "text": "open your authenticator app ",
+                "format": [
+                  "code"
+                ]
+              },
+              {
+                "text": "and tap Authenticate Now.\n",
+                "format": []
+              },
+              {
+                "text": "Please wait for our next request to enter your 2FA code.",
+                "format": [
+                  "italic",
+                  "bold"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "previous_message",
+            "label": "Authenticate Now",
+            "triggers": [
+              "1",
+              "previous_message",
+              "authenticate now"
+            ],
+            "nextMessageId": 202605270300,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          },
+          "actions_menu": {
+            "enabled": true,
+            "source": "actions",
+            "instruction": "Reply with one of the following options.",
+            "item_format": "{index}. {label}"
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_ACCOUNT_FOUND"
+    },
+    {
+      "name": "NEW_ONBOARDING_ACCOUNT",
+      "id": 202605270300,
+      "description": "Collects new account details; Media Studio references attached here follow the message.",
+      "variables": {},
+      "default": {
+        "title": "🚀 Onboarding",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": " Let's get your account set up. Please reply with your mobile number and company website separated by a space. ",
+              "format": [
+                "bold",
+                "italic"
+              ]
+            },
+            {
+              "text": "See the example below. An example screenshot is available.",
+              "format": [
+                "italic"
+              ]
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": "+27821234567 www.company.com",
+                "format": [
+                  "bold",
+                  "code"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          }
+        ],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          },
+          "actions_menu": {
+            "enabled": false,
+            "source": "actions",
+            "instruction": "Reply with one of the following options.",
+            "item_format": "{index}. {label}"
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_ACCOUNT_NOT_FOUND"
+    },
+    {
+      "name": "I_CONSENT",
+      "id": 202605271152,
+      "description": "Records Suite onboarding consent before 2FA setup.",
+      "variables": {},
+      "default": {
+        "title": "Confirm onboarding consent",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "By choosing Agree & Request 2FA Setup Key, you agree that PosTooChat may use your channel identity and the profile details you just supplied to create and secure your account with two-factor authentication. ",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_1",
+            "type": "text",
+            "parts": [
+              {
+                "text": "This consent is for onboarding and account security only; it is not marketing.",
+                "format": [
+                  "italic"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": "You may ",
+                "format": []
+              },
+              {
+                "text": "decline",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": " now. You may withdraw consent at any time by replying",
+                "format": []
+              },
+              {
+                "text": " WITHDRAW",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": "; onboarding will stop and access that depends on this consent may be unavailable.",
+                "format": []
+              }
+            ],
+            "format": [],
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "agree",
+            "label": "Agree",
+            "triggers": [
+              "1",
+              "agree",
+              "agree_request_2fa",
+              "agree & request 2fa setup key"
+            ],
+            "nextMessageId": 202605291023,
+            "live": true
+          },
+          {
+            "key": "decline",
+            "label": "Decline",
+            "triggers": [
+              "2",
+              "decline"
+            ],
+            "nextMessageId": 202609090101,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true,
+          "body": {
+            "id": "body",
+            "type": "text",
+            "parts": [
+              {
+                "text": "By choosing ",
+                "format": []
+              },
+              {
+                "text": "Agree, ",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": "you agree that PosTooChat may use your channel identity and the profile details you just supplied to create and secure your account with two-factor authentication",
+                "format": []
+              }
+            ],
+            "required": true
+          }
+        },
+        "whatsapp": {
+          "body": {
+            "id": "body",
+            "required": true,
+            "parts": [
+              {
+                "text": "To continue with PosTooChat onboarding, reply ",
+                "format": []
+              },
+              {
+                "text": "AGREE. ",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": "To stop, reply DECLINE. You can withdraw later by replying WITHDRAW. Consent is for onboarding and account security only; it is not marketing.",
+                "format": []
+              }
+            ],
+            "type": "text"
+          },
+          "template_enabled": false,
+          "delivery": "plain_text",
+          "blocks": [],
+          "binding": {
+            "content_sid_env": ""
+          },
+          "actions_menu": {
+            "enabled": true,
+            "source": "actions",
+            "instruction": "Reply with one of the following options.",
+            "item_format": "{index}. {label}"
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_PRIVACY_CONSENT"
+    },
+    {
+      "name": "START_HERE",
+      "id": 202605281231,
+      "description": "Introduces PosTooChat; Media Studio references attached here follow the message.",
+      "variables": {},
+      "default": {
+        "title": "🚀 PosToo Suite",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Try any ",
+              "format": []
+            },
+            {
+              "text": "Mini-App ",
+              "format": [
+                "bold",
+                "italic"
+              ]
+            },
+            {
+              "text": "right within your favorite Chat.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": "💬PosTooChat ",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": "is a Chat Center that enables management to follow and record secure, private chats between sales agents and customers, or teachers and students, or brokers and policy holders,  to provide immediate support, facilitation, and quality control without ever leaving the chat. ",
+                "format": []
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "paragraph_3",
+            "type": "text",
+            "parts": [
+              {
+                "text": "🚗 PosTooGo ",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": " let users book rides or register as drivers to earn money. ",
+                "format": []
+              },
+              {
+                "text": "Launching Date: 1 September 2026",
+                "format": [
+                  "italic"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "paragraph_4",
+            "type": "text",
+            "parts": [
+              {
+                "text": "PosTooPark ",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": "lets users instantly book a parking space or register to provide parking to earn money. ",
+                "format": []
+              },
+              {
+                "text": "Launching Date: 1 September 2026",
+                "format": [
+                  "italic"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "paragraph_5",
+            "type": "text",
+            "parts": [
+              {
+                "text": "PosTooLuv ",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": "helps people find and connect ",
+                "format": []
+              },
+              {
+                "text": "anonymously ",
+                "format": [
+                  "bold",
+                  "italic",
+                  "underline"
+                ]
+              },
+              {
+                "text": "with romantic partners via text, and voice calls. ",
+                "format": []
+              },
+              {
+                "text": "Launching Date: 15 June 2026",
+                "format": [
+                  "italic"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "paragraph_6",
+            "type": "text",
+            "parts": [
+              {
+                "text": "PosTooMoney ",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": "lets users instantly send quotes, invoices, or purchase orders. ",
+                "format": []
+              },
+              {
+                "text": "Launching Date: 1 July 2026",
+                "format": [
+                  "italic"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "paragraph_7",
+            "type": "text",
+            "parts": [
+              {
+                "text": "PosTooBook ",
+                "format": [
+                  "bold"
+                ]
+              },
+              {
+                "text": "lets users instantly book appointments. ",
+                "format": []
+              },
+              {
+                "text": "Launching Date: 1 August 2026",
+                "format": [
+                  "italic"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "chatcenter",
+            "label": "ChatCenter",
+            "triggers": [
+              "1",
+              "chatcenter",
+              "postoochat"
+            ],
+            "nextMessageId": 202605281246,
+            "live": true
+          },
+          {
+            "key": "faceluv",
+            "label": "FaceLuv",
+            "triggers": [
+              "2",
+              "faceluv"
+            ],
+            "nextMessageId": 202605281246,
+            "live": true
+          },
+          {
+            "key": "market",
+            "label": "Market",
+            "triggers": [
+              "3",
+              "market"
+            ],
+            "nextMessageId": 202605281246,
+            "live": true
+          },
+          {
+            "key": "ride",
+            "label": "Ride",
+            "triggers": [
+              "4",
+              "ride"
+            ],
+            "nextMessageId": 202605281246,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "HTML",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "title": "PosToo Suite",
+          "blocks": [
+            {
+              "id": "paragraph_2",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "💬PosTooChat ",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": "is a Chat Center that enables management to follow and record secure, private chats between sales agents and customers, or teachers and students, or brokers and policy holders,  to provide immediate support, facilitation, and quality control without ever leaving the chat. ",
+                  "format": []
+                }
+              ],
+              "format": [],
+              "required": true
+            },
+            {
+              "id": "paragraph_3",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "🚗 PosTooGo ",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": " let users book rides or register as drivers to earn money. ",
+                  "format": []
+                },
+                {
+                  "text": "Launching Date: 1 September 2026",
+                  "format": [
+                    "italic"
+                  ]
+                }
+              ],
+              "format": [],
+              "required": true
+            },
+            {
+              "id": "paragraph_4",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "PosTooPark ",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": "lets users instantly book a parking space or register to provide parking to earn money. ",
+                  "format": []
+                },
+                {
+                  "text": "Launching Date: 1 September 2026",
+                  "format": [
+                    "italic"
+                  ]
+                }
+              ],
+              "format": [],
+              "required": false
+            },
+            {
+              "id": "paragraph_5",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "PosTooLuv ",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": "helps people find and connect ",
+                  "format": []
+                },
+                {
+                  "text": "anonymously ",
+                  "format": [
+                    "bold",
+                    "italic",
+                    "underline"
+                  ]
+                },
+                {
+                  "text": "with romantic partners via text, and voice calls. ",
+                  "format": []
+                },
+                {
+                  "text": "Launching Date: 15 June 2026",
+                  "format": [
+                    "italic"
+                  ]
+                }
+              ],
+              "format": [],
+              "required": false
+            },
+            {
+              "id": "paragraph_6",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "PosTooMoney ",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": "lets users instantly send quotes, invoices, or purchase orders. ",
+                  "format": []
+                },
+                {
+                  "text": "Launching Date: 1 July 2026",
+                  "format": [
+                    "italic"
+                  ]
+                }
+              ],
+              "format": [],
+              "required": false
+            },
+            {
+              "id": "paragraph_7",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "PosTooBook ",
+                  "format": [
+                    "bold"
+                  ]
+                },
+                {
+                  "text": "lets users instantly book appointments. ",
+                  "format": []
+                },
+                {
+                  "text": "Launching Date: 1 August 2026",
+                  "format": [
+                    "italic"
+                  ]
+                }
+              ],
+              "format": [],
+              "required": false
+            }
+          ],
+          "delivery": "plain_text",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          },
+          "actions_menu": {
+            "enabled": true,
+            "source": "actions",
+            "instruction": "To go to any of the Chat Apps, reply ONLY with the number in front of it.",
+            "item_format": "{index}. {label}"
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_APP_ROUTER"
+    },
+    {
+      "name": "ONBOARDING",
+      "id": 202605281246,
+      "description": "Collects onboarding details; Media Studio references attached here follow the message.",
+      "variables": {
+        "admin_link": {
+          "type": "text",
+          "required": false,
+          "default": "https://t.me/postoo_bot?text=Hello%20Admin"
+        }
+      },
+      "default": {
+        "title": "🚀 Onboarding",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Let's get your account set up. ",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_1",
+            "type": "text",
+            "parts": [
+              {
+                "text": "Telegram: reply with your mobile number and birth date in the format below. WhatsApp: reply only with your birth date.",
+                "format": []
+              },
+              {
+                "text": "",
+                "format": [
+                  "bold"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": " +27821234567 1990-04-28",
+                "format": [
+                  "bold"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "watch_whatsapp_onboarding_example",
+            "label": "Watch WhatsApp example",
+            "triggers": [
+              "1",
+              "watch whatsapp example",
+              "whatsapp example"
+            ],
+            "live": true,
+            "assetId": "whatsapp_onboarding_example"
+          },
+          {
+            "key": "watch_telegram_onboarding_example",
+            "label": "Watch Telegram example",
+            "triggers": [
+              "2",
+              "watch telegram example",
+              "telegram example"
+            ],
+            "live": true,
+            "assetId": "telegram_onboarding_example"
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true,
+          "blocks": [
+            {
+              "id": "paragraph_1",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "Reply with your mobile number and birth date in the format below.",
+                  "format": []
+                }
+              ],
+              "format": [],
+              "required": true
+            },
+            {
+              "id": "paragraph_2",
+              "type": "text",
+              "parts": [
+                {
+                  "text": " +27821234567 1990-04-25",
+                  "format": [
+                    "bold"
+                  ]
+                }
+              ],
+              "format": [],
+              "required": true
+            }
+          ]
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          },
+          "body": {
+            "id": "body",
+            "type": "text",
+            "parts": [
+              {
+                "text": "Let's get you up and running. ",
+                "format": [
+                  "bold",
+                  "italic"
+                ]
+              }
+            ],
+            "required": true
+          },
+          "blocks": [
+            {
+              "id": "paragraph_1",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "Reply only with your birth date in YYYY-MM-DD format.",
+                  "format": []
+                }
+              ],
+              "required": true
+            },
+            {
+              "id": "paragraph_2",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "Example: 1990-04-24",
+                  "format": [
+                    "bold"
+                  ]
+                }
+              ],
+              "required": true
+            }
+          ],
+          "actions_menu": {
+            "enabled": true,
+            "source": "actions",
+            "instruction": "Would you like to watch an onboarding example? Reply with a number.",
+            "item_format": "{index}. {label}"
+          }
+        }
+      },
+      "assets": [
+        {
+          "assetId": "whatsapp_onboarding_example",
+          "type": "video",
+          "url": "https://api.postoochat.com/wp-content/uploads/2026/09/whatsapp_onboarding.mp4",
+          "live": true,
+          "required": true,
+          "alt": "WhatsApp onboarding example video"
+        },
+        {
+          "assetId": "telegram_onboarding_example",
+          "type": "video",
+          "url": "https://api.postoochat.com/wp-content/uploads/2026/09/compressed_telegram_onboarding.mp4",
+          "live": true,
+          "required": true,
+          "alt": "Telegram onboarding example video"
+        }
+      ],
+      "links": [
+        {
+          "variable": "admin_link",
+          "live": true,
+          "required": true,
+          "mode": "follow_up",
+          "key": "admin_link_follow_up"
+        }
+      ],
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_ONBOARDING_PROFILE"
+    },
+    {
+      "name": "CONSENT_REQUEST_2FA",
+      "id": 202605281249,
+      "description": "Confirms consent and offers the next 2FA setup step.",
+      "variables": {},
+      "default": {
+        "title": "Set up two-factor authentication",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Your onboarding consent has been recorded. Request your 2FA setup key to continue securing your PosTooChat account.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": [
+          {
+            "key": "request_setup_key",
+            "label": "Request 2FA Setup Key",
+            "triggers": [
+              "1",
+              "request_setup_key",
+              "request 2fa setup key"
+            ],
+            "nextMessageId": 202605291023,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          },
+          "actions_menu": {
+            "enabled": true,
+            "source": "actions",
+            "instruction": "Reply with one of the following options.",
+            "item_format": "{index}. {label}"
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_2FA_SETUP"
+    },
+    {
+      "name": "ONBOARD_2FA",
+      "id": 202605291023,
+      "description": "Set up the authenticator app verification and reply with the 6-digit code.",
+      "variables": {},
+      "default": {
+        "title": "Authenticator Setup",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Set up the authenticator app verification before continuing.\nUse manual entry first if you are on the same phone as Telegram.",
+              "format": [
+                "italic"
+              ]
+            },
+            {
+              "text": "\n\nYour setup key follows in a separate message. Copy it, add it to your authenticator app, then reply with the 6-digit code.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_3",
+            "type": "text",
+            "parts": [
+              {
+                "text": "Copy it, add it to your authenticator app, then reply with the 6-digit code.",
+                "format": [
+                  "bold"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "watch_auth_setup",
+            "label": "Watch Authenticator Setup Video",
+            "triggers": [
+              "1",
+              "watch_auth_setup",
+              "watch authenticator setup video"
+            ],
+            "nextMessageId": 202605281249,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true,
+          "body": {
+            "id": "body",
+            "type": "text",
+            "parts": [
+              {
+                "text": "Set up the authenticator app verification before continuing.",
+                "format": []
+              }
+            ],
+            "required": true
+          },
+          "blocks": [
+            {
+              "id": "paragraph_2",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "Your setup key follows in a separate message. ",
+                  "format": [
+                    "italic"
+                  ]
+                }
+              ],
+              "format": [],
+              "required": true
+            }
+          ],
+          "actions_menu": {
+            "enabled": true,
+            "source": "actions",
+            "instruction": "Reply with the number next to the following options.",
+            "item_format": "{index}. {label}"
+          }
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          },
+          "actions_menu": {
+            "enabled": false,
+            "source": "actions",
+            "instruction": "Reply with the number next to the following options.",
+            "item_format": "{index}. {label}"
+          },
+          "body": {
+            "id": "body",
+            "type": "text",
+            "parts": [
+              {
+                "text": "Set up the authenticator app verification before continuing.",
+                "format": []
+              }
+            ],
+            "required": true
+          },
+          "blocks": [
+            {
+              "id": "paragraph_2",
+              "type": "text",
+              "parts": [
+                {
+                  "text": "Your setup key follows in a separate message. ",
+                  "format": [
+                    "italic"
+                  ]
+                }
+              ],
+              "format": [],
+              "required": true
+            }
+          ]
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_2FA_VERIFY"
+    },
+    {
+      "name": "SIGN_IN",
+      "id": 202606020511,
+      "description": "Describe what this message is for.",
+      "variables": {},
+      "default": {
+        "title": "Welcome Back!",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "To continue, please sign in using your authenticator mobile app. Open the app, have your 6‑digit code ready, tap ",
+              "format": []
+            },
+            {
+              "text": "Authenticate Now ",
+              "format": [
+                "bold"
+              ]
+            },
+            {
+              "text": "and hold on for the next request to enter your 2FA code.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": [
+          {
+            "key": "authenticate_now",
+            "label": "Authenticate NOW",
+            "triggers": [
+              "1",
+              "authenticate_now",
+              "authenticate now"
+            ],
+            "nextMessageId": 202606020534,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          },
+          "actions_menu": {
+            "enabled": true,
+            "source": "actions",
+            "instruction": "Reply with one of the following options.",
+            "item_format": "{index}. {label}"
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_SIGN_IN"
+    },
+    {
+      "name": "CHECK_IN",
+      "id": 202606020534,
+      "description": "Describe what this message is for.",
+      "variables": {},
+      "default": {
+        "title": "Check‑IN time!",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Please reply with your mobile authenticator's ",
+              "format": []
+            },
+            {
+              "text": "6‑digit code ",
+              "format": [
+                "bold",
+                "italic"
+              ]
+            },
+            {
+              "text": "to check in. ",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true,
+          "blocks": []
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          },
+          "blocks": [],
+          "actions_menu": {
+            "enabled": false,
+            "source": "actions",
+            "instruction": "Reply with one of the following options.",
+            "item_format": "{index}. {label}"
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_SESSION_RESUME"
+    },
+    {
+      "name": "CHECK_IN_FAILED",
+      "id": 202606020536,
+      "description": "Describe what this message is for.",
+      "variables": {},
+      "default": {
+        "title": "Check‑IN FAILED",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Please try again and reply with your mobile authenticator's ",
+              "format": []
+            },
+            {
+              "text": "6‑digit code ",
+              "format": [
+                "bold"
+              ]
+            },
+            {
+              "text": "to check in. ",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [
+          {
+            "id": "paragraph_2",
+            "type": "text",
+            "parts": [
+              {
+                "text": "If it fails again, please watch the video on how to set up and use your mobile Authenticator. ",
+                "format": [
+                  "italic",
+                  "bold"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          },
+          {
+            "id": "paragraph_3",
+            "type": "text",
+            "parts": [
+              {
+                "text": "Send an email to support@postoochat.com for a swift resolution.",
+                "format": [
+                  "bold"
+                ]
+              }
+            ],
+            "format": [],
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "key": "watch_2fa_video",
+            "label": "Watch 2FA Video",
+            "triggers": [
+              "1",
+              "watch_2fa_video",
+              "watch 2fa video"
+            ],
+            "nextMessageId": 202605291023,
+            "live": true
+          },
+          {
+            "key": "send_email",
+            "label": "Send Email NOW!",
+            "triggers": [
+              "2",
+              "send_email",
+              "send email now!"
+            ],
+            "nextMessageId": null,
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "Markdown",
+          "inline_buttons_enabled": true,
+          "blocks": []
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          },
+          "actions_menu": {
+            "enabled": true,
+            "source": "actions",
+            "instruction": "Reply with one of the following options.",
+            "item_format": "{index}. {label}"
+          }
+        }
+      },
+      "assets": [],
+      "links": [],
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_ACCESS_DENIED"
+    },
+    {
+      "name": "HELP",
+      "id": 202609090101,
+      "description": "Suite-wide help and recovery message.",
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_HELP",
+      "variables": {},
+      "default": {
+        "title": "PosTooChat Help",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "Need help? Reply MENU to return to the available apps. To stop a consent-based onboarding after you have agreed, reply WITHDRAW. If you cannot continue, contact support@postoochat.com and include a short description of what happened.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "HTML",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          },
+          "actions_menu": {
+            "enabled": false,
+            "source": "actions",
+            "instruction": "Reply with one of the following options.",
+            "item_format": "{index}. {label}"
+          }
+        }
+      },
+      "assets": [],
+      "links": []
+    },
+    {
+      "name": "SESSION_EXPIRED",
+      "id": 202609090102,
+      "description": "Suite-wide session expiry notification.",
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_SESSION_EXPIRED",
+      "variables": {},
+      "default": {
+        "title": "Session expired",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "For your security, this session has expired. Reply START to begin again.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": []
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "HTML",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          },
+          "actions_menu": {
+            "enabled": false,
+            "source": "actions",
+            "instruction": "Reply with one of the following options.",
+            "item_format": "{index}. {label}"
+          }
+        }
+      },
+      "assets": [],
+      "links": []
+    },
+    {
+      "name": "SYSTEM_UNAVAILABLE",
+      "id": 202609090103,
+      "description": "Suite-wide temporary service-unavailability notification.",
+      "group": "postoochat_suite",
+      "category": "General",
+      "suite_key": "SUITE_SYSTEM_UNAVAILABLE",
+      "variables": {},
+      "default": {
+        "title": "Temporarily unavailable",
+        "body": {
+          "id": "body",
+          "type": "text",
+          "parts": [
+            {
+              "text": "That app is currently under construction and will be available soon. Your account setup is complete; please return later to continue. Choose Close to return to the Suite menu, or Exit to sign out and return to the start.",
+              "format": []
+            }
+          ],
+          "required": true
+        },
+        "blocks": [],
+        "actions": [
+          {
+            "key": "close",
+            "label": "Close",
+            "triggers": [
+              "close"
+            ],
+            "live": true
+          },
+          {
+            "key": "exit",
+            "label": "Exit",
+            "triggers": [
+              "exit"
+            ],
+            "live": true
+          }
+        ]
+      },
+      "overrides": {
+        "telegram": {
+          "delivery": "inline_buttons",
+          "parse_mode": "HTML",
+          "inline_buttons_enabled": true
+        },
+        "whatsapp": {
+          "delivery": "interactive",
+          "template_enabled": false,
+          "binding": {
+            "content_sid_env": ""
+          },
+          "actions_menu": {
+            "enabled": true,
+            "source": "actions",
+            "instruction": "Reply with one of the following options.",
+            "item_format": "{index}. {label}"
+          }
+        }
+      },
+      "assets": [],
+      "links": []
+    }
+  ]
+}
